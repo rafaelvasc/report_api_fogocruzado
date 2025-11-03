@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "report_fogocruzado"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "c5e542e2-e829-4349-88ba-b3766e506b0e"
+  }
+}

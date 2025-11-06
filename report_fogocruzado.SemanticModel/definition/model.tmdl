@@ -6,9 +6,30 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
+queryGroup Parametros
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup Token
+
+	annotation PBI_QueryGroupOrder = 1
+
+queryGroup Fato
+
+	annotation PBI_QueryGroupOrder = 2
+
+queryGroup Dimensões
+
+	annotation PBI_QueryGroupOrder = 3
+
 annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBI_ProTooling = ["DevMode"]
+
+annotation PBI_QueryOrder = ["Email_API_FogoCruzado","Senha_API_FogoCruzado","API_Autenticacao","UrlLogin_API_FogoCruzado","fOcorrencias","fnGetToken","dEstados"]
+
+ref table fOcorrencias
+ref table dEstados
 
 ref cultureInfo pt-BR
 

@@ -1,0 +1,46 @@
+table dEstados
+	lineageTag: 1608da20-9b92-4671-8d9a-a88f6e6eb9b3
+
+	column IdEstado
+		dataType: string
+		lineageTag: e1afe69f-21c6-4a96-9176-c5d16797f547
+		summarizeBy: none
+		sourceColumn: IdEstado
+
+		annotation SummarizationSetBy = Automatic
+
+	column Estado
+		dataType: string
+		lineageTag: d6d1a41b-dcdc-4c3e-85be-148ca1f5e92a
+		summarizeBy: none
+		sourceColumn: Estado
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dEstados = m
+		mode: import
+		queryGroup: Fato
+		source =
+				let
+				    Token = fnGetToken(),
+				    Fonte = Json.Document(
+				        Web.Contents(
+				            "https://api-service.fogocruzado.org.br/api/v2/states",
+				            [
+				                Headers = [
+				                    #"Authorization" = "Bearer " & Token,
+				                    #"Accept" = "application/json"
+				                ]
+				            ]
+				        )
+				    ),
+				    Estados = Fonte[data],
+				    Tabela = Table.FromList(Estados, Splitter.SplitByNothing(), {"Registro"}),
+				    Expandido = Table.ExpandRecordColumn(Tabela, "Registro", {"id", "name"}, {"IdEstado", "Estado"})
+				in
+				    Expandido
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

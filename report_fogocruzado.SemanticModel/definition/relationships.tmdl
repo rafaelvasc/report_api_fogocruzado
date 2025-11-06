@@ -1,0 +1,4 @@
+relationship AutoDetected_d120cdb7-1957-4ea0-9453-a384f386ab56
+	fromColumn: fOcorrencias.Estado
+	toColumn: dEstados.Estado
+

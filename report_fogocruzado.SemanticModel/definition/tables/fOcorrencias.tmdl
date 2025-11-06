@@ -1,0 +1,196 @@
+table fOcorrencias
+	lineageTag: a3a1b150-8df9-403e-a1a7-a61b19737976
+
+	column Id
+		dataType: string
+		lineageTag: 0ecf4df8-bd87-47e3-b566-6dbf931b7cac
+		summarizeBy: none
+		sourceColumn: Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Documento
+		dataType: int64
+		formatString: 0
+		lineageTag: 75ceb555-0e06-410a-a478-a5f139573286
+		summarizeBy: sum
+		sourceColumn: Documento
+
+		annotation SummarizationSetBy = Automatic
+
+	column Endereço
+		dataType: string
+		lineageTag: 64a14a5b-8acf-45a6-991c-4f53ca5377d0
+		summarizeBy: none
+		sourceColumn: Endereço
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 873c637d-f000-4730-97dc-5e980be3ec88
+		summarizeBy: none
+		sourceColumn: Data
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Hora
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: dc48f7d0-8be9-49db-9c2f-f345a742ddd2
+		summarizeBy: none
+		sourceColumn: Hora
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column Estado
+		dataType: string
+		lineageTag: 3aa87762-c4c7-4f56-af15-ce040a5d004d
+		summarizeBy: none
+		sourceColumn: Estado
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cidade
+		dataType: string
+		lineageTag: 14f1a82a-6c45-4540-8d1b-d94d159db171
+		summarizeBy: none
+		sourceColumn: Cidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bairro
+		dataType: string
+		lineageTag: ca540cd4-1f06-48db-8807-6d8fdafed3f6
+		summarizeBy: none
+		sourceColumn: Bairro
+
+		annotation SummarizationSetBy = Automatic
+
+	column Motivo
+		dataType: string
+		lineageTag: ff50c882-6785-47bb-8bad-c40987d72355
+		summarizeBy: none
+		sourceColumn: Motivo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fOcorrencias = m
+		mode: import
+		queryGroup: Fato
+		source =
+				let
+				    // 🔐 Token com tratamento seguro
+				    Token = fnGetToken(),
+				
+				    // 🌍 Configurações da API
+				    BaseUrl = "https://api-service.fogocruzado.org.br",
+				    IdEstado_RJ = "b112ffbe-17b3-4ad0-8f2a-2038745d1d14",
+				    ItensPorPagina = 200,
+				    MaxPaginas = 100, // Evita travamento em caso de paginação infinita
+				    DataInicial = "2023-01-01T00:00:00", // 👈 Altere para intervalo menor se estiver testando
+				    DataFinal = "2025-11-03T23:59:59",
+				
+				    // 🧩 Função para obter uma página com tratamento de erro
+				    GetPage = (Pagina as number) =>
+				        let
+				            Endpoint =
+				                "api/v2/occurrences?"
+				                & "idState=" & IdEstado_RJ
+				                & "&initialDate=" & DataInicial
+				                & "&finalDate=" & DataFinal
+				                & "&order=ASC"
+				                & "&page=" & Number.ToText(Pagina)
+				                & "&take=" & Number.ToText(ItensPorPagina),
+				
+				            Resultado = try
+				                let
+				                    Fonte = Json.Document(
+				                        Web.Contents(
+				                            BaseUrl,
+				                            [
+				                                RelativePath = Endpoint,
+				                                Headers = [
+				                                    #"Authorization" = "Bearer " & Token,
+				                                    #"Accept" = "application/json"
+				                                ]
+				                            ]
+				                        )
+				                    ),
+				                    Dados = Fonte[data],
+				                    Meta = Fonte[pageMeta],
+				                    ProximaPagina = if Meta[hasNextPage] then Pagina + 1 else null
+				                in
+				                    [
+				                        PaginaAtual = Pagina,
+				                        Proxima = ProximaPagina,
+				                        Dados = Dados
+				                    ]
+				            otherwise
+				                [
+				                    PaginaAtual = Pagina,
+				                    Proxima = null,
+				                    Dados = {}
+				                ]
+				        in
+				            Resultado,
+				
+				    // 🔁 Paginação segura com limite máximo de páginas
+				    TodasAsPaginas =
+				        List.Generate(
+				            () => [Pagina = 1, Resultado = GetPage(1)],
+				            each [Pagina] <= MaxPaginas and List.Count([Resultado][Dados]) > 0,
+				            each [
+				                Pagina = if [Resultado][Proxima] <> null then [Resultado][Proxima] else null,
+				                Resultado = if [Resultado][Proxima] <> null then GetPage([Resultado][Proxima]) else [Resultado]
+				            ],
+				            each [Resultado][Dados]
+				        ),
+				
+				    // 🧹 Combina e transforma os dados
+				    ListaFinal = List.Combine(TodasAsPaginas),
+				    Tabela = Table.FromList(ListaFinal, Splitter.SplitByNothing(), {"Registro"}),
+				
+				    Expandido = Table.ExpandRecordColumn(
+				        Tabela, "Registro",
+				        {"id", "documentNumber", "address", "date", "state", "city", "neighborhood", "contextInfo"},
+				        {"Id", "Documento", "Endereço", "Data", "Estado", "Cidade", "Bairro", "Contexto"}
+				    ),
+				    ExpEstado = Table.ExpandRecordColumn(Expandido, "Estado", {"name"}, {"Estado"}),
+				    ExpCidade = Table.ExpandRecordColumn(ExpEstado, "Cidade", {"name"}, {"Cidade"}),
+				    ExpBairro = Table.ExpandRecordColumn(ExpCidade, "Bairro", {"name"}, {"Bairro"}),
+				    ExpMotivo = Table.ExpandRecordColumn(ExpBairro, "Contexto", {"mainReason"}, {"MotivoPrincipal"}),
+				    ExpMotivoFinal = Table.ExpandRecordColumn(ExpMotivo, "MotivoPrincipal", {"name"}, {"Motivo"}),
+				
+				    // 🕒 Tipos e separação de data/hora
+				    #"Tipo Alterado" = Table.TransformColumnTypes(ExpMotivoFinal, {
+				        {"Id", type text},
+				        {"Documento", Int64.Type},
+				        {"Endereço", type text},
+				        {"Data", type datetime},
+				        {"Estado", type text},
+				        {"Cidade", type text},
+				        {"Bairro", type text},
+				        {"Motivo", type text}
+				    }),
+				    #"Dividir Coluna por Delimitador" = Table.SplitColumn(
+				        Table.TransformColumnTypes(#"Tipo Alterado", {{"Data", type text}}, "pt-BR"),
+				        "Data", Splitter.SplitTextByDelimiter(" ", QuoteStyle.Csv),
+				        {"Data", "Hora"}
+				    ),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Dividir Coluna por Delimitador", {
+				        {"Data", type date},
+				        {"Hora", type time}
+				    })
+				in
+				    #"Tipo Alterado1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

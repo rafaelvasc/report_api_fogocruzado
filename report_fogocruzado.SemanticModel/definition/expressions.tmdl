@@ -1,0 +1,113 @@
+expression Email_API_FogoCruzado = "rafael.vasconcellos@outlook.com.br" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: a39a02d2-d93e-4076-81c8-77dd5278828a
+	queryGroup: Parametros
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Text
+
+expression Senha_API_FogoCruzado = "fogocruzado" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: b969499f-e493-434c-b586-1c7e1c2253fa
+	queryGroup: Parametros
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Text
+
+expression UrlLogin_API_FogoCruzado = "https://api-service.fogocruzado.org.br/api/v2/auth/login" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: e62ed154-5ad5-4ac7-ab08-37e08eb003fe
+	queryGroup: Parametros
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Text
+
+expression API_Autenticacao =
+		let
+		    // 🔐 Parâmetros
+		    Email = Email_API_FogoCruzado,
+		    Senha = Senha_API_FogoCruzado,
+		    UrlLogin = UrlLogin_API_FogoCruzado,
+		
+		    // 🧩 Corpo do POST em JSON
+		    BodyText = Text.FromBinary(Json.FromValue([
+		        email = Email,
+		        password = Senha
+		    ])),
+		
+		    // 🚀 Requisição com tratamento de erro
+		    TokenResult = try
+		        let
+		            Response = Web.Contents(
+		                UrlLogin,
+		                [
+		                    Headers = [
+		                        #"Content-Type" = "application/json; charset=utf-8",
+		                        #"Accept" = "application/json"
+		                    ],
+		                    Content = Text.ToBinary(BodyText)
+		                ]
+		            ),
+		            JsonResponse = Json.Document(Response),
+		            Token = JsonResponse[data][accessToken]
+		        in
+		            Token
+		    otherwise
+		        // Retorno em caso de erro
+		        error "Erro ao autenticar. Verifique o e-mail, senha, ou a URL de login."
+		in
+		    TokenResult
+	lineageTag: cd1deb19-e0fa-496a-8fa1-b92a3cf21168
+	queryGroup: Token
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Text
+
+expression fnGetToken =
+		let
+		    fnGetToken = () as text =>
+		    let
+		        // 🔐 Parâmetros
+		        Email = Email_API_FogoCruzado,
+		        Senha = Senha_API_FogoCruzado,
+		        BaseUrl = "https://api-service.fogocruzado.org.br",
+		        Endpoint = "api/v2/auth/login",
+		
+		        // 🧩 Montar corpo do POST
+		        BodyText = Text.FromBinary(Json.FromValue([
+		            email = Email,
+		            password = Senha
+		        ])),
+		
+		        // 🚀 Fazer requisição com tratamento de erro
+		        Token = try
+		            let
+		                Response = Web.Contents(
+		                    BaseUrl,
+		                    [
+		                        RelativePath = Endpoint,
+		                        Headers = [
+		                            #"Content-Type" = "application/json; charset=utf-8",
+		                            #"Accept" = "application/json"
+		                        ],
+		                        Content = Text.ToBinary(BodyText)
+		                    ]
+		                ),
+		                JsonResponse = Json.Document(Response),
+		                AccessToken = JsonResponse[data][accessToken]
+		            in
+		                AccessToken
+		        otherwise
+		            error "❌ Erro ao obter o token. Verifique as credenciais ou a URL da API."
+		    in
+		        Token
+		in
+		    fnGetToken
+	lineageTag: 5d4bdf13-800b-4aeb-ae96-9e2744a88b88
+	queryGroup: Token
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Function
+

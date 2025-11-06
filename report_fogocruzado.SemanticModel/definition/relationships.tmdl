@@ -1,4 +1,16 @@
-relationship AutoDetected_d120cdb7-1957-4ea0-9453-a384f386ab56
-	fromColumn: fOcorrencias.Estado
-	toColumn: dEstados.Estado
+relationship AutoDetected_42679c82-a308-4f7f-8cb8-e6a299885fd2
+	fromColumn: fOcorrencias.Motivo
+	toColumn: dMotivos.Motivo
+
+relationship AutoDetected_9fd641a0-d943-426c-ac5d-29e76f63eedb
+	fromColumn: dCidades.IdEstado
+	toColumn: dEstados.IdEstado
+
+relationship AutoDetected_14305bb1-4adc-4679-afad-dbaf54552195
+	fromColumn: fPerfilVitimas.Situacao
+	toColumn: dSituacao.Situacao
+
+relationship AutoDetected_b61c623a-749c-4d42-8bea-f9c951177cde
+	fromColumn: fPerfilVitimas.FaixaEtaria
+	toColumn: dFaixaEtarias.FaixaEtaria
 

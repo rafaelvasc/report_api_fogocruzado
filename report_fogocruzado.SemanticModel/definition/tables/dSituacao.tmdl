@@ -1,0 +1,33 @@
+table dSituacao
+	lineageTag: de5640b4-e50d-4d68-a99a-d502b61c044b
+
+	column Situacao
+		dataType: string
+		lineageTag: 72756490-d13b-43bf-8f06-1882922dc157
+		summarizeBy: none
+		sourceColumn: Situacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column Situacao_ptbr
+		dataType: string
+		lineageTag: 816ddb71-c147-410a-bfaa-798d23b5258a
+		summarizeBy: none
+		sourceColumn: Situacao_ptbr
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dSituacao = m
+		mode: import
+		queryGroup: Dimensões
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WcklNTFHSUfLNLyrJV4rViVYKzy/NS0kFibmlFmWmAAVjAQ==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Situacao = _t, Situacao_ptbr = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Situacao", type text}, {"Situacao_ptbr", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

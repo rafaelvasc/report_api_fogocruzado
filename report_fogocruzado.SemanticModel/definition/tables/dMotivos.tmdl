@@ -1,0 +1,25 @@
+table dMotivos
+	lineageTag: c4eddb30-aecd-4e6d-a6dd-32a6d13569a4
+
+	column Motivo
+		dataType: string
+		lineageTag: ff9177fd-97ff-4014-9031-d8fcf8709ccc
+		summarizeBy: none
+		sourceColumn: Motivo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dMotivos = m
+		mode: import
+		queryGroup: Dimensões
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("bZBBDoIwEEWv0rA24QyoMa7UgDviYigjmQQYnLbcx7hw5Sm4mCNVV+w6v79v/m9ZJtn0nB5sBm7JErTJZVUmh49CNfaermSh5lk9Diiw4D6rDzyNkOYcqujdc6eGmjj93876ltwQfDxnHm4BDRhLI7mIImGnCrqOl9imRmNBGoj2tVATWcfgJb4oUKFOp3Qz3cWioDmJAr4lMhFwXjss4sFU0Fv+RwVhk9n5J35lWXyQuLQIZKeXlpynHCtsScnpLjTwSToIOtaklzc=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Motivo = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Motivo", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

@@ -1,9 +1,25 @@
-table dEstados
-	lineageTag: 1608da20-9b92-4671-8d9a-a88f6e6eb9b3
+table dCidades
+	lineageTag: e6fd3903-3f58-4f4d-875b-eb0da27e1ada
+
+	column IdCidade
+		dataType: string
+		lineageTag: 70a815f2-e64b-43b1-8732-b46f75913b9f
+		summarizeBy: none
+		sourceColumn: IdCidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column NomeCidade
+		dataType: string
+		lineageTag: ea4ff23c-c52e-4aff-b456-21d6d4a7db6c
+		summarizeBy: none
+		sourceColumn: NomeCidade
+
+		annotation SummarizationSetBy = Automatic
 
 	column IdEstado
 		dataType: string
-		lineageTag: e1afe69f-21c6-4a96-9176-c5d16797f547
+		lineageTag: 4c610cdc-3710-49cd-8822-ff166a3050b5
 		summarizeBy: none
 		sourceColumn: IdEstado
 
@@ -11,20 +27,20 @@ table dEstados
 
 	column NomeEstado
 		dataType: string
-		lineageTag: 54c2671c-4b18-4508-9847-4347cefc4565
+		lineageTag: c9d988bb-790f-466a-8e27-b351a620d4aa
 		summarizeBy: none
 		sourceColumn: NomeEstado
 
 		annotation SummarizationSetBy = Automatic
 
-	partition dEstados = m
+	partition dCidades = m
 		mode: import
 		queryGroup: Dimensões
 		source =
 				let
 				    Token = fnGetToken(),
 				    BaseUrl = "https://api-service.fogocruzado.org.br",
-				    Endpoint = "api/v2/states",
+				    Endpoint = "api/v2/cities",
 				    Fonte = Json.Document(
 				        Web.Contents(BaseUrl,
 				            [
@@ -38,9 +54,10 @@ table dEstados
 				    ),
 				    Dados = Fonte[data],
 				    Tabela = Table.FromList(Dados, Splitter.SplitByNothing(), {"Registro"}),
-				    Estados = Table.ExpandRecordColumn(Tabela, "Registro", {"id", "name"}, {"IdEstado", "NomeEstado"})
+				    CidadesExpandidas = Table.ExpandRecordColumn(Tabela, "Registro", {"id", "name", "state"}, {"IdCidade", "NomeCidade", "Estado"}),
+				    EstadoExp = Table.ExpandRecordColumn(CidadesExpandidas, "Estado", {"id", "name"}, {"IdEstado", "NomeEstado"})
 				in
-				    Estados
+				    EstadoExp
 
 	annotation PBI_NavigationStepName = Navegação
 

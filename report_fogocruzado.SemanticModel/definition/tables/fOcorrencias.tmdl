@@ -18,14 +18,6 @@ table fOcorrencias
 
 		annotation SummarizationSetBy = Automatic
 
-	column Endereço
-		dataType: string
-		lineageTag: 64a14a5b-8acf-45a6-991c-4f53ca5377d0
-		summarizeBy: none
-		sourceColumn: Endereço
-
-		annotation SummarizationSetBy = Automatic
-
 	column Data
 		dataType: dateTime
 		formatString: Long Date
@@ -80,115 +72,145 @@ table fOcorrencias
 
 		annotation SummarizationSetBy = Automatic
 
+	column Endereco
+		dataType: string
+		lineageTag: 6fbf6448-9aaa-435b-aa9c-18f6c4426420
+		summarizeBy: none
+		sourceColumn: Endereco
+
+		annotation SummarizationSetBy = Automatic
+
+	column Latitude
+		dataType: string
+		lineageTag: 6905ca9c-ff4e-4219-9af9-f4154d55a8e8
+		summarizeBy: none
+		sourceColumn: Latitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column Longitude
+		dataType: string
+		lineageTag: 0ea12a22-cd5d-4edf-8e81-0faf06612423
+		summarizeBy: none
+		sourceColumn: Longitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column AcaoPolicial
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 28f6be59-726b-4428-964e-c1176b9ce9d4
+		summarizeBy: none
+		sourceColumn: AcaoPolicial
+
+		annotation SummarizationSetBy = Automatic
+
+	column PresencaAgente
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 15ea84d7-b726-4736-ba11-c8ae03e8ba32
+		summarizeBy: none
+		sourceColumn: PresencaAgente
+
+		annotation SummarizationSetBy = Automatic
+
 	partition fOcorrencias = m
 		mode: import
 		queryGroup: Fato
 		source =
 				let
-				    // 🔐 Token com tratamento seguro
+				    // Token da função de autenticação
 				    Token = fnGetToken(),
 				
-				    // 🌍 Configurações da API
+				    // Configuração base da API
 				    BaseUrl = "https://api-service.fogocruzado.org.br",
 				    IdEstado_RJ = "b112ffbe-17b3-4ad0-8f2a-2038745d1d14",
 				    ItensPorPagina = 200,
-				    MaxPaginas = 100, // Evita travamento em caso de paginação infinita
-				    DataInicial = "2023-01-01T00:00:00", // 👈 Altere para intervalo menor se estiver testando
-				    DataFinal = "2025-11-03T23:59:59",
 				
-				    // 🧩 Função para obter uma página com tratamento de erro
+				    // Função que retorna uma página da API com seus dados
 				    GetPage = (Pagina as number) =>
 				        let
 				            Endpoint =
 				                "api/v2/occurrences?"
 				                & "idState=" & IdEstado_RJ
-				                & "&initialDate=" & DataInicial
-				                & "&finalDate=" & DataFinal
 				                & "&order=ASC"
 				                & "&page=" & Number.ToText(Pagina)
 				                & "&take=" & Number.ToText(ItensPorPagina),
 				
-				            Resultado = try
-				                let
-				                    Fonte = Json.Document(
-				                        Web.Contents(
-				                            BaseUrl,
-				                            [
-				                                RelativePath = Endpoint,
-				                                Headers = [
-				                                    #"Authorization" = "Bearer " & Token,
-				                                    #"Accept" = "application/json"
-				                                ]
-				                            ]
-				                        )
-				                    ),
-				                    Dados = Fonte[data],
-				                    Meta = Fonte[pageMeta],
-				                    ProximaPagina = if Meta[hasNextPage] then Pagina + 1 else null
-				                in
+				            Fonte = Json.Document(
+				                Web.Contents(
+				                    BaseUrl,
 				                    [
-				                        PaginaAtual = Pagina,
-				                        Proxima = ProximaPagina,
-				                        Dados = Dados
+				                        RelativePath = Endpoint,
+				                        Headers = [
+				                            #"Authorization" = "Bearer " & Token,
+				                            #"Accept" = "application/json"
+				                        ]
 				                    ]
-				            otherwise
-				                [
-				                    PaginaAtual = Pagina,
-				                    Proxima = null,
-				                    Dados = {}
-				                ]
-				        in
-				            Resultado,
+				                )
+				            ),
 				
-				    // 🔁 Paginação segura com limite máximo de páginas
+				            Dados = Fonte[data],
+				            Meta = Fonte[pageMeta],
+				            ProximaPagina = if Meta[hasNextPage] then Pagina + 1 else null
+				        in
+				            [Dados = Dados, Proxima = ProximaPagina],
+				
+				    // Paginação dinâmica: carrega até acabar os dados
 				    TodasAsPaginas =
 				        List.Generate(
-				            () => [Pagina = 1, Resultado = GetPage(1)],
-				            each [Pagina] <= MaxPaginas and List.Count([Resultado][Dados]) > 0,
-				            each [
-				                Pagina = if [Resultado][Proxima] <> null then [Resultado][Proxima] else null,
-				                Resultado = if [Resultado][Proxima] <> null then GetPage([Resultado][Proxima]) else [Resultado]
-				            ],
-				            each [Resultado][Dados]
+				            () => GetPage(1),
+				            each [Dados] <> null and List.Count([Dados]) > 0,
+				            each if [Proxima] <> null then GetPage([Proxima]) else [Dados = {}, Proxima = null],
+				            each [Dados]
 				        ),
 				
-				    // 🧹 Combina e transforma os dados
+				    // Combina todas as páginas em uma única lista
 				    ListaFinal = List.Combine(TodasAsPaginas),
+				
+				    // Converte lista em tabela
 				    Tabela = Table.FromList(ListaFinal, Splitter.SplitByNothing(), {"Registro"}),
 				
+				    // Expande os campos principais da ocorrência
 				    Expandido = Table.ExpandRecordColumn(
 				        Tabela, "Registro",
-				        {"id", "documentNumber", "address", "date", "state", "city", "neighborhood", "contextInfo"},
-				        {"Id", "Documento", "Endereço", "Data", "Estado", "Cidade", "Bairro", "Contexto"}
+				        {"id", "documentNumber", "address", "date", "state", "city", "neighborhood", "contextInfo", "latitude", "longitude", "policeAction", "agentPresence"},
+				        {"Id", "Documento", "Endereco", "DataHora", "Estado", "Cidade", "Bairro", "Contexto", "Latitude", "Longitude", "AcaoPolicial", "PresencaAgente"}
 				    ),
+				
 				    ExpEstado = Table.ExpandRecordColumn(Expandido, "Estado", {"name"}, {"Estado"}),
 				    ExpCidade = Table.ExpandRecordColumn(ExpEstado, "Cidade", {"name"}, {"Cidade"}),
 				    ExpBairro = Table.ExpandRecordColumn(ExpCidade, "Bairro", {"name"}, {"Bairro"}),
 				    ExpMotivo = Table.ExpandRecordColumn(ExpBairro, "Contexto", {"mainReason"}, {"MotivoPrincipal"}),
 				    ExpMotivoFinal = Table.ExpandRecordColumn(ExpMotivo, "MotivoPrincipal", {"name"}, {"Motivo"}),
 				
-				    // 🕒 Tipos e separação de data/hora
-				    #"Tipo Alterado" = Table.TransformColumnTypes(ExpMotivoFinal, {
+				    // Conversão de tipos com tratamento de campos nulos
+				    Tipos = Table.TransformColumnTypes(ExpMotivoFinal, {
 				        {"Id", type text},
 				        {"Documento", Int64.Type},
-				        {"Endereço", type text},
-				        {"Data", type datetime},
+				        {"Endereco", type text},
+				        {"DataHora", type datetime},
 				        {"Estado", type text},
 				        {"Cidade", type text},
 				        {"Bairro", type text},
-				        {"Motivo", type text}
+				        {"Motivo", type text},
+				        {"Latitude", type nullable text},
+				        {"Longitude", type nullable text},
+				        {"AcaoPolicial", type nullable logical},
+				        {"PresencaAgente", type nullable logical}
 				    }),
-				    #"Dividir Coluna por Delimitador" = Table.SplitColumn(
-				        Table.TransformColumnTypes(#"Tipo Alterado", {{"Data", type text}}, "pt-BR"),
-				        "Data", Splitter.SplitTextByDelimiter(" ", QuoteStyle.Csv),
-				        {"Data", "Hora"}
-				    ),
-				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Dividir Coluna por Delimitador", {
+				
+				    // Separação de data e hora
+				    DataHoraTexto = Table.TransformColumnTypes(Tipos, {{"DataHora", type text}}, "pt-BR"),
+				    Dividido = Table.SplitColumn(DataHoraTexto, "DataHora", Splitter.SplitTextByDelimiter(" ", QuoteStyle.Csv), {"Data", "Hora"}),
+				
+				    // Tipagem final
+				    TiposFinais = Table.TransformColumnTypes(Dividido, {
 				        {"Data", type date},
 				        {"Hora", type time}
 				    })
 				in
-				    #"Tipo Alterado1"
+				    TiposFinais
 
 	annotation PBI_NavigationStepName = Navegação
 

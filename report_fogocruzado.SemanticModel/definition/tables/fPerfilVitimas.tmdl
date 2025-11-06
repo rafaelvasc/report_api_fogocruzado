@@ -1,0 +1,140 @@
+table fPerfilVitimas
+	lineageTag: dc3098f6-cded-4578-b561-83f3ccdac85c
+
+	column OcorrenciaId
+		dataType: string
+		lineageTag: 8e7262d6-953f-495c-a6da-7bbda3bbd62d
+		summarizeBy: none
+		sourceColumn: OcorrenciaId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Situacao
+		dataType: string
+		lineageTag: 2793bd57-62bb-44c2-a31e-f2dcb9b32f36
+		summarizeBy: none
+		sourceColumn: Situacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoPessoa
+		dataType: string
+		lineageTag: a2dca4fc-665f-472b-af8d-d1b2abd0f47a
+		summarizeBy: none
+		sourceColumn: TipoPessoa
+
+		annotation SummarizationSetBy = Automatic
+
+	column Idade
+		dataType: int64
+		formatString: 0
+		lineageTag: da97531e-7914-4a6c-a71b-87db651623b6
+		summarizeBy: sum
+		sourceColumn: Idade
+
+		annotation SummarizationSetBy = Automatic
+
+	column FaixaEtaria
+		dataType: string
+		lineageTag: 649e5424-c390-471b-b401-8b7d17982ebf
+		summarizeBy: none
+		sourceColumn: FaixaEtaria
+
+		annotation SummarizationSetBy = Automatic
+
+	column Genero
+		dataType: string
+		lineageTag: 2c8a6a1e-98f1-4f7f-8324-bc6bed8b7931
+		summarizeBy: none
+		sourceColumn: Genero
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fPerfilVitimas = m
+		mode: import
+		queryGroup: Fato
+		source = ```
+				let
+				    Token = fnGetToken(),
+				    BaseUrl = "https://api-service.fogocruzado.org.br",
+				    IdEstado_RJ = "b112ffbe-17b3-4ad0-8f2a-2038745d1d14",
+				    ItensPorPagina = 200,
+				    DataInicial = "2023-01-01T00:00:00",
+				    DataFinal = "2025-11-03T23:59:59",
+				
+				    // Função que busca uma página
+				    GetPage = (Pagina as number) =>
+				        let
+				            Endpoint =
+				                "api/v2/occurrences?"
+				                & "idState=" & IdEstado_RJ
+				                & "&initialDate=" & DataInicial
+				                & "&finalDate=" & DataFinal
+				                & "&order=ASC"
+				                & "&page=" & Number.ToText(Pagina)
+				                & "&take=" & Number.ToText(ItensPorPagina),
+				
+				            Fonte = Json.Document(
+				                Web.Contents(
+				                    BaseUrl,
+				                    [
+				                        RelativePath = Endpoint,
+				                        Headers = [
+				                            #"Authorization" = "Bearer " & Token,
+				                            #"Accept" = "application/json"
+				                        ]
+				                    ]
+				                )
+				            ),
+				            Dados = Fonte[data],
+				            Meta = Fonte[pageMeta],
+				            Proxima = if Meta[hasNextPage] then Pagina + 1 else null
+				        in
+				            [Dados = Dados, Proxima = Proxima],
+				
+				    TodasPaginas = List.Generate(
+				        () => GetPage(1),
+				        each [Dados] <> null and List.Count([Dados]) > 0,
+				        each if [Proxima] <> null then GetPage([Proxima]) else [Dados = {}, Proxima = null],
+				        each [Dados]
+				    ),
+				
+				    Ocorrencias = List.Combine(TodasPaginas),
+				
+				    // Extraindo vítimas humanas (flatten)
+				    TodasVitimas = List.Combine(
+				        List.Transform(Ocorrencias, each 
+				            let
+				                IdOcorrencia = _[id],
+				                Vits = try _[victims] otherwise {}
+				            in
+				                List.Transform(Vits, each Record.AddField(_, "idOcorrencia", IdOcorrencia))
+				        )
+				    ),
+				
+				    TabelaVitimas = Table.FromList(TodasVitimas, Splitter.SplitByNothing(), {"Vitima"}),
+				    Expandido = Table.ExpandRecordColumn(TabelaVitimas, "Vitima", {
+				        "idOcorrencia", "situation", "personType", "age", "ageGroup", "genre"
+				    }, {
+				        "OcorrenciaId", "Situacao", "TipoPessoa", "Idade", "FaixaEtaria", "Genero"
+				    }),
+				
+				    ExpFaixa = Table.ExpandRecordColumn(Expandido, "FaixaEtaria", {"name"}, {"FaixaEtaria"}),
+				    ExpGenero = Table.ExpandRecordColumn(ExpFaixa, "Genero", {"name"}, {"Genero"}),
+				
+				    Tipos = Table.TransformColumnTypes(ExpGenero, {
+				        {"OcorrenciaId", type text},
+				        {"Situacao", type text},
+				        {"TipoPessoa", type text},
+				        {"Idade", Int64.Type},
+				        {"FaixaEtaria", type text},
+				        {"Genero", type text}
+				    })
+				in
+				    Tipos
+				```
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

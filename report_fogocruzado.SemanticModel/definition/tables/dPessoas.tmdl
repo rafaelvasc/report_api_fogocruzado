@@ -1,0 +1,33 @@
+table dPessoas
+	lineageTag: ed6dd1aa-ea66-424d-b749-d5019bdd2075
+
+	column 'TipoPessoaTipoPessoa_ptbrAgentAgente PúblicoCivilianCivil'
+		dataType: string
+		lineageTag: b46e65ed-aa23-4c23-898d-7cf4f00be5df
+		summarizeBy: none
+		sourceColumn: TipoPessoaTipoPessoa_ptbrAgentAgente PúblicoCivilianCivil
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoPessoa_ptbr
+		dataType: string
+		lineageTag: 7613db0b-c6f0-40c3-869a-74b2fb9be4e4
+		summarizeBy: none
+		sourceColumn: TipoPessoa_ptbr
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dPessoas = m
+		mode: import
+		queryGroup: Dimensões
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WckxPzStR0oHQqQoBh3cl5WQm5yvF6kQrOWeWZeZkJuYBpcFMpdhYAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"TipoPessoa#(tab)TipoPessoa_ptbr#(lf)Agent#(tab)Agente Público#(lf)Civilian#(tab)Civil#(lf)" = _t, TipoPessoa_ptbr = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"TipoPessoa#(tab)TipoPessoa_ptbr#(lf)Agent#(tab)Agente Público#(lf)Civilian#(tab)Civil#(lf)", type text}, {"TipoPessoa_ptbr", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

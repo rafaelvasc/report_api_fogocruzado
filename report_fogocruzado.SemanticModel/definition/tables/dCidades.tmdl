@@ -55,9 +55,10 @@ table dCidades
 				    Dados = Fonte[data],
 				    Tabela = Table.FromList(Dados, Splitter.SplitByNothing(), {"Registro"}),
 				    CidadesExpandidas = Table.ExpandRecordColumn(Tabela, "Registro", {"id", "name", "state"}, {"IdCidade", "NomeCidade", "Estado"}),
-				    EstadoExp = Table.ExpandRecordColumn(CidadesExpandidas, "Estado", {"id", "name"}, {"IdEstado", "NomeEstado"})
+				    EstadoExp = Table.ExpandRecordColumn(CidadesExpandidas, "Estado", {"id", "name"}, {"IdEstado", "NomeEstado"}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(EstadoExp,{{"IdCidade", type text}, {"NomeCidade", type text}, {"IdEstado", type text}, {"NomeEstado", type text}})
 				in
-				    EstadoExp
+				    #"Tipo Alterado"
 
 	annotation PBI_NavigationStepName = Navegação
 

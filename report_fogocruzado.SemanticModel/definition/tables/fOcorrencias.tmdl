@@ -183,7 +183,6 @@ table fOcorrencias
 				    ExpBairro = Table.ExpandRecordColumn(ExpCidade, "Bairro", {"name"}, {"Bairro"}),
 				    ExpMotivo = Table.ExpandRecordColumn(ExpBairro, "Contexto", {"mainReason"}, {"MotivoPrincipal"}),
 				    ExpMotivoFinal = Table.ExpandRecordColumn(ExpMotivo, "MotivoPrincipal", {"name"}, {"Motivo"}),
-				
 				    // Conversão de tipos com tratamento de campos nulos
 				    Tipos = Table.TransformColumnTypes(ExpMotivoFinal, {
 				        {"Id", type text},

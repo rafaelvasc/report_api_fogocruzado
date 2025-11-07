@@ -1,19 +1,19 @@
 table dPessoas
 	lineageTag: ed6dd1aa-ea66-424d-b749-d5019bdd2075
 
-	column TipoPessoa
-		dataType: string
-		lineageTag: b46e65ed-aa23-4c23-898d-7cf4f00be5df
-		summarizeBy: none
-		sourceColumn: TipoPessoa
-
-		annotation SummarizationSetBy = Automatic
-
 	column TipoPessoa_ptbr
 		dataType: string
 		lineageTag: 7613db0b-c6f0-40c3-869a-74b2fb9be4e4
 		summarizeBy: none
 		sourceColumn: TipoPessoa_ptbr
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoPessoa
+		dataType: string
+		lineageTag: 327f81a2-6142-4ab3-beea-f120a3ff01d0
+		summarizeBy: none
+		sourceColumn: TipoPessoa
 
 		annotation SummarizationSetBy = Automatic
 
@@ -24,7 +24,7 @@ table dPessoas
 				let
 				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WckxPzStR0oHQqQoBh3cl5WQm5yvF6kQrOWeWZeZkJuYBpcFMpdhYAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"TipoPessoa#(tab)TipoPessoa_ptbr#(lf)Agent#(tab)Agente Público#(lf)Civilian#(tab)Civil#(lf)" = _t, TipoPessoa_ptbr = _t]),
 				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"TipoPessoa#(tab)TipoPessoa_ptbr#(lf)Agent#(tab)Agente Público#(lf)Civilian#(tab)Civil#(lf)", type text}, {"TipoPessoa_ptbr", type text}}),
-				    #"Colunas Renomeadas" = Table.RenameColumns(#"Tipo Alterado",{{"TipoPessoaTipoPessoa_ptbrAgentAgente PúblicoCivilianCivil", "TipoPessoa"}})
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Tipo Alterado",{{"TipoPessoa#(tab)TipoPessoa_ptbr#(lf)Agent#(tab)Agente Público#(lf)Civilian#(tab)Civil#(lf)", "TipoPessoa"}})
 				in
 				    #"Colunas Renomeadas"
 

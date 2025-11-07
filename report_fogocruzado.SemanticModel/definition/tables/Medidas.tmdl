@@ -93,7 +93,7 @@ table Medidas
 			
 			CALCULATE(
 			    [Total Ocorrências],
-			    dEstados[NomeEstado]="Rio de Janeiro"
+			    dCidades[NomeEstado]="Rio de Janeiro"
 			)
 			
 			```
@@ -104,7 +104,7 @@ table Medidas
 			
 			CALCULATE(
 			    [Total Ocorrências],
-			    dEstados[NomeEstado]="Pernambuco"
+			     dCidades[NomeEstado]="Pernambuco"
 			)
 			
 			```
@@ -115,7 +115,7 @@ table Medidas
 			
 			CALCULATE(
 			    [Total Ocorrências],
-			    dEstados[NomeEstado]="Bahia"
+			   dCidades[NomeEstado]="Bahia"
 			)
 			
 			```
@@ -126,7 +126,7 @@ table Medidas
 			
 			CALCULATE(
 			    [Total Ocorrências],
-			    dEstados[NomeEstado]="Pará"
+			     dCidades[NomeEstado]="Pará"
 			)
 			
 			```

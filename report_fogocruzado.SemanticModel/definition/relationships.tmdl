@@ -10,17 +10,9 @@ relationship AutoDetected_b61c623a-749c-4d42-8bea-f9c951177cde
 	fromColumn: fPerfilVitimas.FaixaEtaria
 	toColumn: dFaixaEtarias.FaixaEtaria
 
-relationship 306f6a3c-d568-9144-a81d-613f14f4bf0f
-	fromColumn: dCidades.IdEstado
-	toColumn: dEstados.IdEstado
-
 relationship 065f4518-700a-74a8-122c-31730ecdef61
 	fromColumn: fPerfilVitimas.OcorrenciaId
 	toColumn: fOcorrencias.Id
-
-relationship bd2a63e7-2b38-2ddd-afde-8da73f5e3272
-	fromColumn: fPerfilVitimas.TipoPessoa
-	toColumn: dPessoas.TipoPessoa
 
 relationship db0a53c8-2949-6e49-b7a7-20ab75894ca6
 	fromColumn: fOcorrencias.Hora

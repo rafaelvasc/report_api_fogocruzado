@@ -1,0 +1,126 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 238.38305001469371,
+            "y": 472
+          },
+          "nodeIndex": "dCidades",
+          "nodeLineageTag": "e6fd3903-3f58-4f4d-875b-eb0da27e1ada",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 14.383050014693708,
+            "y": 344
+          },
+          "nodeIndex": "dEstados",
+          "nodeLineageTag": "1608da20-9b92-4671-8d9a-a88f6e6eb9b3",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 776.38305001469371,
+            "y": 10.155302040154737
+          },
+          "nodeIndex": "dFaixaEtarias",
+          "nodeLineageTag": "0a8154ca-16a0-4b70-9240-1f46e98b885d",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 940.38305001469371,
+            "y": 117
+          },
+          "nodeIndex": "dMotivos",
+          "nodeLineageTag": "c4eddb30-aecd-4e6d-a6dd-32a6d13569a4",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 143
+          },
+          "nodeIndex": "dPessoas",
+          "nodeLineageTag": "ed6dd1aa-ea66-424d-b749-d5019bdd2075",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 132,
+            "y": 0
+          },
+          "nodeIndex": "dSituacao",
+          "nodeLineageTag": "de5640b4-e50d-4d68-a99a-d502b61c044b",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 655,
+            "y": 419
+          },
+          "nodeIndex": "fOcorrencias",
+          "nodeLineageTag": "a3a1b150-8df9-403e-a1a7-a61b19737976",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 412.20156119318517,
+            "y": 0
+          },
+          "nodeIndex": "fPerfilVitimas",
+          "nodeLineageTag": "dc3098f6-cded-4578-b561-83f3ccdac85c",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas as tabelas",
+  "defaultDiagram": "Todas as tabelas"
+}

@@ -1,0 +1,118 @@
+table dCalendario
+	lineageTag: 512f30d6-57f2-44bc-869d-164ef9c5df8e
+
+	column Data
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 04202f02-97fb-45db-a7b4-38f004d7f61a
+		summarizeBy: none
+		sourceColumn: Data
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Dia
+		dataType: int64
+		formatString: 0
+		lineageTag: 71dd8865-ed4c-4a2d-8fc9-43c509d1095a
+		summarizeBy: sum
+		sourceColumn: Dia
+
+		annotation SummarizationSetBy = Automatic
+
+	column Semana
+		dataType: string
+		lineageTag: ca2a4ce5-3a18-4d46-8715-d62a8a8b752b
+		summarizeBy: none
+		sourceColumn: Semana
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Semana Abrev'
+		dataType: string
+		lineageTag: edcc2981-4015-45b8-9791-66deea4f6cf5
+		summarizeBy: none
+		sourceColumn: Semana Abrev
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mes Nome'
+		dataType: string
+		lineageTag: ca6bea58-7c3f-4436-8fdc-0137dc2fb4a2
+		summarizeBy: none
+		sourceColumn: Mes Nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column Trimestre
+		dataType: string
+		lineageTag: de26f6ee-0e90-4a65-9c69-0fbca4c6c9a5
+		summarizeBy: none
+		sourceColumn: Trimestre
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ano
+		dataType: int64
+		formatString: 0
+		lineageTag: 92a5943d-a814-4df9-9b2d-43eba659a39e
+		summarizeBy: sum
+		sourceColumn: Ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnoMesSeq
+		dataType: int64
+		formatString: 0
+		lineageTag: f3bf039a-76bc-4200-9ad9-a82b9fb73f93
+		summarizeBy: sum
+		sourceColumn: AnoMesSeq
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesAno
+		dataType: string
+		lineageTag: b62d8913-a713-4df7-86de-8f1797fd46ee
+		summarizeBy: none
+		sourceColumn: MesAno
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dCalendario = m
+		mode: import
+		queryGroup: Dimensões
+		source =
+				let
+					// Data Inicial
+					DataMin = #date(2016,1,1),
+					// Data final da calendário:
+					// Ultima data do ano seguinte --> Date.AddYears(Date.EndOfYear(Date.From(DateTime.LocalNow())),1),
+					// Ultima data do ano atual    --> Date.EndOfYear(Date.From(DateTime.LocalNow())),
+					// Ultima data do mês atual    --> Date.EndOfMonth(Date.From(DateTime.LocalNow())),
+					// Hoje                        --> Date.From(DateTime.LocalNow()),
+					Datamax = Date.EndOfMonth(Date.From(DateTime.LocalNow())), // Ultima data do mês atual
+					// Quantidade de dias entre DataMin e Datamax
+					Qtde_Dias = Duration.TotalDays(Datamax-DataMin)+1,
+					// Lista de Datas
+					Fonte = List.Dates(DataMin,Qtde_Dias,#duration(1,0,0,0)),
+					//Tabela Calendário
+					Tabela = #table(type table[Data=date, Dia=Int8.Type,  Semana = text, Semana Abrev = text, Mes Nome= text, Trimestre = text,  Ano = Int16.Type,  AnoMesSeq = Int32.Type, MesAno = text],
+					List.Transform(Fonte, each {
+						_,//data 01/12/2022, 02/12/2022, ...
+						Date.Day(_),//dia 1,2,3...
+						Text.Repeat(Character.FromNumber(8203), 7 - Date.DayOfWeek(_)) & Text.BeforeDelimiter(Text.Proper(Date.ToText(_,"dddd", "pt-BR")),"-"),//Nome da Semana Segunda, Terça, Quarta, ...
+						Text.Repeat(Character.FromNumber(8203), 7 - Date.DayOfWeek(_)) & Text.Proper(Date.ToText(_,"ddd", "pt-BR")),//Nome da Semana Abreviado Seg, Ter, Qua ...
+						Text.Repeat(Character.FromNumber(8203), 12 - Date.Month(_)) & Text.Proper(Date.ToText(_,"MMM", "pt-BR")),//Nome do Mes Jan, Fev, Mar,
+						"T" & Text.From(Date.QuarterOfYear(_)), //Trimestre T1, T2, T3 e T4
+						Date.Year(_),//Ano 2021, 2022, ...
+								12 * Date.Year(_) + Date.Month(_) - 1, //Número sequencial do ano/mês 24287, 24286, ...
+							Text.Proper(Date.ToText(_,"MMM/yyyy")) //Ano Mês Jan/2022, Fev/2022, ...
+						}))
+					in
+					    Tabela
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

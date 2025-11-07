@@ -1,14 +1,24 @@
 table Medidas
 	lineageTag: cdf5fd1f-deec-4e85-8eec-226144f72b1c
 
+	/// 
+	/// COUNTROWS(fOcorrencias)
+	/// 
 	measure 'Total Ocorrências' = ```
 			
 			COUNTROWS(fOcorrencias)
 			
 			```
-		formatString: 0
+		formatString: #,0
+		displayFolder: 01. Visão Geral
 		lineageTag: 0f3935b4-8c18-4431-91e2-632e96cd6125
 
+	/// 
+	/// CALCULATE(
+	///     [Total Ocorrências],
+	///     NOT ISBLANK(fOcorrencias[Motivo])
+	/// )
+	/// 
 	measure 'Total por Motivo' = ```
 			
 			CALCULATE(
@@ -17,9 +27,16 @@ table Medidas
 			)
 			
 			```
-		formatString: 0
+		formatString: #,0
+		displayFolder: 02. Perfil Vitima
 		lineageTag: 39d495a5-8d3b-4198-857f-1380052eb199
 
+	/// 
+	/// CALCULATE(
+	///     [Total Ocorrências],
+	///     fOcorrencias[Motivo] = "Ação policial"
+	/// )
+	/// 
 	measure 'Total Ação Policial' = ```
 			
 			CALCULATE(
@@ -28,10 +45,16 @@ table Medidas
 			)
 			
 			```
-		formatString: 0
-		displayFolder: Visão Geral
+		formatString: #,0
+		displayFolder: 01. Visão Geral
 		lineageTag: 881ead03-8401-458a-b9bd-c6f803c1b5e3
 
+	/// 
+	/// CALCULATE(
+	///     [Total Ocorrências],
+	///     fOcorrencias[Motivo] = "Operação policial"
+	/// )
+	/// 
 	measure 'Total Operação Policial' = ```
 			
 			CALCULATE(
@@ -40,10 +63,16 @@ table Medidas
 			)
 			
 			```
-		formatString: 0
-		displayFolder: Contexto
+		formatString: #,0
+		displayFolder: 03. Contexto
 		lineageTag: a914a41e-d0b4-42a0-ac53-2bd59bf63127
 
+	/// 
+	/// CALCULATE(
+	///     [Total Ocorrências],
+	///     fOcorrencias[Motivo] = "Homicidio/Tentativa"
+	/// )
+	/// 
 	measure 'Total Homicidio/Tentativa' = ```
 			
 			CALCULATE(
@@ -52,9 +81,16 @@ table Medidas
 			)
 			
 			```
-		formatString: 0
+		formatString: #,0
+		displayFolder: 02. Perfil Vitima
 		lineageTag: 010acb87-4b08-42e4-991e-d0d973f58756
 
+	/// 
+	/// CALCULATE(
+	///     [Total Ocorrências],
+	///     fOcorrencias[Motivo] = "Tentativa/Roubo"
+	/// )
+	/// 
 	measure 'Total Tentativa/Roubo' = ```
 			
 			CALCULATE(
@@ -63,9 +99,16 @@ table Medidas
 			)
 			
 			```
-		formatString: 0
+		formatString: #,0
+		displayFolder: 02. Perfil Vitima
 		lineageTag: 14fba0db-1cf5-45c7-afb7-b4a01a269bc6
 
+	/// 
+	/// CALCULATE(
+	///     [Total Ocorrências],
+	///     fOcorrencias[Motivo] = "Briga"
+	/// )
+	/// 
 	measure 'Total Briga' = ```
 			
 			CALCULATE(
@@ -74,10 +117,16 @@ table Medidas
 			)
 			
 			```
-		formatString: 0
-		displayFolder: Contexto
+		formatString: #,0
+		displayFolder: 03. Contexto
 		lineageTag: 13a8e7cb-bcf7-4f1b-854c-b4eefc86937e
 
+	/// 
+	/// CALCULATE(
+	///     [Total Ocorrências],
+	///     fOcorrencias[Motivo] = "Suicídio"
+	/// )
+	/// 
 	measure 'Total Suicídio' = ```
 			
 			CALCULATE(
@@ -86,9 +135,16 @@ table Medidas
 			)
 			
 			```
-		formatString: 0
+		formatString: #,0
+		displayFolder: 02. Perfil Vitima
 		lineageTag: 5dffedb4-38b7-47c2-8a08-5c7922bb27d1
 
+	/// 
+	/// CALCULATE(
+	///     [Total Ocorrências],
+	///     dCidades[NomeEstado]="Rio de Janeiro"
+	/// )
+	/// 
 	measure 'Total Ocorrências RJ' = ```
 			
 			CALCULATE(
@@ -97,9 +153,16 @@ table Medidas
 			)
 			
 			```
-		formatString: 0
+		formatString: #,0
+		displayFolder: 02. Perfil Vitima
 		lineageTag: c4b23ddb-4b22-4844-8864-6731808a87df
 
+	/// 
+	/// CALCULATE(
+	///     [Total Ocorrências],
+	///      dCidades[NomeEstado]="Pernambuco"
+	/// )
+	/// 
 	measure 'Total Ocorrências PE' = ```
 			
 			CALCULATE(
@@ -108,9 +171,16 @@ table Medidas
 			)
 			
 			```
-		formatString: 0
+		formatString: #,0
+		displayFolder: 02. Perfil Vitima
 		lineageTag: 4fed8065-f8b4-4b6a-8891-e637ae8d3479
 
+	/// 
+	/// CALCULATE(
+	///     [Total Ocorrências],
+	///    dCidades[NomeEstado]="Bahia"
+	/// )
+	/// 
 	measure 'Total Ocorrências BA' = ```
 			
 			CALCULATE(
@@ -119,9 +189,16 @@ table Medidas
 			)
 			
 			```
-		formatString: 0
+		formatString: #,0
+		displayFolder: 02. Perfil Vitima
 		lineageTag: 98c3c7fd-690a-41f2-8ebf-8a7afe8d44c1
 
+	/// 
+	/// CALCULATE(
+	///     [Total Ocorrências],
+	///      dCidades[NomeEstado]="Pará"
+	/// )
+	/// 
 	measure 'Total Ocorrências PA' = ```
 			
 			CALCULATE(
@@ -130,9 +207,16 @@ table Medidas
 			)
 			
 			```
-		formatString: 0
+		formatString: #,0
+		displayFolder: 02. Perfil Vitima
 		lineageTag: fd1633dd-9daf-4a28-ae54-1a62ec423073
 
+	/// 
+	/// CALCULATE(
+	///     COUNTROWS(fPerfilVitimas),
+	///     dSituacao[Situacao] = "Dead"
+	/// )
+	/// 
 	measure 'Total Mortes' = ```
 			
 			CALCULATE(
@@ -141,9 +225,16 @@ table Medidas
 			)
 			
 			```
-		formatString: 0
+		formatString: #,0
+		displayFolder: 02. Perfil Vitima
 		lineageTag: 23e19c34-2933-4197-81e5-c7ba4bbef337
 
+	/// 
+	/// CALCULATE(
+	///     [Total Mortes],
+	///     dPessoas[TipoPessoa_ptbr] = "Civil"
+	/// )
+	/// 
 	measure 'Total Civis Mortos' = ```
 			
 			CALCULATE(
@@ -152,10 +243,16 @@ table Medidas
 			)
 			
 			```
-		formatString: 0
-		displayFolder: Perfil Vitima
+		formatString: #,0
+		displayFolder: 02. Perfil Vitima
 		lineageTag: 0fb7fc47-0fd1-477a-8b96-b6f4c3529ff2
 
+	/// 
+	/// CALCULATE(
+	///     [Total Mortes],
+	///     dPessoas[TipoPessoa] = "Agent"
+	/// )
+	/// 
 	measure 'Total Agentes Mortos' = ```
 			
 			CALCULATE(
@@ -164,10 +261,16 @@ table Medidas
 			)
 			
 			```
-		formatString: 0
-		displayFolder: Visão Geral
+		formatString: #,0
+		displayFolder: 01. Visão Geral
 		lineageTag: e7660680-54c3-4043-8cbe-b07ad106c18b
 
+	/// 
+	/// CALCULATE(
+	///     [Total Mortes],
+	///     fPerfilVitimas[Genero] = "Mulher Cis"
+	/// )
+	/// 
 	measure 'Total Mulheres Mortas' = ```
 			
 			CALCULATE(
@@ -176,9 +279,171 @@ table Medidas
 			)
 			
 			```
-		formatString: 0
-		displayFolder: Perfil Vitima
+		formatString: #,0
+		displayFolder: 02. Perfil Vitima
 		lineageTag: c9cf4a7e-8c79-45e6-9d49-fe9294898cdc
+
+	/// 
+	/// DIVIDE(
+	///     CALCULATE(
+	///         [Total Mortes],
+	///         fPerfilVitimas[Genero] = "Feminino"
+	///     ),
+	///     [Total Mortes]
+	/// )
+	/// 
+	measure '% Mulheres Mortas' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        [Total Mortes],
+			        fPerfilVitimas[Genero] = "Feminino"
+			    ),
+			    [Total Mortes]
+			)
+			
+			```
+		displayFolder: 02. Perfil Vitima
+		lineageTag: 3ccb7f73-314e-47fa-b26f-26cb17035679
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// 
+	/// DIVIDE(
+	///     CALCULATE(
+	///         [Total Mortes],
+	///         dFaixaEtarias[FaixaEtaria] IN { "Criança", "Adolescente" }
+	///     ),
+	///     [Total Mortes]
+	/// )
+	/// 
+	measure '% Crianças e Adolescentes Mortos' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        [Total Mortes],
+			        dFaixaEtarias[FaixaEtaria] IN { "Criança", "Adolescente" }
+			    ),
+			    [Total Mortes]
+			)
+			
+			```
+		displayFolder: 02. Perfil Vitima
+		lineageTag: ad136aff-3675-490b-884f-1a48d4f41c58
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// 
+	/// CALCULATE(
+	///     [Total Mortes],
+	///     ALLEXCEPT(fPerfilVitimas, fPerfilVitimas[Genero])
+	/// )
+	/// 
+	measure 'Mortes por Gênero' = ```
+			
+			CALCULATE(
+			    [Total Mortes],
+			    ALLEXCEPT(fPerfilVitimas, fPerfilVitimas[Genero])
+			)
+			
+			```
+		formatString: #,0
+		displayFolder: 02. Perfil Vitima
+		lineageTag: bd6a73bb-7f98-4d4d-9e1d-5cd249c26c91
+
+	/// 
+	/// CALCULATE(
+	///     [Total Mortes],
+	///     ALLEXCEPT(fPerfilVitimas, dFaixaEtarias[FaixaEtaria])
+	/// )
+	/// 
+	measure 'Mortes por Faixa Etária' = ```
+			
+			CALCULATE(
+			    [Total Mortes],
+			    ALLEXCEPT(fPerfilVitimas, dFaixaEtarias[FaixaEtaria])
+			)
+			
+			```
+		formatString: #,0
+		displayFolder: 02. Perfil Vitima
+		lineageTag: 0294fad9-c455-40d4-9cb9-6d0409f52ee4
+
+	/// 
+	/// CALCULATE(
+	///     [Total Mortes],
+	///     ALLEXCEPT(fOcorrencias, fOcorrencias[Motivo])
+	/// )
+	/// 
+	measure 'Mortes por Motivo' = ```
+			
+			CALCULATE(
+			    [Total Mortes],
+			    ALLEXCEPT(fOcorrencias, fOcorrencias[Motivo])
+			)
+			
+			```
+		formatString: #,0
+		displayFolder: 03. Contexto
+		lineageTag: 733f0007-a709-4135-afc0-79cbe12a4f8e
+
+	/// 
+	/// DIVIDE(
+	///     [Total Civis Mortos],
+	///     [Total Agentes Mortos]
+	/// )
+	/// 
+	measure 'Razão Civis/Agentes' = ```
+			
+			DIVIDE(
+			    [Total Civis Mortos],
+			    [Total Agentes Mortos]
+			)
+			
+			```
+		displayFolder: 03. Contexto
+		lineageTag: f7701185-2921-49ce-b6e5-1b3ab2a7d9c4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// 
+	/// DIVIDE(
+	///     CALCULATE(
+	///         COUNTROWS(fOcorrencias),
+	///         fOcorrencias[Motivo] = "Operação Policial"
+	///     ),
+	///     [Total Ocorrências]
+	/// )
+	/// 
+	measure '% Ocorrências de Operação Policial' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        COUNTROWS(fOcorrencias),
+			        fOcorrencias[Motivo] = "Operação Policial"
+			    ),
+			    [Total Ocorrências]
+			)
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 03. Contexto
+		lineageTag: 8096cdea-597f-4352-a718-1ee0a4861321
+
+	/// 
+	/// MAX('Última Atualização'[Última atualização])
+	/// 
+	measure Atualização = ```
+			
+			"Última Atualização: " & MAX('Última Atualização'[Última atualização]) - TIME(3,0,0)
+			
+			```
+		displayFolder: 04. Aux
+		lineageTag: 4429988e-9418-4b84-b4cf-4c92a5002586
+
+	measure 'Total Vítimas' = COUNTROWS(fPerfilVitimas)
+		formatString: 0
+		lineageTag: 55cfadda-43e9-45a6-954e-070e89122b2e
 
 	partition Medidas = m
 		mode: import

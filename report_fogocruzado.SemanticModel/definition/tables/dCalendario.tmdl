@@ -4,8 +4,10 @@ table dCalendario
 
 	column Data
 		dataType: dateTime
+		isHidden
 		isKey
 		formatString: Short Date
+		encodingHint: value
 		lineageTag: 04202f02-97fb-45db-a7b4-38f004d7f61a
 		summarizeBy: none
 		sourceColumn: Data
@@ -19,7 +21,9 @@ table dCalendario
 
 	column Dia
 		dataType: int64
-		formatString: 0
+		formatString: #,0
+		isAvailableInMdx: false
+		encodingHint: hash
 		lineageTag: 71dd8865-ed4c-4a2d-8fc9-43c509d1095a
 		summarizeBy: none
 		sourceColumn: Dia
@@ -28,6 +32,7 @@ table dCalendario
 
 	column Semana
 		dataType: string
+		encodingHint: hash
 		lineageTag: ca2a4ce5-3a18-4d46-8715-d62a8a8b752b
 		summarizeBy: none
 		sourceColumn: Semana
@@ -36,6 +41,7 @@ table dCalendario
 
 	column 'Semana Abrev'
 		dataType: string
+		encodingHint: hash
 		lineageTag: edcc2981-4015-45b8-9791-66deea4f6cf5
 		summarizeBy: none
 		sourceColumn: Semana Abrev
@@ -44,6 +50,7 @@ table dCalendario
 
 	column 'Mes Nome'
 		dataType: string
+		encodingHint: hash
 		lineageTag: ca6bea58-7c3f-4436-8fdc-0137dc2fb4a2
 		summarizeBy: none
 		sourceColumn: Mes Nome
@@ -52,6 +59,7 @@ table dCalendario
 
 	column Trimestre
 		dataType: string
+		encodingHint: hash
 		lineageTag: de26f6ee-0e90-4a65-9c69-0fbca4c6c9a5
 		summarizeBy: none
 		sourceColumn: Trimestre
@@ -60,7 +68,9 @@ table dCalendario
 
 	column Ano
 		dataType: int64
-		formatString: 0
+		formatString: #,0
+		isAvailableInMdx: false
+		encodingHint: hash
 		lineageTag: 92a5943d-a814-4df9-9b2d-43eba659a39e
 		summarizeBy: none
 		sourceColumn: Ano
@@ -69,7 +79,8 @@ table dCalendario
 
 	column AnoMesSeq
 		dataType: int64
-		formatString: 0
+		formatString: #,0
+		encodingHint: hash
 		lineageTag: f3bf039a-76bc-4200-9ad9-a82b9fb73f93
 		summarizeBy: none
 		sourceColumn: AnoMesSeq
@@ -78,6 +89,7 @@ table dCalendario
 
 	column MesAno
 		dataType: string
+		encodingHint: hash
 		lineageTag: b62d8913-a713-4df7-86de-8f1797fd46ee
 		summarizeBy: none
 		sourceColumn: MesAno

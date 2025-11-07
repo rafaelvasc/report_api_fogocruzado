@@ -9,7 +9,7 @@
     "width": 823.33919156414765
   },
   "visual": {
-    "visualType": "lineClusteredColumnComboChart",
+    "visualType": "lineChart",
     "query": {
       "queryState": {
         "Category": {
@@ -56,20 +56,6 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "Total Mortes"
-                }
-              },
-              "queryRef": "Medidas.Total Mortes",
-              "nativeQueryRef": "Total Mortes"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Medidas"
-                    }
-                  },
                   "Property": "Total Ocorrências"
                 }
               },
@@ -88,32 +74,14 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "Total Ação Policial"
+                  "Property": "Total Vítimas"
                 }
               },
-              "queryRef": "Medidas.Total Ação Policial",
-              "nativeQueryRef": "Total Ação Policial"
+              "queryRef": "Medidas.Total Vítimas",
+              "nativeQueryRef": "Total Vítimas"
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Medidas"
-                  }
-                },
-                "Property": "Total Mortes"
-              }
-            },
-            "direction": "Descending"
-          }
-        ],
-        "isDefaultSort": true
       }
     },
     "objects": {
@@ -201,20 +169,6 @@
                   "Value": "false"
                 }
               }
-            },
-            "alignZeros": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "secEnd": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
             }
           }
         }
@@ -229,37 +183,6 @@
                     "ThemeDataColor": {
                       "ColorId": 2,
                       "Percent": 0
-                    }
-                  }
-                }
-              }
-            },
-            "fillRule": {
-              "linearGradient2": {
-                "min": {
-                  "color": {
-                    "expr": {
-                      "Literal": {
-                        "Value": "'minColor'"
-                      }
-                    }
-                  }
-                },
-                "max": {
-                  "color": {
-                    "expr": {
-                      "Literal": {
-                        "Value": "'maxColor'"
-                      }
-                    }
-                  }
-                },
-                "nullColoringStrategy": {
-                  "strategy": {
-                    "expr": {
-                      "Literal": {
-                        "Value": "'asZero'"
-                      }
                     }
                   }
                 }
@@ -323,25 +246,6 @@
           "selector": {
             "metadata": "Medidas.Qt. Compras"
           }
-        },
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 8,
-                      "Percent": 0
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Medidas.Total Ação Policial"
-          }
         }
       ],
       "labels": [
@@ -376,39 +280,6 @@
               }
             }
           }
-        },
-        {
-          "properties": {
-            "labelPosition": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Above'"
-                }
-              }
-            },
-            "enableBackground": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "backgroundColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": -0.1
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Medidas.Total Ação Policial"
-          }
         }
       ],
       "lineStyles": [
@@ -418,6 +289,19 @@
               "expr": {
                 "Literal": {
                   "Value": "2D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "y2Axis": [
+        {
+          "properties": {
+            "secShowAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }

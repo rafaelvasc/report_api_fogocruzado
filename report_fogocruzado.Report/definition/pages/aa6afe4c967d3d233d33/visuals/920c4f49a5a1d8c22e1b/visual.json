@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
   "name": "920c4f49a5a1d8c22e1b",
   "position": {
-    "x": 19.121265377855888,
-    "y": 140.597539543058,
+    "x": 19.692307692307693,
+    "y": 140.16289592760182,
     "z": 1000,
-    "height": 104.60456942003515,
-    "width": 792.97012302284713,
+    "height": 121.62895927601809,
+    "width": 813.17647058823525,
     "tabOrder": 1000
   },
   "visual": {
@@ -15,6 +15,34 @@
       "queryState": {
         "Data": {
           "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Total Ocorrências"
+                }
+              },
+              "queryRef": "Medidas.Total Ocorrências",
+              "nativeQueryRef": "Total Ocorrências"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Total Vítimas"
+                }
+              },
+              "queryRef": "Medidas.Total Vítimas",
+              "nativeQueryRef": "Total Vítimas"
+            },
             {
               "field": {
                 "Measure": {
@@ -37,39 +65,12 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "Total Civis Mortos"
+                  "Property": "% Ocorrências de Operação Policial"
                 }
               },
-              "queryRef": "Medidas.Total Civis Mortos",
-              "nativeQueryRef": "Total Civis Mortos"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Medidas"
-                    }
-                  },
-                  "Property": "Total Agentes Mortos"
-                }
-              },
-              "queryRef": "Medidas.Total Agentes Mortos",
-              "nativeQueryRef": "Total Agentes Mortos"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Medidas"
-                    }
-                  },
-                  "Property": "Total Homicidio/Tentativa"
-                }
-              },
-              "queryRef": "Medidas.Total Homicidio/Tentativa",
-              "nativeQueryRef": "Total Homicidio/Tentativa"
+              "queryRef": "Medidas.% Ocorrências de Operação Policial",
+              "nativeQueryRef": "% Operação Policial",
+              "displayName": "% Operação Policial"
             }
           ]
         }
@@ -84,7 +85,7 @@
                     "Entity": "Medidas"
                   }
                 },
-                "Property": "Total Mortes"
+                "Property": "Total Ocorrências"
               }
             },
             "direction": "Descending"
@@ -163,7 +164,7 @@
             "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "'''Trebuchet MS'''"
+                  "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
                 }
               }
             },
@@ -257,6 +258,13 @@
               "expr": {
                 "Literal": {
                   "Value": "0D"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'middle'"
                 }
               }
             }
@@ -508,7 +516,7 @@
             "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "'''Trebuchet MS'''"
+                  "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
                 }
               }
             },
@@ -530,6 +538,18 @@
               "expr": {
                 "Literal": {
                   "Value": "'left'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 6,
+                      "Percent": 0
+                    }
+                  }
                 }
               }
             }
@@ -634,6 +654,48 @@
           },
           "selector": {
             "metadata": "Medidas.# Total Pedidos"
+          }
+        },
+        {
+          "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Medidas.Total Ocorrências"
+          }
+        },
+        {
+          "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Medidas.Total Vítimas"
+          }
+        },
+        {
+          "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Medidas.Total Mortes"
           }
         }
       ]
@@ -907,5 +969,65 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "8c7c16888acb540878d9",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "Total Ocorrências"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "775abbb093e4ccceccb9",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "Total Vítimas"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "e6282653548a6ff34f18",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "Total Mortes"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "4fbc0025fb250b6aa9d5",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "% Ocorrências de Operação Policial"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

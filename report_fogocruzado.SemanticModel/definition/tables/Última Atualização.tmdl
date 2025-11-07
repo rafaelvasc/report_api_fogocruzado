@@ -4,6 +4,7 @@ table 'Última Atualização'
 	column 'Última atualização'
 		dataType: dateTime
 		formatString: General Date
+		encodingHint: value
 		lineageTag: 7abb2d04-f942-479b-a3e4-faed529f4cf3
 		summarizeBy: none
 		sourceColumn: Última atualização

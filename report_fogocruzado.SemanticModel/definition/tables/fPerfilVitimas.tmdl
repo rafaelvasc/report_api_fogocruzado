@@ -3,6 +3,8 @@ table fPerfilVitimas
 
 	column OcorrenciaId
 		dataType: string
+		isHidden
+		encodingHint: hash
 		lineageTag: 8e7262d6-953f-495c-a6da-7bbda3bbd62d
 		summarizeBy: none
 		sourceColumn: OcorrenciaId
@@ -11,6 +13,8 @@ table fPerfilVitimas
 
 	column Situacao
 		dataType: string
+		isHidden
+		encodingHint: hash
 		lineageTag: 2793bd57-62bb-44c2-a31e-f2dcb9b32f36
 		summarizeBy: none
 		sourceColumn: Situacao
@@ -19,6 +23,7 @@ table fPerfilVitimas
 
 	column TipoPessoa
 		dataType: string
+		encodingHint: hash
 		lineageTag: a2dca4fc-665f-472b-af8d-d1b2abd0f47a
 		summarizeBy: none
 		sourceColumn: TipoPessoa
@@ -27,15 +32,19 @@ table fPerfilVitimas
 
 	column Idade
 		dataType: int64
-		formatString: 0
+		formatString: #,0
+		isAvailableInMdx: false
+		encodingHint: hash
 		lineageTag: da97531e-7914-4a6c-a71b-87db651623b6
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Idade
 
 		annotation SummarizationSetBy = Automatic
 
 	column FaixaEtaria
 		dataType: string
+		isHidden
+		encodingHint: hash
 		lineageTag: 649e5424-c390-471b-b401-8b7d17982ebf
 		summarizeBy: none
 		sourceColumn: FaixaEtaria
@@ -44,6 +53,7 @@ table fPerfilVitimas
 
 	column Genero
 		dataType: string
+		encodingHint: hash
 		lineageTag: 2c8a6a1e-98f1-4f7f-8324-bc6bed8b7931
 		summarizeBy: none
 		sourceColumn: Genero

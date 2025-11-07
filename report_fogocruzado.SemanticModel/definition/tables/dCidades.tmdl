@@ -3,6 +3,7 @@ table dCidades
 
 	column IdCidade
 		dataType: string
+		encodingHint: hash
 		lineageTag: 70a815f2-e64b-43b1-8732-b46f75913b9f
 		summarizeBy: none
 		sourceColumn: IdCidade
@@ -11,6 +12,9 @@ table dCidades
 
 	column NomeCidade
 		dataType: string
+		isHidden
+		isKey
+		encodingHint: hash
 		lineageTag: ea4ff23c-c52e-4aff-b456-21d6d4a7db6c
 		summarizeBy: none
 		sourceColumn: NomeCidade
@@ -19,6 +23,7 @@ table dCidades
 
 	column IdEstado
 		dataType: string
+		encodingHint: hash
 		lineageTag: 4c610cdc-3710-49cd-8822-ff166a3050b5
 		summarizeBy: none
 		sourceColumn: IdEstado
@@ -27,6 +32,7 @@ table dCidades
 
 	column NomeEstado
 		dataType: string
+		encodingHint: hash
 		lineageTag: c9d988bb-790f-466a-8e27-b351a620d4aa
 		summarizeBy: none
 		sourceColumn: NomeEstado

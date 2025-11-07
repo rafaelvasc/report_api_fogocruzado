@@ -3,6 +3,9 @@ table dMotivos
 
 	column Motivo
 		dataType: string
+		isHidden
+		isKey
+		encodingHint: hash
 		lineageTag: ff9177fd-97ff-4014-9031-d8fcf8709ccc
 		summarizeBy: none
 		sourceColumn: Motivo

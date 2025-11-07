@@ -3,6 +3,9 @@ table dSituacao
 
 	column Situacao
 		dataType: string
+		isHidden
+		isKey
+		encodingHint: hash
 		lineageTag: 72756490-d13b-43bf-8f06-1882922dc157
 		summarizeBy: none
 		sourceColumn: Situacao
@@ -11,6 +14,7 @@ table dSituacao
 
 	column Situacao_ptbr
 		dataType: string
+		encodingHint: hash
 		lineageTag: 816ddb71-c147-410a-bfaa-798d23b5258a
 		summarizeBy: none
 		sourceColumn: Situacao_ptbr

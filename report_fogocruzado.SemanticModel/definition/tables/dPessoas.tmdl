@@ -3,6 +3,7 @@ table dPessoas
 
 	column TipoPessoa_ptbr
 		dataType: string
+		encodingHint: hash
 		lineageTag: 7613db0b-c6f0-40c3-869a-74b2fb9be4e4
 		summarizeBy: none
 		sourceColumn: TipoPessoa_ptbr
@@ -11,6 +12,7 @@ table dPessoas
 
 	column TipoPessoa
 		dataType: string
+		encodingHint: hash
 		lineageTag: 327f81a2-6142-4ab3-beea-f120a3ff01d0
 		summarizeBy: none
 		sourceColumn: TipoPessoa

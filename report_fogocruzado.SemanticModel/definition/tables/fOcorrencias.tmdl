@@ -3,6 +3,9 @@ table fOcorrencias
 
 	column Id
 		dataType: string
+		isHidden
+		isKey
+		encodingHint: hash
 		lineageTag: 0ecf4df8-bd87-47e3-b566-6dbf931b7cac
 		summarizeBy: none
 		sourceColumn: Id
@@ -11,16 +14,20 @@ table fOcorrencias
 
 	column Documento
 		dataType: int64
-		formatString: 0
+		formatString: #,0
+		isAvailableInMdx: false
+		encodingHint: value
 		lineageTag: 75ceb555-0e06-410a-a478-a5f139573286
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Documento
 
 		annotation SummarizationSetBy = Automatic
 
 	column Data
 		dataType: dateTime
-		formatString: Long Date
+		isHidden
+		formatString: Short Date
+		encodingHint: value
 		lineageTag: 873c637d-f000-4730-97dc-5e980be3ec88
 		summarizeBy: none
 		sourceColumn: Data
@@ -31,7 +38,9 @@ table fOcorrencias
 
 	column Hora
 		dataType: dateTime
+		isHidden
 		formatString: Long Time
+		encodingHint: hash
 		lineageTag: dc48f7d0-8be9-49db-9c2f-f345a742ddd2
 		summarizeBy: none
 		sourceColumn: Hora
@@ -42,6 +51,7 @@ table fOcorrencias
 
 	column Estado
 		dataType: string
+		encodingHint: hash
 		lineageTag: 3aa87762-c4c7-4f56-af15-ce040a5d004d
 		summarizeBy: none
 		sourceColumn: Estado
@@ -50,6 +60,8 @@ table fOcorrencias
 
 	column Cidade
 		dataType: string
+		isHidden
+		encodingHint: hash
 		lineageTag: 14f1a82a-6c45-4540-8d1b-d94d159db171
 		summarizeBy: none
 		sourceColumn: Cidade
@@ -58,6 +70,7 @@ table fOcorrencias
 
 	column Bairro
 		dataType: string
+		encodingHint: hash
 		lineageTag: ca540cd4-1f06-48db-8807-6d8fdafed3f6
 		summarizeBy: none
 		sourceColumn: Bairro
@@ -66,14 +79,18 @@ table fOcorrencias
 
 	column Motivo
 		dataType: string
+		encodingHint: hash
 		lineageTag: ff50c882-6785-47bb-8bad-c40987d72355
 		summarizeBy: none
 		sourceColumn: Motivo
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column Endereco
 		dataType: string
+		encodingHint: hash
 		lineageTag: 6fbf6448-9aaa-435b-aa9c-18f6c4426420
 		summarizeBy: none
 		sourceColumn: Endereco
@@ -82,6 +99,7 @@ table fOcorrencias
 
 	column Latitude
 		dataType: string
+		encodingHint: hash
 		lineageTag: 6905ca9c-ff4e-4219-9af9-f4154d55a8e8
 		summarizeBy: none
 		sourceColumn: Latitude
@@ -90,6 +108,7 @@ table fOcorrencias
 
 	column Longitude
 		dataType: string
+		encodingHint: hash
 		lineageTag: 0ea12a22-cd5d-4edf-8e81-0faf06612423
 		summarizeBy: none
 		sourceColumn: Longitude
@@ -99,6 +118,7 @@ table fOcorrencias
 	column AcaoPolicial
 		dataType: boolean
 		formatString: """TRUE"";""TRUE"";""FALSE"""
+		encodingHint: hash
 		lineageTag: 28f6be59-726b-4428-964e-c1176b9ce9d4
 		summarizeBy: none
 		sourceColumn: AcaoPolicial
@@ -108,6 +128,7 @@ table fOcorrencias
 	column PresencaAgente
 		dataType: boolean
 		formatString: """TRUE"";""TRUE"";""FALSE"""
+		encodingHint: hash
 		lineageTag: 15ea84d7-b726-4736-ba11-c8ae03e8ba32
 		summarizeBy: none
 		sourceColumn: PresencaAgente

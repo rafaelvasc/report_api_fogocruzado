@@ -29,6 +29,7 @@ table Medidas
 			
 			```
 		formatString: 0
+		displayFolder: Visão Geral
 		lineageTag: 881ead03-8401-458a-b9bd-c6f803c1b5e3
 
 	measure 'Total Operação Policial' = ```
@@ -40,6 +41,7 @@ table Medidas
 			
 			```
 		formatString: 0
+		displayFolder: Contexto
 		lineageTag: a914a41e-d0b4-42a0-ac53-2bd59bf63127
 
 	measure 'Total Homicidio/Tentativa' = ```
@@ -73,6 +75,7 @@ table Medidas
 			
 			```
 		formatString: 0
+		displayFolder: Contexto
 		lineageTag: 13a8e7cb-bcf7-4f1b-854c-b4eefc86937e
 
 	measure 'Total Suicídio' = ```
@@ -150,6 +153,7 @@ table Medidas
 			
 			```
 		formatString: 0
+		displayFolder: Perfil Vitima
 		lineageTag: 0fb7fc47-0fd1-477a-8b96-b6f4c3529ff2
 
 	measure 'Total Agentes Mortos' = ```
@@ -161,6 +165,7 @@ table Medidas
 			
 			```
 		formatString: 0
+		displayFolder: Visão Geral
 		lineageTag: e7660680-54c3-4043-8cbe-b07ad106c18b
 
 	measure 'Total Mulheres Mortas' = ```
@@ -172,6 +177,7 @@ table Medidas
 			
 			```
 		formatString: 0
+		displayFolder: Perfil Vitima
 		lineageTag: c9cf4a7e-8c79-45e6-9d49-fe9294898cdc
 
 	partition Medidas = m

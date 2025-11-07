@@ -63,7 +63,7 @@ Analista de Dados | Especialista em BI e Visualização
 
 ## 📄 Licença
 
-Este projeto é open-source e pode ser utilizado para fins educacionais, institucionais ou sociais. Os dados são públicos, mas recomenda-se sempre citar a **fonte original (Instituto Fogo Cruzado)** ao reproduzir qualquer parte dos resultados.
+Este projeto é open-source e pode ser utilizado para fins educacionais, institucionais ou sociais.  **fonte original (Instituto Fogo Cruzado)** ao reproduzir qualquer parte dos resultados.
 
 ---
 

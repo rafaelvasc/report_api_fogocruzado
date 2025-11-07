@@ -26,7 +26,7 @@ annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBI_ProTooling = ["DevMode"]
 
-annotation PBI_QueryOrder = ["Email_API_FogoCruzado","Senha_API_FogoCruzado","API_Autenticacao","UrlLogin_API_FogoCruzado","fOcorrencias","fnGetToken","dCidades","dEstados","fPerfilVitimas","dPessoas","dSituacao","dFaixaEtarias","dMotivos","dCalendario"]
+annotation PBI_QueryOrder = ["Email_API_FogoCruzado","Senha_API_FogoCruzado","API_Autenticacao","UrlLogin_API_FogoCruzado","fOcorrencias","fnGetToken","dHora","dCidades","dEstados","fPerfilVitimas","dPessoas","dSituacao","dFaixaEtarias","dMotivos","dCalendario","Última Atualização","Medidas"]
 
 ref table fOcorrencias
 ref table dEstados
@@ -37,6 +37,9 @@ ref table dSituacao
 ref table dFaixaEtarias
 ref table dMotivos
 ref table dCalendario
+ref table dHora
+ref table 'Última Atualização'
+ref table Medidas
 
 ref cultureInfo pt-BR
 

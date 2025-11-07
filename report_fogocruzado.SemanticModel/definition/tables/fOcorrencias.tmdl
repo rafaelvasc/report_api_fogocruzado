@@ -208,9 +208,10 @@ table fOcorrencias
 				    TiposFinais = Table.TransformColumnTypes(Dividido, {
 				        {"Data", type date},
 				        {"Hora", type time}
-				    })
+				    }),
+				    InicioHora = Table.TransformColumns(TiposFinais,{{"Hora", Time.StartOfHour, type time}})
 				in
-				    TiposFinais
+				    InicioHora
 
 	annotation PBI_NavigationStepName = Navegação
 

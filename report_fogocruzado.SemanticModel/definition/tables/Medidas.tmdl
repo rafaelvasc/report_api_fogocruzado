@@ -1,0 +1,23 @@
+table Medidas
+	lineageTag: cdf5fd1f-deec-4e85-8eec-226144f72b1c
+
+	column 'Coluna 1'
+		dataType: string
+		lineageTag: 930f6593-23c3-4cb1-92eb-4561d92e6c25
+		summarizeBy: none
+		sourceColumn: Coluna 1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Medidas = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WUlCKjQUA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,30 @@
+table 'Última Atualização'
+	lineageTag: a4be49e5-e75c-42dd-a482-a12f78ad3ea3
+
+	column 'Última atualização'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7abb2d04-f942-479b-a3e4-faed529f4cf3
+		summarizeBy: none
+		sourceColumn: Última atualização
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Última Atualização' = m
+		mode: import
+		source = ```
+				let
+				//atualização do relatório com fuso horário do Brasil UTC -03:00
+				  Fonte = 
+				  #table( 
+				    type table[Última atualização = datetime],
+				    {{DateTime.From(DateTimeZone.SwitchZone(DateTimeZone.LocalNow(),-3,0))}}
+				  )
+				in
+				  Fonte
+				```
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

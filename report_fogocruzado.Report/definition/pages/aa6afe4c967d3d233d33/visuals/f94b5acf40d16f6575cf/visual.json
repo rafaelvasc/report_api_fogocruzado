@@ -42,7 +42,7 @@
               },
               "queryRef": "dCalendario.MesAno",
               "nativeQueryRef": "MesAno",
-              "active": false
+              "active": true
             }
           ]
         },

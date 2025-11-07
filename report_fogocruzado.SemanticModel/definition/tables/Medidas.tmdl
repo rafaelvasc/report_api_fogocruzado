@@ -163,6 +163,17 @@ table Medidas
 		formatString: 0
 		lineageTag: e7660680-54c3-4043-8cbe-b07ad106c18b
 
+	measure 'Total Mulheres Mortas' = ```
+			
+			CALCULATE(
+			    [Total Mortes],
+			    fPerfilVitimas[Genero] = "Mulher Cis"
+			)
+			
+			```
+		formatString: 0
+		lineageTag: c9cf4a7e-8c79-45e6-9d49-fe9294898cdc
+
 	partition Medidas = m
 		mode: import
 		source =

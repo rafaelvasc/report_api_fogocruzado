@@ -9,6 +9,9 @@ table dCalendario
 		lineageTag: 04202f02-97fb-45db-a7b4-38f004d7f61a
 		summarizeBy: none
 		sourceColumn: Data
+		sortByColumn: AnoMesSeq
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 
@@ -78,6 +81,9 @@ table dCalendario
 		lineageTag: b62d8913-a713-4df7-86de-8f1797fd46ee
 		summarizeBy: none
 		sourceColumn: MesAno
+		sortByColumn: AnoMesSeq
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 

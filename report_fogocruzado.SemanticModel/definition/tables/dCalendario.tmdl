@@ -1,9 +1,11 @@
 table dCalendario
 	lineageTag: 512f30d6-57f2-44bc-869d-164ef9c5df8e
+	dataCategory: Time
 
 	column Data
 		dataType: dateTime
-		formatString: Long Date
+		isKey
+		formatString: Short Date
 		lineageTag: 04202f02-97fb-45db-a7b4-38f004d7f61a
 		summarizeBy: none
 		sourceColumn: Data
@@ -16,10 +18,10 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		lineageTag: 71dd8865-ed4c-4a2d-8fc9-43c509d1095a
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Dia
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 	column Semana
 		dataType: string
@@ -57,19 +59,19 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		lineageTag: 92a5943d-a814-4df9-9b2d-43eba659a39e
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Ano
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 	column AnoMesSeq
 		dataType: int64
 		formatString: 0
 		lineageTag: f3bf039a-76bc-4200-9ad9-a82b9fb73f93
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: AnoMesSeq
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 	column MesAno
 		dataType: string

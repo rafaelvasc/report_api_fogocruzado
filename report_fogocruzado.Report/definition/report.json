@@ -11,7 +11,7 @@
       "type": "SharedResources"
     },
     "customTheme": {
-      "name": "Tema_FogoCruzado8653566024579467.json",
+      "name": "Tema_FogoCruzado023003111988370906.json",
       "reportVersionAtImport": {
         "visual": "2.1.0",
         "report": "3.0.0",
@@ -65,14 +65,14 @@
       "type": "RegisteredResources",
       "items": [
         {
-          "name": "Tema_FogoCruzado8653566024579467.json",
-          "path": "Tema_FogoCruzado8653566024579467.json",
-          "type": "CustomTheme"
-        },
-        {
           "name": "Fogo_Cruzado012500988160719984.svg",
           "path": "Fogo_Cruzado012500988160719984.svg",
           "type": "Image"
+        },
+        {
+          "name": "Tema_FogoCruzado023003111988370906.json",
+          "path": "Tema_FogoCruzado023003111988370906.json",
+          "type": "CustomTheme"
         }
       ]
     }

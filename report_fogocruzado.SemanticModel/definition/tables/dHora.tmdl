@@ -5,7 +5,7 @@ table dHora
 		dataType: int64
 		formatString: 0
 		lineageTag: 3cb58aa0-f1ec-4eab-b8ab-2e0efdd0f801
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Hora
 
 		annotation SummarizationSetBy = Automatic
@@ -22,7 +22,7 @@ table dHora
 		dataType: int64
 		formatString: 0
 		lineageTag: fd96ef06-ccda-4d61-8fb0-dcba2b74e311
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Ordem_Período
 
 		annotation SummarizationSetBy = Automatic

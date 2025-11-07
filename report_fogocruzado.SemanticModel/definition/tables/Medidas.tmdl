@@ -1,21 +1,176 @@
 table Medidas
 	lineageTag: cdf5fd1f-deec-4e85-8eec-226144f72b1c
 
-	column 'Coluna 1'
-		dataType: string
-		lineageTag: 930f6593-23c3-4cb1-92eb-4561d92e6c25
-		summarizeBy: none
-		sourceColumn: Coluna 1
+	measure 'Total Ocorrências' = ```
+			
+			COUNTROWS(fOcorrencias)
+			
+			```
+		formatString: 0
+		lineageTag: 0f3935b4-8c18-4431-91e2-632e96cd6125
 
-		annotation SummarizationSetBy = Automatic
+	measure 'Total por Motivo' = ```
+			
+			CALCULATE(
+			    [Total Ocorrências],
+			    NOT ISBLANK(fOcorrencias[Motivo])
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 39d495a5-8d3b-4198-857f-1380052eb199
+
+	measure 'Total Ação Policial' = ```
+			
+			CALCULATE(
+			    [Total Ocorrências],
+			    fOcorrencias[Motivo] = "Ação policial"
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 881ead03-8401-458a-b9bd-c6f803c1b5e3
+
+	measure 'Total Operação Policial' = ```
+			
+			CALCULATE(
+			    [Total Ocorrências],
+			    fOcorrencias[Motivo] = "Operação policial"
+			)
+			
+			```
+		formatString: 0
+		lineageTag: a914a41e-d0b4-42a0-ac53-2bd59bf63127
+
+	measure 'Total Homicidio/Tentativa' = ```
+			
+			CALCULATE(
+			    [Total Ocorrências],
+			    fOcorrencias[Motivo] = "Homicidio/Tentativa"
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 010acb87-4b08-42e4-991e-d0d973f58756
+
+	measure 'Total Tentativa/Roubo' = ```
+			
+			CALCULATE(
+			    [Total Ocorrências],
+			    fOcorrencias[Motivo] = "Tentativa/Roubo"
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 14fba0db-1cf5-45c7-afb7-b4a01a269bc6
+
+	measure 'Total Briga' = ```
+			
+			CALCULATE(
+			    [Total Ocorrências],
+			    fOcorrencias[Motivo] = "Briga"
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 13a8e7cb-bcf7-4f1b-854c-b4eefc86937e
+
+	measure 'Total Suicídio' = ```
+			
+			CALCULATE(
+			    [Total Ocorrências],
+			    fOcorrencias[Motivo] = "Suicídio"
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 5dffedb4-38b7-47c2-8a08-5c7922bb27d1
+
+	measure 'Total Ocorrências RJ' = ```
+			
+			CALCULATE(
+			    [Total Ocorrências],
+			    dEstados[NomeEstado]="Rio de Janeiro"
+			)
+			
+			```
+		formatString: 0
+		lineageTag: c4b23ddb-4b22-4844-8864-6731808a87df
+
+	measure 'Total Ocorrências PE' = ```
+			
+			CALCULATE(
+			    [Total Ocorrências],
+			    dEstados[NomeEstado]="Pernambuco"
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 4fed8065-f8b4-4b6a-8891-e637ae8d3479
+
+	measure 'Total Ocorrências BA' = ```
+			
+			CALCULATE(
+			    [Total Ocorrências],
+			    dEstados[NomeEstado]="Bahia"
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 98c3c7fd-690a-41f2-8ebf-8a7afe8d44c1
+
+	measure 'Total Ocorrências PA' = ```
+			
+			CALCULATE(
+			    [Total Ocorrências],
+			    dEstados[NomeEstado]="Pará"
+			)
+			
+			```
+		formatString: 0
+		lineageTag: fd1633dd-9daf-4a28-ae54-1a62ec423073
+
+	measure 'Total Mortes' = ```
+			
+			CALCULATE(
+			    COUNTROWS(fPerfilVitimas),
+			    dSituacao[Situacao] = "Dead"
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 23e19c34-2933-4197-81e5-c7ba4bbef337
+
+	measure 'Total Civis Mortos' = ```
+			
+			CALCULATE(
+			    [Total Mortes],
+			    dPessoas[TipoPessoa_ptbr] = "Civil"
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 0fb7fc47-0fd1-477a-8b96-b6f4c3529ff2
+
+	measure 'Total Agentes Mortos' = ```
+			
+			CALCULATE(
+			    [Total Mortes],
+			    dPessoas[TipoPessoa] = "Agent"
+			)
+			
+			```
+		formatString: 0
+		lineageTag: e7660680-54c3-4043-8cbe-b07ad106c18b
 
 	partition Medidas = m
 		mode: import
 		source =
 				let
-				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WUlCKjQUA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t])
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WUlCKjQUA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Colunas Removidas" = Table.RemoveColumns(Fonte,{"Coluna 1"})
 				in
-				    Fonte
+				    #"Colunas Removidas"
 
 	annotation PBI_NavigationStepName = Navegação
 

@@ -18,11 +18,19 @@ relationship 065f4518-700a-74a8-122c-31730ecdef61
 	fromColumn: fPerfilVitimas.OcorrenciaId
 	toColumn: fOcorrencias.Id
 
-relationship 5821fa00-e3bd-966d-a555-7fbba279b926
-	fromColumn: fOcorrencias.Cidade
-	toColumn: dCidades.IdCidade
-
 relationship bd2a63e7-2b38-2ddd-afde-8da73f5e3272
 	fromColumn: fPerfilVitimas.TipoPessoa
-	toColumn: dPessoas.'TipoPessoaTipoPessoa_ptbrAgentAgente PúblicoCivilianCivil'
+	toColumn: dPessoas.TipoPessoa
+
+relationship db0a53c8-2949-6e49-b7a7-20ab75894ca6
+	fromColumn: fOcorrencias.Hora
+	toColumn: dHora.Hora_extenso
+
+relationship 4572cbd8-b2b8-0d3e-fd28-09e5d577d26b
+	fromColumn: fOcorrencias.Data
+	toColumn: dCalendario.Data
+
+relationship e86d7994-1db0-80e7-ae9d-f92d217c4abf
+	fromColumn: fOcorrencias.Cidade
+	toColumn: dCidades.NomeCidade
 

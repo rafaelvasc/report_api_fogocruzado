@@ -23,10 +23,10 @@
                       "Entity": "dCalendario"
                     }
                   },
-                  "Property": "MesAno"
+                  "Property": "Mes Nome"
                 }
               },
-              "queryRef": "dCalendario.MesAno",
+              "queryRef": "dCalendario.Mes Nome",
               "nativeQueryRef": "Mês",
               "active": true,
               "displayName": "Mês"
@@ -169,47 +169,6 @@
                     }
                   }
                 }
-              }
-            },
-            "filter": {
-              "filter": {
-                "Version": 2,
-                "From": [
-                  {
-                    "Name": "d",
-                    "Entity": "dCalendario",
-                    "Type": 0
-                  }
-                ],
-                "Where": [
-                  {
-                    "Condition": {
-                      "In": {
-                        "Expressions": [
-                          {
-                            "Column": {
-                              "Expression": {
-                                "SourceRef": {
-                                  "Source": "d"
-                                }
-                              },
-                              "Property": "MesAno"
-                            }
-                          }
-                        ],
-                        "Values": [
-                          [
-                            {
-                              "Literal": {
-                                "Value": "'Out/2025'"
-                              }
-                            }
-                          ]
-                        ]
-                      }
-                    }
-                  }
-                ]
               }
             }
           }
@@ -729,7 +688,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "00cdf0f136713d6396ec",
+        "name": "d3f644bbf3b17c097cbd",
         "field": {
           "Column": {
             "Expression": {
@@ -737,7 +696,7 @@
                 "Entity": "dCalendario"
               }
             },
-            "Property": "MesAno"
+            "Property": "Mes Nome"
           }
         },
         "type": "Categorical"

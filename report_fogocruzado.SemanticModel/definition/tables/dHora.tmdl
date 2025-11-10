@@ -76,7 +76,8 @@ table dHora
 				    tabelaHoraComPeriodo = Table.AddColumn(
 				        tabelaHora,
 				        "Período",
-				        each if [Hora] < 12 then "Manhã" 
+				        each if [Hora] < 6 then "Madrugada" 
+				             else if [Hora] < 12 then "Manhã" 
 				             else if [Hora] < 18 then "Tarde" 
 				             else "Noite"
 				    ),
@@ -85,9 +86,10 @@ table dHora
 				    adicionarOrdemPeriodo = Table.AddColumn(
 				        tabelaHoraComPeriodo,
 				        "Ordem_Período",
-				        each if [Período] = "Manhã" then 1 
-				             else if [Período] = "Tarde" then 2 
-				             else 3,
+				        each if [Período] = "Madrugada" then 1 
+				             else if [Período] = "Manhã" then 2 
+				             else if [Período] = "Tarde" then 3 
+				             else 4,
 				        Int64.Type
 				    ),
 				
@@ -135,6 +137,8 @@ table dHora
 				
 				    // Ordena por Período e Hora
 				    ordenar = Table.Sort(tipandocolunas, {{"Ordem_Período", Order.Ascending}, {"Hora", Order.Ascending}}),
+				
+				    // Converte para tipo time
 				    #"Tipo Alterado" = Table.TransformColumnTypes(ordenar,{{"Hora_extenso", type time}})
 				in
 				    #"Tipo Alterado"

@@ -10,7 +10,7 @@
     "tabOrder": 5005
   },
   "visual": {
-    "visualType": "azureMap",
+    "visualType": "map",
     "query": {
       "queryState": {
         "Series": {
@@ -104,7 +104,7 @@
                   "Property": "Longitude"
                 }
               },
-              "queryRef": "fOcorrencias.Longitude",
+              "queryRef": "Min(fOcorrencias.Longitude)",
               "nativeQueryRef": "Longitude"
             }
           ]
@@ -122,7 +122,7 @@
                   "Property": "Latitude"
                 }
               },
-              "queryRef": "fOcorrencias.Latitude",
+              "queryRef": "Min(fOcorrencias.Latitude)",
               "nativeQueryRef": "Latitude"
             }
           ]
@@ -133,83 +133,6 @@
       "mapControls": [
         {
           "properties": {
-            "defaultStyle": {
-              "expr": {
-                "Literal": {
-                  "Value": "'road'"
-                }
-              }
-            },
-            "showStylePicker": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "showNavigationControls": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "showSelectionControl": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "showLabels": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "showCountryRegionBorders": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "showAdminDistrictBorders": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "showAdminDistrict2Borders": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "showBuildingFootprints": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "showRoadDetails": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "autoZoomIncludesReferenceLayer": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
             "autoZoom": {
               "expr": {
                 "Literal": {
@@ -229,105 +152,11 @@
                   "Value": "false"
                 }
               }
-            }
-          }
-        }
-      ],
-      "bubbleLayer": [
-        {
-          "properties": {
-            "show": {
+            },
+            "enableBackground": {
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "bubbleRadius": {
-              "expr": {
-                "Literal": {
-                  "Value": "6L"
-                }
-              }
-            },
-            "minBubbleRadius": {
-              "expr": {
-                "Literal": {
-                  "Value": "6L"
-                }
-              }
-            },
-            "maxRadius": {
-              "expr": {
-                "Literal": {
-                  "Value": "20L"
-                }
-              }
-            },
-            "bubbleStrokeWidth": {
-              "expr": {
-                "Literal": {
-                  "Value": "1L"
-                }
-              }
-            },
-            "autoStrokeColor": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "layerPosition": {
-              "expr": {
-                "Literal": {
-                  "Value": "''"
-                }
-              }
-            },
-            "clusteringEnabled": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "clusteredBubbleFillColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 8,
-                      "Percent": -0.5
-                    }
-                  }
-                }
-              }
-            },
-            "clusteredBubbleFontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "15D"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "filledMap": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "mapTransparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "40L"
                 }
               }
             }
@@ -358,8 +187,8 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 5,
-                      "Percent": 0.6
+                      "ColorId": 4,
+                      "Percent": 0
                     }
                   }
                 }
@@ -400,7 +229,7 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 6,
+                      "ColorId": 2,
                       "Percent": 0
                     }
                   }
@@ -434,15 +263,77 @@
               }
             ]
           }
-        }
-      ],
-      "barChart": [
+        },
         {
           "properties": {
-            "show": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 9,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "dHora"
+                          }
+                        },
+                        "Property": "Período"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Tarde'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "bubbles": [
+        {
+          "properties": {
+            "markerRangeType": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "'auto'"
+                }
+              }
+            },
+            "bubbleSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "1L"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "mapStyles": [
+        {
+          "properties": {
+            "mapTheme": {
+              "expr": {
+                "Literal": {
+                  "Value": "'canvasDark'"
                 }
               }
             }
@@ -510,49 +401,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "cca2953662466496ae38",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Medidas"
-              }
-            },
-            "Property": "Total Ocorrências"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "e170e2a3b3daa04920dd",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fOcorrencias"
-              }
-            },
-            "Property": "Latitude"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "6595dce3c71a0217ec99",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fOcorrencias"
-              }
-            },
-            "Property": "Longitude"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "272e05e590cbd40c2b2b",
+        "name": "0a7c43186f8f9d898a2b",
         "field": {
           "Column": {
             "Expression": {
@@ -566,7 +415,21 @@
         "type": "Categorical"
       },
       {
-        "name": "933ec601a45398da6c48",
+        "name": "ed3315f6524f4a102d49",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "Total Ocorrências"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d429348fe9835b0aaa9d",
         "field": {
           "Aggregation": {
             "Expression": {
@@ -585,7 +448,7 @@
         "type": "Advanced"
       },
       {
-        "name": "84192f7d37f90e516b02",
+        "name": "29a26e40edaacddd5156",
         "field": {
           "Aggregation": {
             "Expression": {
@@ -602,6 +465,34 @@
           }
         },
         "type": "Advanced"
+      },
+      {
+        "name": "4b74b8bf67e4e6e2e28c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fOcorrencias"
+              }
+            },
+            "Property": "Latitude"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "6bf0ffb1c68d149d8f41",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fOcorrencias"
+              }
+            },
+            "Property": "Longitude"
+          }
+        },
+        "type": "Categorical"
       }
     ]
   }

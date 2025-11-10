@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
   "name": "f94b5acf40d16f6575cf",
   "position": {
-    "x": 19.121265377855888,
-    "y": 254.20035149384887,
+    "x": 14.110236220472441,
+    "y": 262.04724409448818,
     "z": 0,
-    "height": 211.45869947275924,
-    "width": 823.33919156414765
+    "height": 211.65354330708661,
+    "width": 823.43307086614175
   },
   "visual": {
     "visualType": "lineChart",
@@ -27,7 +27,7 @@
               },
               "queryRef": "dCalendario.Ano",
               "nativeQueryRef": "Ano",
-              "active": true
+              "active": false
             },
             {
               "field": {
@@ -288,7 +288,28 @@
             "strokeWidth": {
               "expr": {
                 "Literal": {
-                  "Value": "2D"
+                  "Value": "3D"
+                }
+              }
+            },
+            "lineChartType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'linear'"
+                }
+              }
+            },
+            "interpolationSmooth": {
+              "expr": {
+                "Literal": {
+                  "Value": "'cardinal'"
+                }
+              }
+            },
+            "interpolationSmoothParam": {
+              "expr": {
+                "Literal": {
+                  "Value": "100D"
                 }
               }
             }

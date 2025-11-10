@@ -138,61 +138,76 @@ table fOcorrencias
 	partition fOcorrencias = m
 		mode: import
 		queryGroup: Fato
-		source =
+		source = ```
 				let
 				    // Token da função de autenticação
 				    Token = fnGetToken(),
 				
 				    // Configuração base da API
 				    BaseUrl = "https://api-service.fogocruzado.org.br",
-				    IdEstado_RJ = "b112ffbe-17b3-4ad0-8f2a-2038745d1d14",
 				    ItensPorPagina = 200,
 				
-				    // Função que retorna uma página da API com seus dados
-				    GetPage = (Pagina as number) =>
+				    // Lista de estados suportados
+				    ListaEstados = {
+				        "b112ffbe-17b3-4ad0-8f2a-2038745d1d14", // Rio de Janeiro
+				        "813ca36b-91e3-4a18-b408-60b27a1942ef", // Pernambuco
+				        "d3a9b545-7056-4dc6-9b68-ce320c9edffc", // Bahia
+				        "2a98a020-3815-45d7-a6f6-6de2119eba8b"  // Pará
+				        // CE e PB ainda não estão oficiais na doc 2.0, mas você pode incluir se houver ID
+				    },
+				
+				    // Função que retorna todas as páginas de um estado
+				    GetPagesPorEstado = (IdEstado as text) =>
 				        let
-				            Endpoint =
-				                "api/v2/occurrences?"
-				                & "idState=" & IdEstado_RJ
-				                & "&order=ASC"
-				                & "&page=" & Number.ToText(Pagina)
-				                & "&take=" & Number.ToText(ItensPorPagina),
+				            GetPage = (Pagina as number) =>
+				                let
+				                    Endpoint =
+				                        "api/v2/occurrences?"
+				                        & "idState=" & IdEstado
+				                        & "&order=ASC"
+				                        & "&page=" & Number.ToText(Pagina)
+				                        & "&take=" & Number.ToText(ItensPorPagina),
 				
-				            Fonte = Json.Document(
-				                Web.Contents(
-				                    BaseUrl,
-				                    [
-				                        RelativePath = Endpoint,
-				                        Headers = [
-				                            #"Authorization" = "Bearer " & Token,
-				                            #"Accept" = "application/json"
-				                        ]
-				                    ]
-				                )
-				            ),
+				                    Fonte = Json.Document(
+				                        Web.Contents(
+				                            BaseUrl,
+				                            [
+				                                RelativePath = Endpoint,
+				                                Headers = [
+				                                    #"Authorization" = "Bearer " & Token,
+				                                    #"Accept" = "application/json"
+				                                ]
+				                            ]
+				                        )
+				                    ),
 				
-				            Dados = Fonte[data],
-				            Meta = Fonte[pageMeta],
-				            ProximaPagina = if Meta[hasNextPage] then Pagina + 1 else null
+				                    Dados = Fonte[data],
+				                    Meta = Fonte[pageMeta],
+				                    ProximaPagina = if Meta[hasNextPage] then Pagina + 1 else null
+				                in
+				                    [Dados = Dados, Proxima = ProximaPagina],
+				
+				            // Paginação dinâmica para o estado atual
+				            TodasAsPaginas = 
+				                List.Generate(
+				                    () => GetPage(1),
+				                    each [Dados] <> null and List.Count([Dados]) > 0,
+				                    each if [Proxima] <> null then GetPage([Proxima]) else [Dados = {}, Proxima = null],
+				                    each [Dados]
+				                ),
+				
+				            ListaFinal = List.Combine(TodasAsPaginas)
 				        in
-				            [Dados = Dados, Proxima = ProximaPagina],
+				            ListaFinal,
 				
-				    // Paginação dinâmica: carrega até acabar os dados
-				    TodasAsPaginas =
-				        List.Generate(
-				            () => GetPage(1),
-				            each [Dados] <> null and List.Count([Dados]) > 0,
-				            each if [Proxima] <> null then GetPage([Proxima]) else [Dados = {}, Proxima = null],
-				            each [Dados]
-				        ),
+				    // Combina todos os estados
+				    TodasAsOcorrencias =
+				        List.Combine(List.Transform(ListaEstados, each GetPagesPorEstado(_))),
 				
-				    // Combina todas as páginas em uma única lista
-				    ListaFinal = List.Combine(TodasAsPaginas),
+				    // Converte em tabela
+				    Tabela = Table.FromList(TodasAsOcorrencias, Splitter.SplitByNothing(), {"Registro"}),
 				
-				    // Converte lista em tabela
-				    Tabela = Table.FromList(ListaFinal, Splitter.SplitByNothing(), {"Registro"}),
-				
-				    // Expande os campos principais da ocorrência
+				    // Expansões principais
 				    Expandido = Table.ExpandRecordColumn(
 				        Tabela, "Registro",
 				        {"id", "documentNumber", "address", "date", "state", "city", "neighborhood", "contextInfo", "latitude", "longitude", "policeAction", "agentPresence"},
@@ -204,7 +219,8 @@ table fOcorrencias
 				    ExpBairro = Table.ExpandRecordColumn(ExpCidade, "Bairro", {"name"}, {"Bairro"}),
 				    ExpMotivo = Table.ExpandRecordColumn(ExpBairro, "Contexto", {"mainReason"}, {"MotivoPrincipal"}),
 				    ExpMotivoFinal = Table.ExpandRecordColumn(ExpMotivo, "MotivoPrincipal", {"name"}, {"Motivo"}),
-				    // Conversão de tipos com tratamento de campos nulos
+				
+				    // Conversão de tipos
 				    Tipos = Table.TransformColumnTypes(ExpMotivoFinal, {
 				        {"Id", type text},
 				        {"Documento", Int64.Type},
@@ -220,18 +236,18 @@ table fOcorrencias
 				        {"PresencaAgente", type nullable logical}
 				    }),
 				
-				    // Separação de data e hora
+				    // Divide data e hora
 				    DataHoraTexto = Table.TransformColumnTypes(Tipos, {{"DataHora", type text}}, "pt-BR"),
 				    Dividido = Table.SplitColumn(DataHoraTexto, "DataHora", Splitter.SplitTextByDelimiter(" ", QuoteStyle.Csv), {"Data", "Hora"}),
 				
-				    // Tipagem final
 				    TiposFinais = Table.TransformColumnTypes(Dividido, {
 				        {"Data", type date},
 				        {"Hora", type time}
 				    }),
-				    InicioHora = Table.TransformColumns(TiposFinais,{{"Hora", Time.StartOfHour, type time}})
+				    InicioHora = Table.TransformColumns(TiposFinais, {{"Hora", Time.StartOfHour, type time}})
 				in
 				    InicioHora
+				```
 
 	annotation PBI_NavigationStepName = Navegação
 

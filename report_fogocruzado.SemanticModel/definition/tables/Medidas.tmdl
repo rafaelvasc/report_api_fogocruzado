@@ -15,8 +15,8 @@ table Medidas
 
 	/// 
 	/// CALCULATE(
-	///     [Total Ocorrências],
-	///     NOT ISBLANK(fOcorrencias[Motivo])
+	/// [Total Ocorrências],
+	/// NOT ISBLANK(fOcorrencias[Motivo])
 	/// )
 	/// 
 	measure 'Total por Motivo' = ```
@@ -33,8 +33,8 @@ table Medidas
 
 	/// 
 	/// CALCULATE(
-	///     [Total Ocorrências],
-	///     fOcorrencias[Motivo] = "Ação policial"
+	/// [Total Ocorrências],
+	/// fOcorrencias[Motivo] = "Ação policial"
 	/// )
 	/// 
 	measure 'Total Ação Policial' = ```
@@ -51,8 +51,8 @@ table Medidas
 
 	/// 
 	/// CALCULATE(
-	///     [Total Ocorrências],
-	///     fOcorrencias[Motivo] = "Operação policial"
+	/// [Total Ocorrências],
+	/// fOcorrencias[Motivo] = "Operação policial"
 	/// )
 	/// 
 	measure 'Total Operação Policial' = ```
@@ -69,8 +69,8 @@ table Medidas
 
 	/// 
 	/// CALCULATE(
-	///     [Total Ocorrências],
-	///     fOcorrencias[Motivo] = "Homicidio/Tentativa"
+	/// [Total Ocorrências],
+	/// fOcorrencias[Motivo] = "Homicidio/Tentativa"
 	/// )
 	/// 
 	measure 'Total Homicidio/Tentativa' = ```
@@ -87,8 +87,8 @@ table Medidas
 
 	/// 
 	/// CALCULATE(
-	///     [Total Ocorrências],
-	///     fOcorrencias[Motivo] = "Tentativa/Roubo"
+	/// [Total Ocorrências],
+	/// fOcorrencias[Motivo] = "Tentativa/Roubo"
 	/// )
 	/// 
 	measure 'Total Tentativa/Roubo' = ```
@@ -105,8 +105,8 @@ table Medidas
 
 	/// 
 	/// CALCULATE(
-	///     [Total Ocorrências],
-	///     fOcorrencias[Motivo] = "Briga"
+	/// [Total Ocorrências],
+	/// fOcorrencias[Motivo] = "Briga"
 	/// )
 	/// 
 	measure 'Total Briga' = ```
@@ -123,8 +123,8 @@ table Medidas
 
 	/// 
 	/// CALCULATE(
-	///     [Total Ocorrências],
-	///     fOcorrencias[Motivo] = "Suicídio"
+	/// [Total Ocorrências],
+	/// fOcorrencias[Motivo] = "Suicídio"
 	/// )
 	/// 
 	measure 'Total Suicídio' = ```
@@ -141,8 +141,8 @@ table Medidas
 
 	/// 
 	/// CALCULATE(
-	///     [Total Ocorrências],
-	///     dCidades[NomeEstado]="Rio de Janeiro"
+	/// [Total Ocorrências],
+	/// dCidades[NomeEstado]="Rio de Janeiro"
 	/// )
 	/// 
 	measure 'Total Ocorrências RJ' = ```
@@ -159,8 +159,8 @@ table Medidas
 
 	/// 
 	/// CALCULATE(
-	///     [Total Ocorrências],
-	///      dCidades[NomeEstado]="Pernambuco"
+	/// [Total Ocorrências],
+	/// dCidades[NomeEstado]="Pernambuco"
 	/// )
 	/// 
 	measure 'Total Ocorrências PE' = ```
@@ -177,8 +177,8 @@ table Medidas
 
 	/// 
 	/// CALCULATE(
-	///     [Total Ocorrências],
-	///    dCidades[NomeEstado]="Bahia"
+	/// [Total Ocorrências],
+	/// dCidades[NomeEstado]="Bahia"
 	/// )
 	/// 
 	measure 'Total Ocorrências BA' = ```
@@ -195,8 +195,8 @@ table Medidas
 
 	/// 
 	/// CALCULATE(
-	///     [Total Ocorrências],
-	///      dCidades[NomeEstado]="Pará"
+	/// [Total Ocorrências],
+	/// dCidades[NomeEstado]="Pará"
 	/// )
 	/// 
 	measure 'Total Ocorrências PA' = ```
@@ -213,8 +213,8 @@ table Medidas
 
 	/// 
 	/// CALCULATE(
-	///     COUNTROWS(fPerfilVitimas),
-	///     dSituacao[Situacao] = "Dead"
+	/// COUNTROWS(fPerfilVitimas),
+	/// dSituacao[Situacao] = "Dead"
 	/// )
 	/// 
 	measure 'Total Mortes' = ```
@@ -231,8 +231,8 @@ table Medidas
 
 	/// 
 	/// CALCULATE(
-	///     [Total Mortes],
-	///     dPessoas[TipoPessoa_ptbr] = "Civil"
+	/// [Total Mortes],
+	/// dPessoas[TipoPessoa_ptbr] = "Civil"
 	/// )
 	/// 
 	measure 'Total Civis Mortos' = ```
@@ -249,8 +249,8 @@ table Medidas
 
 	/// 
 	/// CALCULATE(
-	///     [Total Mortes],
-	///     dPessoas[TipoPessoa] = "Agent"
+	/// [Total Mortes],
+	/// dPessoas[TipoPessoa] = "Agent"
 	/// )
 	/// 
 	measure 'Total Agentes Mortos' = ```
@@ -267,8 +267,8 @@ table Medidas
 
 	/// 
 	/// CALCULATE(
-	///     [Total Mortes],
-	///     fPerfilVitimas[Genero] = "Mulher Cis"
+	/// [Total Mortes],
+	/// fPerfilVitimas[Genero] = "Mulher Cis"
 	/// )
 	/// 
 	measure 'Total Mulheres Mortas' = ```
@@ -285,11 +285,11 @@ table Medidas
 
 	/// 
 	/// DIVIDE(
-	///     CALCULATE(
-	///         [Total Mortes],
-	///         fPerfilVitimas[Genero] = "Feminino"
-	///     ),
-	///     [Total Mortes]
+	/// CALCULATE(
+	/// [Total Mortes],
+	/// fPerfilVitimas[Genero] = "Feminino"
+	/// ),
+	/// [Total Mortes]
 	/// )
 	/// 
 	measure '% Mulheres Mortas' = ```
@@ -310,11 +310,11 @@ table Medidas
 
 	/// 
 	/// DIVIDE(
-	///     CALCULATE(
-	///         [Total Mortes],
-	///         dFaixaEtarias[FaixaEtaria] IN { "Criança", "Adolescente" }
-	///     ),
-	///     [Total Mortes]
+	/// CALCULATE(
+	/// [Total Mortes],
+	/// dFaixaEtarias[FaixaEtaria] IN { "Criança", "Adolescente" }
+	/// ),
+	/// [Total Mortes]
 	/// )
 	/// 
 	measure '% Crianças e Adolescentes Mortos' = ```
@@ -335,8 +335,8 @@ table Medidas
 
 	/// 
 	/// CALCULATE(
-	///     [Total Mortes],
-	///     ALLEXCEPT(fPerfilVitimas, fPerfilVitimas[Genero])
+	/// [Total Mortes],
+	/// ALLEXCEPT(fPerfilVitimas, fPerfilVitimas[Genero])
 	/// )
 	/// 
 	measure 'Mortes por Gênero' = ```
@@ -353,8 +353,8 @@ table Medidas
 
 	/// 
 	/// CALCULATE(
-	///     [Total Mortes],
-	///     ALLEXCEPT(fPerfilVitimas, dFaixaEtarias[FaixaEtaria])
+	/// [Total Mortes],
+	/// ALLEXCEPT(fPerfilVitimas, dFaixaEtarias[FaixaEtaria])
 	/// )
 	/// 
 	measure 'Mortes por Faixa Etária' = ```
@@ -371,8 +371,8 @@ table Medidas
 
 	/// 
 	/// CALCULATE(
-	///     [Total Mortes],
-	///     ALLEXCEPT(fOcorrencias, fOcorrencias[Motivo])
+	/// [Total Mortes],
+	/// ALLEXCEPT(fOcorrencias, fOcorrencias[Motivo])
 	/// )
 	/// 
 	measure 'Mortes por Motivo' = ```
@@ -389,8 +389,8 @@ table Medidas
 
 	/// 
 	/// DIVIDE(
-	///     [Total Civis Mortos],
-	///     [Total Agentes Mortos]
+	/// [Total Civis Mortos],
+	/// [Total Agentes Mortos]
 	/// )
 	/// 
 	measure 'Razão Civis/Agentes' = ```
@@ -408,11 +408,11 @@ table Medidas
 
 	/// 
 	/// DIVIDE(
-	///     CALCULATE(
-	///         COUNTROWS(fOcorrencias),
-	///         fOcorrencias[Motivo] = "Operação Policial"
-	///     ),
-	///     [Total Ocorrências]
+	/// CALCULATE(
+	/// COUNTROWS(fOcorrencias),
+	/// fOcorrencias[Motivo] = "Operação Policial"
+	/// ),
+	/// [Total Ocorrências]
 	/// )
 	/// 
 	measure '% Ocorrências de Operação Policial' = ```

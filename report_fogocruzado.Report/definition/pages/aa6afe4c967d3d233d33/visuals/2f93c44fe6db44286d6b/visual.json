@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dCidades"
+                      "Entity": "fOcorrencias"
                     }
                   },
-                  "Property": "NomeCidade"
+                  "Property": "PresencaAgente"
                 }
               },
-              "queryRef": "dCidades.NomeCidade",
-              "nativeQueryRef": "NomeCidade",
+              "queryRef": "fOcorrencias.PresencaAgente",
+              "nativeQueryRef": "PresencaAgente",
               "active": true
             }
           ]

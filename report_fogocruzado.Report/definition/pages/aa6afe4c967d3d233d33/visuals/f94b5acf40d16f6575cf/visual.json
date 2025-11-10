@@ -6,7 +6,7 @@
     "y": 262.04724409448818,
     "z": 0,
     "height": 211.65354330708661,
-    "width": 823.43307086614175
+    "width": 625.88976377952758
   },
   "visual": {
     "visualType": "lineChart",
@@ -27,7 +27,7 @@
               },
               "queryRef": "dCalendario.Ano",
               "nativeQueryRef": "Ano",
-              "active": false
+              "active": true
             },
             {
               "field": {
@@ -37,11 +37,11 @@
                       "Entity": "dCalendario"
                     }
                   },
-                  "Property": "MesAno"
+                  "Property": "Mes Nome"
                 }
               },
-              "queryRef": "dCalendario.MesAno",
-              "nativeQueryRef": "MesAno",
+              "queryRef": "dCalendario.Mes Nome",
+              "nativeQueryRef": "Mes Nome",
               "active": true
             }
           ]
@@ -82,6 +82,24 @@
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Medidas"
+                  }
+                },
+                "Property": "Total Ocorrências"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
       }
     },
     "objects": {

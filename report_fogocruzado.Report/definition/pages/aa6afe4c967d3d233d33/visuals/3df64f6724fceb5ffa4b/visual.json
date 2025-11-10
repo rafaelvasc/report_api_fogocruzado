@@ -1,15 +1,15 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
-  "name": "dfefab06a5ea9cb71d6b",
+  "name": "3df64f6724fceb5ffa4b",
   "position": {
-    "x": 640,
-    "y": 262.04724409448818,
-    "z": 5008,
-    "height": 204.5984251968504,
-    "width": 202.58267716535434
+    "x": 20.15748031496063,
+    "y": 483.77952755905511,
+    "z": 5009,
+    "height": 197.54330708661416,
+    "width": 822.42519685039372
   },
   "visual": {
-    "visualType": "columnChart",
+    "visualType": "clusteredColumnChart",
     "query": {
       "queryState": {
         "Category": {
@@ -22,11 +22,11 @@
                       "Entity": "dHora"
                     }
                   },
-                  "Property": "Período"
+                  "Property": "Hora"
                 }
               },
-              "queryRef": "dHora.Período",
-              "nativeQueryRef": "Período",
+              "queryRef": "dHora.Hora",
+              "nativeQueryRef": "Hora",
               "active": true
             }
           ]
@@ -139,6 +139,13 @@
               "expr": {
                 "Literal": {
                   "Value": "8D"
+                }
+              }
+            },
+            "innerPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "13L"
                 }
               }
             }

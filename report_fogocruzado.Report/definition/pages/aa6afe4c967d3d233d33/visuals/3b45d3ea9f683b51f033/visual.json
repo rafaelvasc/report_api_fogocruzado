@@ -2,8 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
   "name": "3b45d3ea9f683b51f033",
   "position": {
-    "x": 518.04724409448818,
-    "y": 74.582677165354326,
+    "x": 628.85619789617692,
+    "y": 74.235500878734626,
     "z": 5002,
     "height": 65.511811023622045,
     "width": 138.07874015748033,
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dSituacao"
+                      "Entity": "fOcorrencias"
                     }
                   },
-                  "Property": "Situacao_ptbr"
+                  "Property": "Bairro"
                 }
               },
-              "queryRef": "dSituacao.Situacao_ptbr",
-              "nativeQueryRef": "Situacao_ptbr",
+              "queryRef": "fOcorrencias.Bairro",
+              "nativeQueryRef": "Bairro",
               "active": true
             }
           ]
@@ -683,5 +683,72 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "20904732fe0dac096ab7",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fOcorrencias"
+              }
+            },
+            "Property": "Bairro"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "44380da3213fba851be8",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "contador aux"
+          }
+        },
+        "type": "Advanced",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "m",
+              "Entity": "Medidas",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Comparison": {
+                  "ComparisonKind": 1,
+                  "Left": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Source": "m"
+                        }
+                      },
+                      "Property": "contador aux"
+                    }
+                  },
+                  "Right": {
+                    "Literal": {
+                      "Value": "1L"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      }
+    ]
   }
 }

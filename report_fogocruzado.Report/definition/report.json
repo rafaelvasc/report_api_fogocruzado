@@ -40,7 +40,7 @@
           "expanded": {
             "expr": {
               "Literal": {
-                "Value": "false"
+                "Value": "true"
               }
             }
           }
@@ -73,6 +73,11 @@
           "name": "Tema_FogoCruzado023003111988370906.json",
           "path": "Tema_FogoCruzado023003111988370906.json",
           "type": "CustomTheme"
+        },
+        {
+          "name": "Fogo_Cruzado8284099419617365.svg",
+          "path": "Fogo_Cruzado8284099419617365.svg",
+          "type": "Image"
         }
       ]
     }

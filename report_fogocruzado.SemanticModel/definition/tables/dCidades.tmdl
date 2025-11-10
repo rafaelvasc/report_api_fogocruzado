@@ -12,12 +12,13 @@ table dCidades
 
 	column NomeCidade
 		dataType: string
-		isHidden
 		isKey
 		encodingHint: hash
 		lineageTag: ea4ff23c-c52e-4aff-b456-21d6d4a7db6c
 		summarizeBy: none
 		sourceColumn: NomeCidade
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

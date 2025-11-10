@@ -3,12 +3,13 @@ table dFaixaEtarias
 
 	column FaixaEtaria
 		dataType: string
-		isHidden
 		isKey
 		encodingHint: hash
 		lineageTag: 62da2fd3-ba3a-403f-a6f1-6f2f776eaafa
 		summarizeBy: none
 		sourceColumn: FaixaEtaria
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

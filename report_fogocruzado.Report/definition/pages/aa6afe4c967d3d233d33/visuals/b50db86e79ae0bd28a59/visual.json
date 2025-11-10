@@ -2,8 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
   "name": "b50db86e79ae0bd28a59",
   "position": {
-    "x": 103.81102362204724,
-    "y": 74.582677165354326,
+    "x": 131.37864269602505,
+    "y": 74.235500878734626,
     "z": 3000,
     "height": 66.519685039370074,
     "width": 138.07874015748033,
@@ -27,8 +27,9 @@
                 }
               },
               "queryRef": "dCalendario.MesAno",
-              "nativeQueryRef": "MesAno",
-              "active": true
+              "nativeQueryRef": "Mês",
+              "active": true,
+              "displayName": "Mês"
             }
           ]
         }
@@ -168,47 +169,6 @@
                     }
                   }
                 }
-              }
-            },
-            "filter": {
-              "filter": {
-                "Version": 2,
-                "From": [
-                  {
-                    "Name": "d",
-                    "Entity": "dCalendario",
-                    "Type": 0
-                  }
-                ],
-                "Where": [
-                  {
-                    "Condition": {
-                      "In": {
-                        "Expressions": [
-                          {
-                            "Column": {
-                              "Expression": {
-                                "SourceRef": {
-                                  "Source": "d"
-                                }
-                              },
-                              "Property": "MesAno"
-                            }
-                          }
-                        ],
-                        "Values": [
-                          [
-                            {
-                              "Literal": {
-                                "Value": "'Nov/2025'"
-                              }
-                            }
-                          ]
-                        ]
-                      }
-                    }
-                  }
-                ]
               }
             }
           }
@@ -724,5 +684,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "00cdf0f136713d6396ec",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dCalendario"
+              }
+            },
+            "Property": "MesAno"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

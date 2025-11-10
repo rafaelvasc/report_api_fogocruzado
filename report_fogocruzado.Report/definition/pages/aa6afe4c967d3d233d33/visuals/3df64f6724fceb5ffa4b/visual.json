@@ -2,18 +2,33 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
   "name": "3df64f6724fceb5ffa4b",
   "position": {
-    "x": 20.15748031496063,
-    "y": 483.77952755905511,
+    "x": 19.745916515426497,
+    "y": 484.35571687840292,
     "z": 5009,
-    "height": 197.54330708661416,
-    "width": 822.42519685039372
+    "height": 197.45916515426498,
+    "width": 822.35934664246827
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "columnChart",
     "query": {
       "queryState": {
         "Category": {
           "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dHora"
+                    }
+                  },
+                  "Property": "Período"
+                }
+              },
+              "queryRef": "dHora.Período",
+              "nativeQueryRef": "Período",
+              "active": true
+            },
             {
               "field": {
                 "Column": {
@@ -27,7 +42,7 @@
               },
               "queryRef": "dHora.Hora",
               "nativeQueryRef": "Hora",
-              "active": true
+              "active": false
             }
           ]
         },
@@ -68,16 +83,29 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "Medidas"
+                    "Entity": "dHora"
                   }
                 },
-                "Property": "Total Ocorrências"
+                "Property": "Período"
               }
             },
-            "direction": "Descending"
+            "direction": "Ascending"
+          },
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dHora"
+                  }
+                },
+                "Property": "Hora"
+              }
+            },
+            "direction": "Ascending"
           }
         ],
         "isDefaultSort": true
@@ -296,14 +324,14 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Evolução ao longo do tempo'"
+                  "Value": "'Eventos ao longo do tempo'"
                 }
               }
             },
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             },
@@ -318,6 +346,25 @@
               "expr": {
                 "Literal": {
                   "Value": "9D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'"
                 }
               }
             }
@@ -384,5 +431,65 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "2332954542189bd9366e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dHora"
+              }
+            },
+            "Property": "Hora"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "e2640bf20bb31116ed95",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "Total Ocorrências"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1dbd39a8b50d9cb20a05",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "Total Vítimas"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ea7a4ab3d70151840af5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dHora"
+              }
+            },
+            "Property": "Período"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

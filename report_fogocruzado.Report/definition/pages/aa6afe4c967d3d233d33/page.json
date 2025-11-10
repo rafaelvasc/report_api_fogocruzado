@@ -23,7 +23,7 @@
                   "ResourcePackageItem": {
                     "PackageName": "RegisteredResources",
                     "PackageType": 1,
-                    "ItemName": "Fogo_Cruzado012500988160719984.svg"
+                    "ItemName": "Fogo_Cruzado8284099419617365.svg"
                   }
                 }
               },
@@ -52,6 +52,16 @@
       "source": "b50db86e79ae0bd28a59",
       "target": "f94b5acf40d16f6575cf",
       "type": "NoFilter"
+    },
+    {
+      "source": "415d17e8928bf8526ad3",
+      "target": "3df64f6724fceb5ffa4b",
+      "type": "DataFilter"
+    },
+    {
+      "source": "f94b5acf40d16f6575cf",
+      "target": "3df64f6724fceb5ffa4b",
+      "type": "DataFilter"
     }
   ]
 }

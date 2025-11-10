@@ -2,8 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
   "name": "94629818374cf7f90139",
   "position": {
-    "x": 675.19685039370074,
-    "y": 85.590551181102356,
+    "x": 1125.7952755905512,
+    "y": 74.235500878734626,
     "z": 5004,
     "height": 65.511811023622045,
     "width": 138.07874015748033,
@@ -20,15 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fOcorrencias"
+                      "Entity": "dFaixaEtarias"
                     }
                   },
-                  "Property": "AcaoPolicial"
+                  "Property": "FaixaEtaria"
                 }
               },
-              "queryRef": "fOcorrencias.AcaoPolicial",
-              "nativeQueryRef": "AcaoPolicial",
-              "active": true
+              "queryRef": "dFaixaEtarias.FaixaEtaria",
+              "nativeQueryRef": "Faixa Etária",
+              "active": true,
+              "displayName": "Faixa Etária"
             }
           ]
         }
@@ -683,5 +684,72 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "16f9eb2c8878ed213c8b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dFaixaEtarias"
+              }
+            },
+            "Property": "FaixaEtaria"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "1dda6de2e7cd10c682ef",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "contador aux"
+          }
+        },
+        "type": "Advanced",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "m",
+              "Entity": "Medidas",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Comparison": {
+                  "ComparisonKind": 1,
+                  "Left": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Source": "m"
+                        }
+                      },
+                      "Property": "contador aux"
+                    }
+                  },
+                  "Right": {
+                    "Literal": {
+                      "Value": "0L"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      }
+    ]
   }
 }

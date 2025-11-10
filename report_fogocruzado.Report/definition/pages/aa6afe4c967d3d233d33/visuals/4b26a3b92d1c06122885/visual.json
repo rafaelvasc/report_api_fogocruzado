@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
-  "name": "385efc12f05bdcd2cecb",
+  "name": "4b26a3b92d1c06122885",
   "position": {
-    "x": 297.02500192748317,
+    "x": 960.14891635909316,
     "y": 74.235500878734626,
-    "z": 4000,
-    "height": 66.362038664323379,
-    "width": 138.34797891036908,
-    "tabOrder": 4000
+    "z": 5011,
+    "height": 65.511811023622045,
+    "width": 138.07874015748033,
+    "tabOrder": 5007
   },
   "visual": {
     "visualType": "slicer",
@@ -20,16 +20,15 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dCidades"
+                      "Entity": "dHora"
                     }
                   },
-                  "Property": "NomeEstado"
+                  "Property": "Período"
                 }
               },
-              "queryRef": "dCidades.NomeEstado",
-              "nativeQueryRef": "Estado",
-              "active": true,
-              "displayName": "Estado"
+              "queryRef": "dHora.Período",
+              "nativeQueryRef": "Período",
+              "active": true
             }
           ]
         }
@@ -688,15 +687,64 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "7f93ad59c5e86f5a1b59",
+        "name": "56c11507da74767f45c7",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "contador aux"
+          }
+        },
+        "type": "Advanced",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "m",
+              "Entity": "Medidas",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Comparison": {
+                  "ComparisonKind": 1,
+                  "Left": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Source": "m"
+                        }
+                      },
+                      "Property": "contador aux"
+                    }
+                  },
+                  "Right": {
+                    "Literal": {
+                      "Value": "0L"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      },
+      {
+        "name": "1201879ddcd97c300e21",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "dCidades"
+                "Entity": "dHora"
               }
             },
-            "Property": "NomeEstado"
+            "Property": "Período"
           }
         },
         "type": "Categorical"

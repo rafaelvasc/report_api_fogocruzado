@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
-  "name": "2f93c44fe6db44286d6b",
+  "name": "38120cbf772c6b8c3a58",
   "position": {
-    "x": 812.34645669291342,
-    "y": 75.590551181102356,
-    "z": 5003,
+    "x": 794.5025571276351,
+    "y": 74.235500878734626,
+    "z": 5010,
     "height": 65.511811023622045,
     "width": 138.07874015748033,
-    "tabOrder": 5002
+    "tabOrder": 5006
   },
   "visual": {
     "visualType": "slicer",
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fOcorrencias"
+                      "Entity": "dMotivos"
                     }
                   },
-                  "Property": "PresencaAgente"
+                  "Property": "Motivo"
                 }
               },
-              "queryRef": "fOcorrencias.PresencaAgente",
-              "nativeQueryRef": "PresencaAgente",
+              "queryRef": "dMotivos.Motivo",
+              "nativeQueryRef": "Motivo",
               "active": true
             }
           ]
@@ -683,5 +683,72 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "15ac36bc1d9de3e0bff1",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dMotivos"
+              }
+            },
+            "Property": "Motivo"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "ad5d09d3808da82eac83",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "contador aux"
+          }
+        },
+        "type": "Advanced",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "m",
+              "Entity": "Medidas",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Comparison": {
+                  "ComparisonKind": 1,
+                  "Left": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Source": "m"
+                        }
+                      },
+                      "Property": "contador aux"
+                    }
+                  },
+                  "Right": {
+                    "Literal": {
+                      "Value": "0L"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      }
+    ]
   }
 }

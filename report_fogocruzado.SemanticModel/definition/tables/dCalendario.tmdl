@@ -68,7 +68,7 @@ table dCalendario
 
 	column Ano
 		dataType: int64
-		formatString: #,0
+		formatString: 0
 		isAvailableInMdx: false
 		encodingHint: hash
 		lineageTag: 92a5943d-a814-4df9-9b2d-43eba659a39e

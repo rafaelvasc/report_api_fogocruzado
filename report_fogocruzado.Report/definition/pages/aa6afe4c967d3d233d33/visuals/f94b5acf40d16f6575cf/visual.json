@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
   "name": "f94b5acf40d16f6575cf",
   "position": {
-    "x": 14.110236220472441,
-    "y": 262.04724409448818,
+    "x": 13.938294010889292,
+    "y": 262.50453720508165,
     "z": 0,
-    "height": 211.65354330708661,
-    "width": 625.88976377952758
+    "height": 211.39745916515426,
+    "width": 614.44646098003625
   },
   "visual": {
     "visualType": "lineChart",
@@ -296,6 +296,13 @@
                   "Value": "10D"
                 }
               }
+            },
+            "labelPosition": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Above'"
+                }
+              }
             }
           }
         }
@@ -355,14 +362,14 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Evolução ao longo do tempo'"
+                  "Value": "'Ocorrências x Vítimas por mês'"
                 }
               }
             },
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             },
@@ -377,6 +384,25 @@
               "expr": {
                 "Literal": {
                   "Value": "9D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'"
                 }
               }
             }
@@ -443,5 +469,65 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "d61b87570c38445d759c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dCalendario"
+              }
+            },
+            "Property": "Ano"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "c188fc945e23c4c1521e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dCalendario"
+              }
+            },
+            "Property": "Mes Nome"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "6034d37e64b7874d5c7a",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "Total Ocorrências"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "9bf1de6d14bf3ae7f5b0",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "Total Vítimas"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

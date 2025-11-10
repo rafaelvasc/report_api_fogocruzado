@@ -445,6 +445,133 @@ table Medidas
 		formatString: 0
 		lineageTag: 55cfadda-43e9-45a6-954e-070e89122b2e
 
+	measure 'contador aux' = COUNTROWS(fOcorrencias)
+		formatString: 0
+		lineageTag: 518d53b0-c960-466e-bb41-0ec7f2a5f540
+
+	measure 'Total Ocorrências A.A' = ```
+			CALCULATE( 
+			COUNTROWS(fOcorrencias), SAMEPERIODLASTYEAR(dCalendario[Data]))
+			
+			```
+		formatString: 0
+		lineageTag: 2d09044f-8d64-4b41-be62-f2b1a3a6f821
+
+	measure '% Diferença Ocorrências vs A.A' = ```
+			
+			VAR Atual = [Total Ocorrências]
+			VAR AnoAnterior = [Total Ocorrências A.A]
+			RETURN
+			DIVIDE(Atual - AnoAnterior, AnoAnterior, 0)
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 41c159d8-3483-4523-ab26-53a7ad900bbd
+
+	measure 'Total Vítimas A.A' = CALCULATE(COUNTROWS(fPerfilVitimas), SAMEPERIODLASTYEAR(dCalendario[Data]))
+		formatString: 0
+		lineageTag: 7bb98da2-527f-4764-ac2f-7a3ca9f520c2
+
+	measure '% Diferença Vitimas vs A.A' = ```
+			
+			VAR Atual = [Total Vítimas]
+			VAR AnoAnterior = [Total Vítimas A.A]
+			RETURN
+			DIVIDE(Atual - AnoAnterior, AnoAnterior, 0)
+			
+			```
+		lineageTag: 4ebaf32f-800c-4f09-9771-cec11d56c689
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Mortes A.A' = ```
+			
+			CALCULATE(
+			    [Total Mortes], SAMEPERIODLASTYEAR(dCalendario[Data]))
+			
+			```
+		formatString: 0
+		lineageTag: 65a4d76a-9764-4426-a8b1-95b8b2c88003
+
+	measure '% Diferença Mortes vs A.A' = ```
+			
+			VAR Atual = [Total Mortes]
+			VAR AnoAnterior = [Total Mortes A.A]
+			RETURN
+			DIVIDE(Atual - AnoAnterior, AnoAnterior, 0)
+			
+			```
+		lineageTag: f75285e9-db97-42be-8555-c7784ac33eee
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% Diferença Ocorrências vs A.A Seta' = ```
+			
+			VAR vDiferenca = 
+			    DIVIDE([Total Ocorrências] - [Total Ocorrências A.A], [Total Ocorrências A.A])
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    vDiferenca > 0, "▲ " & FORMAT(vDiferenca, "0.00%"),
+			    vDiferenca < 0, "▼ " & FORMAT(vDiferenca, "0.00%"),
+			    "0.00%"
+			)
+			
+			```
+		lineageTag: 4f1d9f78-175c-4eda-833e-fbbf5f4fdc2d
+
+	measure '% Diferença Vitimas vs A.A Seta' = ```
+			
+			VAR vDiferenca = 
+			    [% Diferença Vitimas vs A.A]
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    vDiferenca > 0, "▲ " & FORMAT(vDiferenca, "0.00%"),
+			    vDiferenca < 0, "▼ " & FORMAT(vDiferenca, "0.00%"),
+			    "0.00%"
+			)
+			
+			```
+		lineageTag: 5f0f0c36-a092-48a8-ae0a-cc49170279ab
+
+	measure '% Diferença Mortes vs A.A Seta' = ```
+			
+			VAR vDiferenca = 
+			   [% Diferença Mortes vs A.A]
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    vDiferenca > 0, "▲ " & FORMAT(vDiferenca, "0.00%"),
+			    vDiferenca < 0, "▼ " & FORMAT(vDiferenca, "0.00%"),
+			    "0.00%"
+			)
+			
+			```
+		lineageTag: a6236abb-59a4-493e-8e39-aa666b1ef9c5
+
+	measure 'Total Operação com Agentes Seg. Público' = ```
+			
+			CALCULATE(
+			    [Total Ocorrências],
+			    fOcorrencias[PresencaAgente]=TRUE()
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 1e5ef40a-e595-4ffd-b59b-73dc97e105d8
+
+	measure '% Ocorrencias com Agentes de Seg Público' = DIVIDE([Total Operação com Agentes Seg. Público],[Total Ocorrências])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 264d33c9-90a0-49e8-a165-3a241c730691
+
+	measure '% Letalidade' = ```
+			DIVIDE([Total Mortes], [Total Vítimas])
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 71f7f9c0-6ee6-4e75-887b-c3c8444c5068
+
 	partition Medidas = m
 		mode: import
 		source =

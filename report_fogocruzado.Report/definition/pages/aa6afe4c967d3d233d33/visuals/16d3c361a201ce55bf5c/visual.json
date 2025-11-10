@@ -3,7 +3,7 @@
   "name": "16d3c361a201ce55bf5c",
   "position": {
     "x": 0,
-    "y": 74.582677165354326,
+    "y": 74.235500878734626,
     "z": 2000,
     "height": 66.519685039370074,
     "width": 103.81102362204724,
@@ -215,6 +215,19 @@
                       "Value": "'#E1E1E1'"
                     }
                   }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "selection": [
+        {
+          "properties": {
+            "strictSingleSelect": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }
@@ -707,5 +720,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "41ee4ff67f9a459503f2",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dCalendario"
+              }
+            },
+            "Property": "Ano"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

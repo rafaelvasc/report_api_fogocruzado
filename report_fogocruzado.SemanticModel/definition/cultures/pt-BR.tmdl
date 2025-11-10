@@ -571,9 +571,6 @@ cultureInfo pt-BR
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "nome cidade": {
@@ -585,6 +582,16 @@ cultureInfo pt-BR
 			            "Type": "Noun",
 			            "State": "Generated",
 			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "Cidade": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -671,6 +678,16 @@ cultureInfo pt-BR
 			            "Type": "Noun",
 			            "State": "Generated",
 			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "Estado": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -985,9 +1002,6 @@ cultureInfo pt-BR
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "d faixa etaria": {
@@ -1011,9 +1025,6 @@ cultureInfo pt-BR
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "faixa etaria": {
@@ -1026,6 +1037,16 @@ cultureInfo pt-BR
 			            "State": "Generated",
 			            "Weight": 0.99
 			          }
+			        },
+			        {
+			          "Faixa Etária": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -1036,9 +1057,6 @@ cultureInfo pt-BR
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "d motivo": {
@@ -1062,9 +1080,6 @@ cultureInfo pt-BR
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "motivo": {
@@ -1350,6 +1365,16 @@ cultureInfo pt-BR
 			            "Type": "Noun",
 			            "State": "Generated",
 			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "Mês": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -2484,7 +2509,7 @@ cultureInfo pt-BR
 			          }
 			        },
 			        {
-			          "% Operação Policial": {
+			          "%Operação Policial": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -2546,10 +2571,410 @@ cultureInfo pt-BR
 			          }
 			        }
 			      ]
+			    },
+			    "f_perfil_vitima.estado": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fPerfilVitimas",
+			          "ConceptualProperty": "Estado"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "estado": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.contador_aux": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "contador aux"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "contador aux": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.total_ocorrências_a_a": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "Total Ocorrências A.A"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "total ocorrências a.a": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "aggregate ocorrência a.a": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.605
+			          }
+			        },
+			        {
+			          "overall ocorrência a.a": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.605
+			          }
+			        }
+			      ]
+			    },
+			    "medida.diferença_ocorrências_vs_a_a": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "% Diferença Ocorrências vs A.A"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "% diferença ocorrências vs a.a": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.total_vítimas_a_a": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "Total Vítimas A.A"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "total vítimas a.a": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "aggregate vítima a.a": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.605
+			          }
+			        },
+			        {
+			          "overall vítima a.a": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.605
+			          }
+			        }
+			      ]
+			    },
+			    "medida.diferença_vitimas_vs_a_a": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "% Diferença Vitimas vs A.A"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "% diferença vitimas vs a.a": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.total_mortes_a_a": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "Total Mortes A.A"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "total mortes a.a": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "aggregate morte a.a": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.605
+			          }
+			        },
+			        {
+			          "overall morte a.a": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.605
+			          }
+			        }
+			      ]
+			    },
+			    "medida.diferença_mortes_vs_a_a": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "% Diferença Mortes vs A.A"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "% diferença mortes vs a.a": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.diferença_ocorrências_vs_a_a_seta": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "% Diferença Ocorrências vs A.A Seta"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "% diferença ocorrências vs a.a seta": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.diferença_vitimas_vs_a_a_seta": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "% Diferença Vitimas vs A.A Seta"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "% diferença vitimas vs a.a seta": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.diferença_mortes_vs_a_a_seta": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "% Diferença Mortes vs A.A Seta"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "% diferença mortes vs a.a seta": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.total_operação_com_agentes_seg__público": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "Total Operação com Agentes Seg. Público"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "total operação com agentes seg. público": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.ocorrencias_com_agentes_de_seg_público": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "% Ocorrencias com Agentes de Seg Público"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "% ocorrencias com agentes de seg público": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {
-			    "f_ocorrencia_has_d_cidade": {
+			    "f_perfil_vitima_has_medida_diferença_mortes_vs_a_a": {
+			      "Binding": {
+			        "ConceptualEntity": "fPerfilVitimas"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_perfil_vitima": {
+			          "Target": {
+			            "Entity": "f_perfil_vitima"
+			          }
+			        },
+			        "medida.diferença_mortes_vs_a_a": {
+			          "Target": {
+			            "Entity": "medida.diferença_mortes_vs_a_a"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_perfil_vitima"
+			            },
+			            "Object": {
+			              "Role": "medida.diferença_mortes_vs_a_a"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_perfil_vitimas_have__diferença_mortes_vs_a_a"
+			        }
+			      ]
+			    },
+			    "f_perfil_vitima_has_medida_total_mortes_a_a": {
+			      "Binding": {
+			        "ConceptualEntity": "fPerfilVitimas"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_perfil_vitima": {
+			          "Target": {
+			            "Entity": "f_perfil_vitima"
+			          }
+			        },
+			        "medida.total_mortes_a_a": {
+			          "Target": {
+			            "Entity": "medida.total_mortes_a_a"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_perfil_vitima"
+			            },
+			            "Object": {
+			              "Role": "medida.total_mortes_a_a"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_perfil_vitimas_have_total_mortes_a_a"
+			        }
+			      ]
+			    },
+			    "f_perfil_vitima_has_medida_diferença_vitimas_vs_a_a": {
+			      "Binding": {
+			        "ConceptualEntity": "fPerfilVitimas"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_perfil_vitima": {
+			          "Target": {
+			            "Entity": "f_perfil_vitima"
+			          }
+			        },
+			        "medida.diferença_vitimas_vs_a_a": {
+			          "Target": {
+			            "Entity": "medida.diferença_vitimas_vs_a_a"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_perfil_vitima"
+			            },
+			            "Object": {
+			              "Role": "medida.diferença_vitimas_vs_a_a"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_perfil_vitimas_have__diferença_vitimas_vs_a_a"
+			        }
+			      ]
+			    },
+			    "f_perfil_vitima_has_medida_total_vítimas_a_a": {
+			      "Binding": {
+			        "ConceptualEntity": "fPerfilVitimas"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_perfil_vitima": {
+			          "Target": {
+			            "Entity": "f_perfil_vitima"
+			          }
+			        },
+			        "medida.total_vítimas_a_a": {
+			          "Target": {
+			            "Entity": "medida.total_vítimas_a_a"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_perfil_vitima"
+			            },
+			            "Object": {
+			              "Role": "medida.total_vítimas_a_a"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_perfil_vitimas_have_total_vítimas_a_a"
+			        }
+			      ]
+			    },
+			    "f_ocorrencia_has_medida_diferença_ocorrências_vs_a_a": {
 			      "Binding": {
 			        "ConceptualEntity": "fOcorrencias"
 			      },
@@ -2560,9 +2985,9 @@ cultureInfo pt-BR
 			            "Entity": "f_ocorrencia"
 			          }
 			        },
-			        "d_cidade": {
+			        "medida.diferença_ocorrências_vs_a_a": {
 			          "Target": {
-			            "Entity": "d_cidade"
+			            "Entity": "medida.diferença_ocorrências_vs_a_a"
 			          }
 			        }
 			      },
@@ -2573,29 +2998,16 @@ cultureInfo pt-BR
 			              "Role": "f_ocorrencia"
 			            },
 			            "Object": {
-			              "Role": "d_cidade"
+			              "Role": "medida.diferença_ocorrências_vs_a_a"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "f_ocorrencias_have_d_cidades"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "d_cidade"
-			            },
-			            "Object": {
-			              "Role": "f_ocorrencia"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "d_cidades_have_f_ocorrencias"
+			          "ID": "f_ocorrencias_have__diferença_ocorrências_vs_a_a"
 			        }
 			      ]
 			    },
-			    "f_ocorrencia_has_d_calendario": {
+			    "f_ocorrencia_has_medida_total_ocorrências_a_a": {
 			      "Binding": {
 			        "ConceptualEntity": "fOcorrencias"
 			      },
@@ -2606,9 +3018,9 @@ cultureInfo pt-BR
 			            "Entity": "f_ocorrencia"
 			          }
 			        },
-			        "d_calendario": {
+			        "medida.total_ocorrências_a_a": {
 			          "Target": {
-			            "Entity": "d_calendario"
+			            "Entity": "medida.total_ocorrências_a_a"
 			          }
 			        }
 			      },
@@ -2619,29 +3031,16 @@ cultureInfo pt-BR
 			              "Role": "f_ocorrencia"
 			            },
 			            "Object": {
-			              "Role": "d_calendario"
+			              "Role": "medida.total_ocorrências_a_a"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "f_ocorrencias_have_d_calendarios"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "d_calendario"
-			            },
-			            "Object": {
-			              "Role": "f_ocorrencia"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "d_calendarios_have_f_ocorrencias"
+			          "ID": "f_ocorrencias_have_total_ocorrências_a_a"
 			        }
 			      ]
 			    },
-			    "f_ocorrencia_has_d_hora": {
+			    "f_ocorrencia_has_medida_contador_aux": {
 			      "Binding": {
 			        "ConceptualEntity": "fOcorrencias"
 			      },
@@ -2652,9 +3051,9 @@ cultureInfo pt-BR
 			            "Entity": "f_ocorrencia"
 			          }
 			        },
-			        "d_hora": {
+			        "medida.contador_aux": {
 			          "Target": {
-			            "Entity": "d_hora"
+			            "Entity": "medida.contador_aux"
 			          }
 			        }
 			      },
@@ -2665,45 +3064,47 @@ cultureInfo pt-BR
 			              "Role": "f_ocorrencia"
 			            },
 			            "Object": {
-			              "Role": "d_hora"
+			              "Role": "medida.contador_aux"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "f_ocorrencias_have_d_horas"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "d_hora"
-			            },
-			            "Object": {
-			              "Role": "f_ocorrencia"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "d_horas_have_f_ocorrencias"
+			          "ID": "f_ocorrencias_have_contador_aux"
 			        }
 			      ]
 			    },
-			    "f_ocorrencia_has_d_motivo": {
+			    "f_perfil_vitima_has_estado": {
 			      "Binding": {
-			        "ConceptualEntity": "fOcorrencias"
+			        "ConceptualEntity": "fPerfilVitimas"
 			      },
 			      "State": "Generated",
 			      "Roles": {
-			        "f_ocorrencia": {
+			        "f_perfil_vitima": {
 			          "Target": {
-			            "Entity": "f_ocorrencia"
+			            "Entity": "f_perfil_vitima"
 			          }
 			        },
-			        "d_motivo": {
+			        "f_perfil_vitima.estado": {
 			          "Target": {
-			            "Entity": "d_motivo"
+			            "Entity": "f_perfil_vitima.estado"
 			          }
 			        }
-			      }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_perfil_vitima"
+			            },
+			            "Object": {
+			              "Role": "f_perfil_vitima.estado"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_perfil_vitimas_have_estado"
+			        }
+			      ]
 			    },
 			    "f_perfil_vitima_has_medida_total_vítimas": {
 			      "Binding": {
@@ -4025,6 +4426,72 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
+			    "d_motivo_has_motivo": {
+			      "Binding": {
+			        "ConceptualEntity": "dMotivos"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "d_motivo": {
+			          "Target": {
+			            "Entity": "d_motivo"
+			          }
+			        },
+			        "d_motivo.motivo": {
+			          "Target": {
+			            "Entity": "d_motivo.motivo"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "d_motivo"
+			            },
+			            "Object": {
+			              "Role": "d_motivo.motivo"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "d_motivos_have_motivos"
+			        }
+			      ]
+			    },
+			    "d_faixa_etaria_has_faixa_etaria": {
+			      "Binding": {
+			        "ConceptualEntity": "dFaixaEtarias"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "d_faixa_etaria": {
+			          "Target": {
+			            "Entity": "d_faixa_etaria"
+			          }
+			        },
+			        "d_faixa_etaria.faixa_etaria": {
+			          "Target": {
+			            "Entity": "d_faixa_etaria.faixa_etaria"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "d_faixa_etaria"
+			            },
+			            "Object": {
+			              "Role": "d_faixa_etaria.faixa_etaria"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "d_faixa_etarias_have_faixa_etarias"
+			        }
+			      ]
+			    },
 			    "d_situacao_has_situacao_ptbr": {
 			      "Binding": {
 			        "ConceptualEntity": "dSituacao"
@@ -4253,6 +4720,39 @@ cultureInfo pt-BR
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "d_cidades_have_id_estado"
+			        }
+			      ]
+			    },
+			    "d_cidade_has_nome_cidade": {
+			      "Binding": {
+			        "ConceptualEntity": "dCidades"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "d_cidade": {
+			          "Target": {
+			            "Entity": "d_cidade"
+			          }
+			        },
+			        "d_cidade.nome_cidade": {
+			          "Target": {
+			            "Entity": "d_cidade.nome_cidade"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "d_cidade"
+			            },
+			            "Object": {
+			              "Role": "d_cidade.nome_cidade"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "d_cidades_have_nome_cidades"
 			        }
 			      ]
 			    },
@@ -4553,6 +5053,355 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
+			    "f_ocorrencia_has_medida_diferença_ocorrências_vs_a_a_seta": {
+			      "Binding": {
+			        "ConceptualEntity": "fOcorrencias"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_ocorrencia": {
+			          "Target": {
+			            "Entity": "f_ocorrencia"
+			          }
+			        },
+			        "medida.diferença_ocorrências_vs_a_a_seta": {
+			          "Target": {
+			            "Entity": "medida.diferença_ocorrências_vs_a_a_seta"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_ocorrencia"
+			            },
+			            "Object": {
+			              "Role": "medida.diferença_ocorrências_vs_a_a_seta"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_ocorrencias_have__diferença_ocorrências_vs_a_a_seta"
+			        }
+			      ]
+			    },
+			    "f_perfil_vitima_has_medida_diferença_vitimas_vs_a_a_seta": {
+			      "Binding": {
+			        "ConceptualEntity": "fPerfilVitimas"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_perfil_vitima": {
+			          "Target": {
+			            "Entity": "f_perfil_vitima"
+			          }
+			        },
+			        "medida.diferença_vitimas_vs_a_a_seta": {
+			          "Target": {
+			            "Entity": "medida.diferença_vitimas_vs_a_a_seta"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_perfil_vitima"
+			            },
+			            "Object": {
+			              "Role": "medida.diferença_vitimas_vs_a_a_seta"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_perfil_vitimas_have__diferença_vitimas_vs_a_a_seta"
+			        }
+			      ]
+			    },
+			    "f_perfil_vitima_has_medida_diferença_mortes_vs_a_a_seta": {
+			      "Binding": {
+			        "ConceptualEntity": "fPerfilVitimas"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_perfil_vitima": {
+			          "Target": {
+			            "Entity": "f_perfil_vitima"
+			          }
+			        },
+			        "medida.diferença_mortes_vs_a_a_seta": {
+			          "Target": {
+			            "Entity": "medida.diferença_mortes_vs_a_a_seta"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_perfil_vitima"
+			            },
+			            "Object": {
+			              "Role": "medida.diferença_mortes_vs_a_a_seta"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_perfil_vitimas_have__diferença_mortes_vs_a_a_seta"
+			        }
+			      ]
+			    },
+			    "f_ocorrencia_has_medida_total_operação_com_agentes_seg__público": {
+			      "Binding": {
+			        "ConceptualEntity": "fOcorrencias"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_ocorrencia": {
+			          "Target": {
+			            "Entity": "f_ocorrencia"
+			          }
+			        },
+			        "medida.total_operação_com_agentes_seg__público": {
+			          "Target": {
+			            "Entity": "medida.total_operação_com_agentes_seg__público"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_ocorrencia"
+			            },
+			            "Object": {
+			              "Role": "medida.total_operação_com_agentes_seg__público"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_ocorrencias_have_total_operação_com_agentes_seg__público"
+			        }
+			      ]
+			    },
+			    "f_ocorrencia_has_medida_ocorrencias_com_agentes_de_seg_público": {
+			      "Binding": {
+			        "ConceptualEntity": "fOcorrencias"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_ocorrencia": {
+			          "Target": {
+			            "Entity": "f_ocorrencia"
+			          }
+			        },
+			        "medida.ocorrencias_com_agentes_de_seg_público": {
+			          "Target": {
+			            "Entity": "medida.ocorrencias_com_agentes_de_seg_público"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_ocorrencia"
+			            },
+			            "Object": {
+			              "Role": "medida.ocorrencias_com_agentes_de_seg_público"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_ocorrencias_have__ocorrencias_com_agentes_de_seg_público"
+			        }
+			      ]
+			    },
+			    "f_ocorrencia_has_d_motivo": {
+			      "Binding": {
+			        "ConceptualEntity": "fOcorrencias"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_ocorrencia": {
+			          "Target": {
+			            "Entity": "f_ocorrencia"
+			          }
+			        },
+			        "d_motivo": {
+			          "Target": {
+			            "Entity": "d_motivo"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_ocorrencia"
+			            },
+			            "Object": {
+			              "Role": "d_motivo"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_ocorrencias_have_d_motivos"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "d_motivo"
+			            },
+			            "Object": {
+			              "Role": "f_ocorrencia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "d_motivos_have_f_ocorrencias"
+			        }
+			      ]
+			    },
+			    "f_ocorrencia_has_d_hora": {
+			      "Binding": {
+			        "ConceptualEntity": "fOcorrencias"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_ocorrencia": {
+			          "Target": {
+			            "Entity": "f_ocorrencia"
+			          }
+			        },
+			        "d_hora": {
+			          "Target": {
+			            "Entity": "d_hora"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_ocorrencia"
+			            },
+			            "Object": {
+			              "Role": "d_hora"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_ocorrencias_have_d_horas"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "d_hora"
+			            },
+			            "Object": {
+			              "Role": "f_ocorrencia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "d_horas_have_f_ocorrencias"
+			        }
+			      ]
+			    },
+			    "f_ocorrencia_has_d_calendario": {
+			      "Binding": {
+			        "ConceptualEntity": "fOcorrencias"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_ocorrencia": {
+			          "Target": {
+			            "Entity": "f_ocorrencia"
+			          }
+			        },
+			        "d_calendario": {
+			          "Target": {
+			            "Entity": "d_calendario"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_ocorrencia"
+			            },
+			            "Object": {
+			              "Role": "d_calendario"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_ocorrencias_have_d_calendarios"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "d_calendario"
+			            },
+			            "Object": {
+			              "Role": "f_ocorrencia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "d_calendarios_have_f_ocorrencias"
+			        }
+			      ]
+			    },
+			    "f_ocorrencia_has_d_cidade": {
+			      "Binding": {
+			        "ConceptualEntity": "fOcorrencias"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_ocorrencia": {
+			          "Target": {
+			            "Entity": "f_ocorrencia"
+			          }
+			        },
+			        "d_cidade": {
+			          "Target": {
+			            "Entity": "d_cidade"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_ocorrencia"
+			            },
+			            "Object": {
+			              "Role": "d_cidade"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_ocorrencias_have_d_cidades"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "d_cidade"
+			            },
+			            "Object": {
+			              "Role": "f_ocorrencia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "d_cidades_have_f_ocorrencias"
+			        }
+			      ]
+			    },
 			    "f_perfil_vitima_has_d_situacao": {
 			      "Binding": {
 			        "ConceptualEntity": "fPerfilVitimas"
@@ -4615,7 +5464,35 @@ cultureInfo pt-BR
 			            "Entity": "d_faixa_etaria"
 			          }
 			        }
-			      }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_perfil_vitima"
+			            },
+			            "Object": {
+			              "Role": "d_faixa_etaria"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_perfil_vitimas_have_d_faixa_etarias"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "d_faixa_etaria"
+			            },
+			            "Object": {
+			              "Role": "f_perfil_vitima"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "d_faixa_etarias_have_f_perfil_vitimas"
+			        }
+			      ]
 			    },
 			    "f_perfil_vitima_has_f_ocorrencia": {
 			      "Binding": {

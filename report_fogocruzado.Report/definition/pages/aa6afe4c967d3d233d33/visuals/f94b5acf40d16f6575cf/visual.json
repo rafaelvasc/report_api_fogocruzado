@@ -6,7 +6,7 @@
     "y": 262.22222222222223,
     "z": 0,
     "height": 212.22222222222223,
-    "width": 614.44444444444446
+    "width": 505.55555555555554
   },
   "visual": {
     "visualType": "lineChart",
@@ -46,6 +46,59 @@
             }
           ]
         },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dCalendario"
+                        }
+                      },
+                      "Property": "MesAno"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(dCalendario.MesAno)",
+              "nativeQueryRef": "Mês",
+              "displayName": "Mês"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Total Mortes"
+                }
+              },
+              "queryRef": "Medidas.Total Mortes",
+              "nativeQueryRef": "Mortes",
+              "displayName": "Mortes"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "% Letalidade"
+                }
+              },
+              "queryRef": "Medidas.% Letalidade",
+              "nativeQueryRef": "% Letalidade"
+            }
+          ]
+        },
         "Y": {
           "projections": [
             {
@@ -78,7 +131,8 @@
                 }
               },
               "queryRef": "Medidas.Total Vítimas",
-              "nativeQueryRef": "Total Vítimas"
+              "nativeQueryRef": "Vítimas",
+              "displayName": "Vítimas"
             }
           ]
         }
@@ -350,6 +404,13 @@
                   "Value": "false"
                 }
               }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
             }
           }
         }
@@ -510,20 +571,6 @@
               }
             },
             "Property": "Total Ocorrências"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "9bf1de6d14bf3ae7f5b0",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Medidas"
-              }
-            },
-            "Property": "Total Vítimas"
           }
         },
         "type": "Advanced"

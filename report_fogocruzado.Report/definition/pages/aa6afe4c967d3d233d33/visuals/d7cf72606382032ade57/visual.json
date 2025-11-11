@@ -2,14 +2,14 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
   "name": "d7cf72606382032ade57",
   "position": {
-    "x": 648.17021276595744,
-    "y": 262.53617021276597,
+    "x": 545.55555555555554,
+    "y": 260,
     "z": 5013,
-    "height": 211.33617021276595,
-    "width": 193.9063829787234
+    "height": 218.88888888888889,
+    "width": 296.66666666666669
   },
   "visual": {
-    "visualType": "clusteredBarChart",
+    "visualType": "barChart",
     "query": {
       "queryState": {
         "Category": {
@@ -19,14 +19,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dCidades"
+                      "Entity": "dMotivos"
                     }
                   },
-                  "Property": "NomeEstado"
+                  "Property": "Motivo"
                 }
               },
-              "queryRef": "dCidades.NomeEstado",
-              "nativeQueryRef": "NomeEstado",
+              "queryRef": "dMotivos.Motivo",
+              "nativeQueryRef": "Motivo",
               "active": true
             }
           ]
@@ -41,11 +41,11 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "% Letalidade"
+                  "Property": "Total Ocorrências"
                 }
               },
-              "queryRef": "Medidas.% Letalidade",
-              "nativeQueryRef": "% Letalidade"
+              "queryRef": "Medidas.Total Ocorrências",
+              "nativeQueryRef": "Total Ocorrências"
             }
           ]
         }
@@ -60,7 +60,7 @@
                     "Entity": "Medidas"
                   }
                 },
-                "Property": "% Letalidade"
+                "Property": "Total Ocorrências"
               }
             },
             "direction": "Descending"
@@ -110,7 +110,7 @@
             "maxMarginFactor": {
               "expr": {
                 "Literal": {
-                  "Value": "40L"
+                  "Value": "50L"
                 }
               }
             },
@@ -275,7 +275,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'% Letalidade'"
+                  "Value": "'Ocorrências por Motivo'"
                 }
               }
             },
@@ -623,37 +623,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "75a7024b75e11e66578e",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Medidas"
-              }
-            },
-            "Property": "% Letalidade"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "500c10b282e9273f87fa",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dCidades"
-              }
-            },
-            "Property": "NomeEstado"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

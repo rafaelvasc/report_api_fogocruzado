@@ -1251,6 +1251,16 @@ cultureInfo pt-BR
 			          "semana abrev": {
 			            "State": "Generated"
 			          }
+			        },
+			        {
+			          "Semana": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -1570,7 +1580,8 @@ cultureInfo pt-BR
 			      "Terms": [
 			        {
 			          "medida": {
-			            "State": "Generated"
+			            "State": "Generated",
+			            "Weight": 0.87
 			          }
 			        }
 			      ]
@@ -2186,6 +2197,16 @@ cultureInfo pt-BR
 			            },
 			            "Weight": 0.582
 			          }
+			        },
+			        {
+			          "Mortes": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -2507,16 +2528,6 @@ cultureInfo pt-BR
 			            },
 			            "Weight": 0.605
 			          }
-			        },
-			        {
-			          "%Operação Policial": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
 			        }
 			      ]
 			    },
@@ -2568,6 +2579,16 @@ cultureInfo pt-BR
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "Vítimas": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -2875,55 +2896,162 @@ cultureInfo pt-BR
 			          }
 			        }
 			      ]
-			    }
-			  },
-			  "Relationships": {
-			    "f_perfil_vitima_has_f_ocorrencia": {
-			      "Binding": {
-			        "ConceptualEntity": "fPerfilVitimas"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "f_perfil_vitima": {
-			          "Target": {
-			            "Entity": "f_perfil_vitima"
-			          }
-			        },
-			        "f_ocorrencia": {
-			          "Target": {
-			            "Entity": "f_ocorrencia"
-			          }
+			    },
+			    "medida.vítimas_por_ocorrência": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "Vítimas por Ocorrência"
 			        }
 			      },
-			      "Phrasings": [
+			      "State": "Generated",
+			      "Terms": [
 			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "f_perfil_vitima"
-			            },
-			            "Object": {
-			              "Role": "f_ocorrencia"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "f_perfil_vitimas_have_f_ocorrencias"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "f_ocorrencia"
-			            },
-			            "Object": {
-			              "Role": "f_perfil_vitima"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "f_ocorrencias_have_f_perfil_vitimas"
+			          "vítimas por ocorrência": {
+			            "State": "Generated"
+			          }
 			        }
 			      ]
 			    },
+			    "medida.medida": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "Medida"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "medida": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.mortes_por_ocorrência": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "Mortes por Ocorrência"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "mortes por ocorrência": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "p_periodo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "pPeriodo"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "p periodo": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "pPeriodo": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "p_periodo.p_periodo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "pPeriodo",
+			          "ConceptualProperty": "pPeriodo"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "p periodo": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "p periodo name": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "pPeriodo": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ],
+			      "NameType": "Name"
+			    },
+			    "p_periodo.pPeriodo_campos": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "pPeriodo",
+			          "ConceptualProperty": "pPeriodo Campos"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "pPeriodo campos": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "p_periodo.pPeriodo_pedido": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "pPeriodo",
+			          "ConceptualProperty": "pPeriodo Pedido"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "pPeriodo pedido": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "p_periodo.título_dinamico_eventos": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "pPeriodo",
+			          "ConceptualProperty": "Título Dinamico Eventos"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "título dinamico eventos": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    }
+			  },
+			  "Relationships": {
 			    "f_perfil_vitima_has_d_faixa_etaria": {
 			      "Binding": {
 			        "ConceptualEntity": "fPerfilVitimas"
@@ -3197,6 +3325,250 @@ cultureInfo pt-BR
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "d_motivos_have_f_ocorrencias"
+			        }
+			      ]
+			    },
+			    "p_periodo_has_título_dinamico_eventos": {
+			      "Binding": {
+			        "ConceptualEntity": "pPeriodo"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "p_periodo": {
+			          "Target": {
+			            "Entity": "p_periodo"
+			          }
+			        },
+			        "p_periodo.título_dinamico_eventos": {
+			          "Target": {
+			            "Entity": "p_periodo.título_dinamico_eventos"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "p_periodo"
+			            },
+			            "Object": {
+			              "Role": "p_periodo.título_dinamico_eventos"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "p_periodos_have_título_dinamico_eventos"
+			        }
+			      ]
+			    },
+			    "p_periodo_has_p_periodo": {
+			      "Binding": {
+			        "ConceptualEntity": "pPeriodo"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "p_periodo": {
+			          "Target": {
+			            "Entity": "p_periodo"
+			          }
+			        },
+			        "p_periodo.p_periodo": {
+			          "Target": {
+			            "Entity": "p_periodo.p_periodo"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "p_periodo"
+			            },
+			            "Object": {
+			              "Role": "p_periodo.p_periodo"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "p_periodos_have_p_periodos"
+			        },
+			        {
+			          "Name": {
+			            "Subject": {
+			              "Role": "p_periodo"
+			            },
+			            "Name": {
+			              "Role": "p_periodo.p_periodo"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "p_periodos_are_names_IDs_of_p_periodos"
+			        }
+			      ]
+			    },
+			    "f_perfil_vitima_has_medida_mortes_por_ocorrência": {
+			      "Binding": {
+			        "ConceptualEntity": "fPerfilVitimas"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_perfil_vitima": {
+			          "Target": {
+			            "Entity": "f_perfil_vitima"
+			          }
+			        },
+			        "medida.mortes_por_ocorrência": {
+			          "Target": {
+			            "Entity": "medida.mortes_por_ocorrência"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_perfil_vitima"
+			            },
+			            "Object": {
+			              "Role": "medida.mortes_por_ocorrência"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_perfil_vitimas_have_mortes_por_ocorrência"
+			        }
+			      ]
+			    },
+			    "f_ocorrencia_has_medida_mortes_por_ocorrência": {
+			      "Binding": {
+			        "ConceptualEntity": "fOcorrencias"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_ocorrencia": {
+			          "Target": {
+			            "Entity": "f_ocorrencia"
+			          }
+			        },
+			        "medida.mortes_por_ocorrência": {
+			          "Target": {
+			            "Entity": "medida.mortes_por_ocorrência"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_ocorrencia"
+			            },
+			            "Object": {
+			              "Role": "medida.mortes_por_ocorrência"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_ocorrencias_have_mortes_por_ocorrência"
+			        }
+			      ]
+			    },
+			    "medida_has_medida": {
+			      "Binding": {
+			        "ConceptualEntity": "Medidas"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "medida": {
+			          "Target": {
+			            "Entity": "medida"
+			          }
+			        },
+			        "medida.medida": {
+			          "Target": {
+			            "Entity": "medida.medida"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "medida"
+			            },
+			            "Object": {
+			              "Role": "medida.medida"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "medidas_have_medida"
+			        }
+			      ]
+			    },
+			    "f_perfil_vitima_has_medida_vítimas_por_ocorrência": {
+			      "Binding": {
+			        "ConceptualEntity": "fPerfilVitimas"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_perfil_vitima": {
+			          "Target": {
+			            "Entity": "f_perfil_vitima"
+			          }
+			        },
+			        "medida.vítimas_por_ocorrência": {
+			          "Target": {
+			            "Entity": "medida.vítimas_por_ocorrência"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_perfil_vitima"
+			            },
+			            "Object": {
+			              "Role": "medida.vítimas_por_ocorrência"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_perfil_vitimas_have_vítimas_por_ocorrência"
+			        }
+			      ]
+			    },
+			    "f_ocorrencia_has_medida_vítimas_por_ocorrência": {
+			      "Binding": {
+			        "ConceptualEntity": "fOcorrencias"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_ocorrencia": {
+			          "Target": {
+			            "Entity": "f_ocorrencia"
+			          }
+			        },
+			        "medida.vítimas_por_ocorrência": {
+			          "Target": {
+			            "Entity": "medida.vítimas_por_ocorrência"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_ocorrencia"
+			            },
+			            "Object": {
+			              "Role": "medida.vítimas_por_ocorrência"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_ocorrencias_have_vítimas_por_ocorrência"
 			        }
 			      ]
 			    },
@@ -5606,6 +5978,52 @@ cultureInfo pt-BR
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "f_ocorrencias_have_documentos"
+			        }
+			      ]
+			    },
+			    "f_perfil_vitima_has_f_ocorrencia": {
+			      "Binding": {
+			        "ConceptualEntity": "fPerfilVitimas"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_perfil_vitima": {
+			          "Target": {
+			            "Entity": "f_perfil_vitima"
+			          }
+			        },
+			        "f_ocorrencia": {
+			          "Target": {
+			            "Entity": "f_ocorrencia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_perfil_vitima"
+			            },
+			            "Object": {
+			              "Role": "f_ocorrencia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_perfil_vitimas_have_f_ocorrencias"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_ocorrencia"
+			            },
+			            "Object": {
+			              "Role": "f_perfil_vitima"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_ocorrencias_have_f_perfil_vitimas"
 			        }
 			      ]
 			    }

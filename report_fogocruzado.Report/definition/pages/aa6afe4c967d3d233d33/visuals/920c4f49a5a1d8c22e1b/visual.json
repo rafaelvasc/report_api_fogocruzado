@@ -65,12 +65,11 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "% Ocorrências de Operação Policial"
+                  "Property": "% Letalidade"
                 }
               },
-              "queryRef": "Medidas.% Ocorrências de Operação Policial",
-              "nativeQueryRef": "%Operação Policial",
-              "displayName": "%Operação Policial"
+              "queryRef": "Medidas.% Letalidade",
+              "nativeQueryRef": "% Letalidade"
             }
           ]
         }
@@ -528,21 +527,6 @@
             "id": "field-eaf39d34-33b2-8583-9af1-cbdb4d20f0eb",
             "order": 0
           }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 0
-                }
-              }
-            ],
-            "metadata": "Medidas.% Ocorrências de Operação Policial",
-            "id": "field-829a4ace-a7bf-2ba7-573c-cd11e686c87b",
-            "order": 0
-          }
         }
       ],
       "referenceLabelLayout": [
@@ -745,28 +729,6 @@
           "selector": {
             "metadata": "Medidas.Total Mortes",
             "id": "field-eaf39d34-33b2-8583-9af1-cbdb4d20f0eb"
-          }
-        },
-        {
-          "properties": {
-            "titleContentType": {
-              "expr": {
-                "Literal": {
-                  "Value": "'custom'"
-                }
-              }
-            },
-            "titleText": {
-              "expr": {
-                "Literal": {
-                  "Value": "'%Ocorrências Policial'"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Medidas.% Ocorrências de Operação Policial",
-            "id": "field-829a4ace-a7bf-2ba7-573c-cd11e686c87b"
           }
         }
       ],
@@ -1642,20 +1604,6 @@
               }
             },
             "Property": "Total Mortes"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "4fbc0025fb250b6aa9d5",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Medidas"
-              }
-            },
-            "Property": "% Ocorrências de Operação Policial"
           }
         },
         "type": "Advanced"

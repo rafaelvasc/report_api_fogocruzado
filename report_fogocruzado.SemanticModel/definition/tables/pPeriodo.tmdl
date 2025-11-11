@@ -1,0 +1,64 @@
+table pPeriodo
+	lineageTag: 8057ad68-a202-43e5-9550-5b2af1d24662
+
+	measure 'Título Dinamico Eventos' = ```
+			
+			VAR ParamSelecionado = SELECTEDVALUE(pPeriodo[pPeriodo Pedido])
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    ParamSelecionado = 0, "Ocorrências e Vítimas por Dia da Semana",
+			    ParamSelecionado = 1, "Ocorrências e Vítimas por Período do Dia",
+			    ParamSelecionado = 2, "Ocorrências e Vítimas por Faixa Horária",
+			    "Eventos ao longo do tempo"
+			)
+			
+			```
+		lineageTag: 61e44dcf-688d-4c58-848a-c9659dd0006f
+
+	column pPeriodo
+		lineageTag: 477b391f-c324-4e81-b1aa-66c554cfeb00
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'pPeriodo Pedido'
+
+		relatedColumnDetails
+			groupByColumn: 'pPeriodo Campos'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'pPeriodo Campos'
+		isHidden
+		lineageTag: 9f82ab6b-fb6a-4e50-b314-4617ad7a01e2
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'pPeriodo Pedido'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'pPeriodo Pedido'
+		isHidden
+		formatString: 0
+		lineageTag: 594ca806-202e-4d4e-91b9-77eae031a7ca
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pPeriodo = calculated
+		mode: import
+		source =
+				{
+				    ("Semana", NAMEOF('dCalendario'[Semana Abrev]), 0),
+				    ("Período", NAMEOF('dHora'[Período]), 1),
+				    ("Hora", NAMEOF('dHora'[Hora]), 2)
+				}
+
+	annotation PBI_Id = a61603aa76d44fefa0cee16195554258
+

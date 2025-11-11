@@ -19,30 +19,33 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dHora"
+                      "Entity": "dCalendario"
                     }
                   },
-                  "Property": "Período"
+                  "Property": "Semana Abrev"
                 }
               },
-              "queryRef": "dHora.Período",
-              "nativeQueryRef": "Período",
-              "active": true
-            },
+              "queryRef": "dCalendario.Semana Abrev",
+              "nativeQueryRef": "Semana",
+              "active": true,
+              "displayName": "Semana"
+            }
+          ],
+          "fieldParameters": [
             {
-              "field": {
+              "parameterExpr": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dHora"
+                      "Entity": "pPeriodo"
                     }
                   },
-                  "Property": "Hora"
+                  "Property": "pPeriodo"
                 }
               },
-              "queryRef": "dHora.Hora",
-              "nativeQueryRef": "Hora",
-              "active": false
+              "index": 0,
+              "length": 1,
+              "sortDirection": "Ascending"
             }
           ]
         },
@@ -86,29 +89,15 @@
               "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "dHora"
+                    "Entity": "dCalendario"
                   }
                 },
-                "Property": "Período"
-              }
-            },
-            "direction": "Ascending"
-          },
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "dHora"
-                  }
-                },
-                "Property": "Hora"
+                "Property": "Semana Abrev"
               }
             },
             "direction": "Ascending"
           }
-        ],
-        "isDefaultSort": true
+        ]
       }
     },
     "objects": {
@@ -323,8 +312,13 @@
           "properties": {
             "text": {
               "expr": {
-                "Literal": {
-                  "Value": "'Eventos ao longo do tempo'"
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pPeriodo"
+                    }
+                  },
+                  "Property": "Título Dinamico Eventos"
                 }
               }
             },
@@ -435,20 +429,6 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "2332954542189bd9366e",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dHora"
-              }
-            },
-            "Property": "Hora"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
         "name": "e2640bf20bb31116ed95",
         "field": {
           "Measure": {
@@ -475,20 +455,6 @@
           }
         },
         "type": "Advanced"
-      },
-      {
-        "name": "ea7a4ab3d70151840af5",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dHora"
-              }
-            },
-            "Property": "Período"
-          }
-        },
-        "type": "Categorical"
       }
     ]
   }

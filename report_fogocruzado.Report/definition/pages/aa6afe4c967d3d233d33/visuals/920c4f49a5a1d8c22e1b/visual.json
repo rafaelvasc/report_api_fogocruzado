@@ -530,20 +530,7 @@
           }
         },
         {
-          "properties": {
-            "value": {
-              "expr": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Medidas"
-                    }
-                  },
-                  "Property": "% Ocorrencias com Agentes de Seg Público"
-                }
-              }
-            }
-          },
+          "properties": {},
           "selector": {
             "data": [
               {

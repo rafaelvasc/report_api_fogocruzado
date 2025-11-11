@@ -271,7 +271,7 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 9,
+                      "ColorId": 5,
                       "Percent": 0
                     }
                   }
@@ -298,6 +298,48 @@
                     "Right": {
                       "Literal": {
                         "Value": "'Tarde'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": -0.25
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "dHora"
+                          }
+                        },
+                        "Property": "Período"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Madrugada'"
                       }
                     }
                   }

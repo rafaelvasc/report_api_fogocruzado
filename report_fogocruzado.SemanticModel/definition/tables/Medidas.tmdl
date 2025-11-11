@@ -572,6 +572,13 @@ table Medidas
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 71f7f9c0-6ee6-4e75-887b-c3c8444c5068
 
+	measure 'Vítimas por Ocorrência' = ```
+			DIVIDE([Total Vítimas], [Total Ocorrências])
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 2617d549-8ef8-448a-b11f-9a5c14e9e0e4
+
 	partition Medidas = m
 		mode: import
 		source =

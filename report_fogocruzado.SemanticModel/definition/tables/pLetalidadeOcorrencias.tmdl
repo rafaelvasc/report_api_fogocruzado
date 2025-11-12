@@ -1,0 +1,50 @@
+table pLetalidadeOcorrencias
+	lineageTag: 2a18c9e5-54f7-4b28-8d1b-be84cfc8db4e
+
+	column pLetalidadeOcorrencias
+		lineageTag: 89b5f14b-2eb5-4955-b684-35eac68c53ec
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'pLetalidadeOcorrencias Pedido'
+
+		relatedColumnDetails
+			groupByColumn: 'pLetalidadeOcorrencias Campos'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'pLetalidadeOcorrencias Campos'
+		isHidden
+		lineageTag: 41b89fff-61cd-4b2b-8f2b-953a0a8b00d1
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'pLetalidadeOcorrencias Pedido'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'pLetalidadeOcorrencias Pedido'
+		isHidden
+		formatString: 0
+		lineageTag: 045e3560-d6c3-4fbc-a4aa-f7339b6e11c5
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pLetalidadeOcorrencias = calculated
+		mode: import
+		source =
+				{
+				    ("% Letalidade", NAMEOF('Medidas'[% Letalidade]), 0),
+				    ("Total Ocorrências", NAMEOF('Medidas'[Total Ocorrências]), 1),
+				    ("Total Vítimas", NAMEOF('Medidas'[Total Vítimas]), 2),
+				    ("Total Operação Policial", NAMEOF('Medidas'[Total Operação Policial]), 3)
+				}
+
+	annotation PBI_Id = 0ba7aec6b23e4cb3861222978445433c
+

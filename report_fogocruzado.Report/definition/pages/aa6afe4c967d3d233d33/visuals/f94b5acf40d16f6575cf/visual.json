@@ -2,14 +2,14 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
   "name": "f94b5acf40d16f6575cf",
   "position": {
-    "x": 14.444444444444445,
-    "y": 262.22222222222223,
+    "x": 14.647887323943662,
+    "y": 268.16901408450707,
     "z": 0,
-    "height": 212.22222222222223,
-    "width": 505.55555555555554
+    "height": 211.83098591549296,
+    "width": 507.04225352112678
   },
   "visual": {
-    "visualType": "lineChart",
+    "visualType": "clusteredColumnChart",
     "query": {
       "queryState": {
         "Category": {
@@ -95,7 +95,8 @@
                 }
               },
               "queryRef": "Medidas.% Letalidade",
-              "nativeQueryRef": "% Letalidade"
+              "nativeQueryRef": "% Letalidade",
+              "displayName": "% Letalidade"
             }
           ]
         },
@@ -109,30 +110,28 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "Total Ocorrências"
+                  "Property": "Total Operação Policial"
                 }
               },
-              "queryRef": "Medidas.Total Ocorrências",
-              "nativeQueryRef": "Total Ocorrências"
+              "queryRef": "Medidas.Total Operação Policial",
+              "nativeQueryRef": "Total Operação Policial",
+              "displayName": "Total Operação Policial"
             }
-          ]
-        },
-        "Y2": {
-          "projections": [
+          ],
+          "fieldParameters": [
             {
-              "field": {
-                "Measure": {
+              "parameterExpr": {
+                "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Medidas"
+                      "Entity": "pLetalidadeOcorrencias"
                     }
                   },
-                  "Property": "Total Vítimas"
+                  "Property": "pLetalidadeOcorrencias"
                 }
               },
-              "queryRef": "Medidas.Total Vítimas",
-              "nativeQueryRef": "Vítimas",
-              "displayName": "Vítimas"
+              "index": 0,
+              "length": 1
             }
           ]
         }
@@ -141,19 +140,31 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "Medidas"
+                    "Entity": "dCalendario"
                   }
                 },
-                "Property": "Total Ocorrências"
+                "Property": "Ano"
               }
             },
-            "direction": "Descending"
+            "direction": "Ascending"
+          },
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dCalendario"
+                  }
+                },
+                "Property": "Mes Nome"
+              }
+            },
+            "direction": "Ascending"
           }
-        ],
-        "isDefaultSort": true
+        ]
       }
     },
     "objects": {
@@ -360,60 +371,6 @@
             }
           }
         }
-      ],
-      "lineStyles": [
-        {
-          "properties": {
-            "strokeWidth": {
-              "expr": {
-                "Literal": {
-                  "Value": "3D"
-                }
-              }
-            },
-            "lineChartType": {
-              "expr": {
-                "Literal": {
-                  "Value": "'linear'"
-                }
-              }
-            },
-            "interpolationSmooth": {
-              "expr": {
-                "Literal": {
-                  "Value": "'cardinal'"
-                }
-              }
-            },
-            "interpolationSmoothParam": {
-              "expr": {
-                "Literal": {
-                  "Value": "100D"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "y2Axis": [
-        {
-          "properties": {
-            "secShowAxisTitle": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
       ]
     },
     "visualContainerObjects": {
@@ -422,8 +379,13 @@
           "properties": {
             "text": {
               "expr": {
-                "Literal": {
-                  "Value": "'Ocorrências x Vítimas por mês'"
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pPeriodo"
+                    }
+                  },
+                  "Property": "Título Dinamico Letalidade Ocorrencia"
                 }
               }
             },
@@ -530,51 +492,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "d61b87570c38445d759c",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dCalendario"
-              }
-            },
-            "Property": "Ano"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "c188fc945e23c4c1521e",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dCalendario"
-              }
-            },
-            "Property": "Mes Nome"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "6034d37e64b7874d5c7a",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Medidas"
-              }
-            },
-            "Property": "Total Ocorrências"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

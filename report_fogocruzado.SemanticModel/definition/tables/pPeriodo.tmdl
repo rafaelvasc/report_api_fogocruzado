@@ -16,6 +16,23 @@ table pPeriodo
 			```
 		lineageTag: 61e44dcf-688d-4c58-848a-c9659dd0006f
 
+	measure 'Título Dinamico Letalidade Ocorrencia' = ```
+			
+			VAR ParamSelecionado = SELECTEDVALUE(pLetalidadeOcorrencias[pLetalidadeOcorrencias Pedido])
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    ParamSelecionado = 0, "% Letalidade ao longo do tempo",
+			    ParamSelecionado = 1, "Ocorrências ao longo do tempo",
+			    ParamSelecionado = 2, "Total Vítimas ao longo do tempo",
+			    ParamSelecionado = 3, "Total Operação Policial ao longo do tempo",
+			    "Eventos ao longo do tempo"
+			)
+			
+			
+			```
+		lineageTag: 18477de7-9431-4520-9eed-68457b36d9c9
+
 	column pPeriodo
 		lineageTag: 477b391f-c324-4e81-b1aa-66c554cfeb00
 		summarizeBy: none

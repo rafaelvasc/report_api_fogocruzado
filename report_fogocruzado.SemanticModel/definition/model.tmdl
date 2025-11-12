@@ -42,6 +42,7 @@ ref table dHora
 ref table 'Última Atualização'
 ref table Medidas
 ref table pPeriodo
+ref table pLetalidadeOcorrencias
 
 ref cultureInfo pt-BR
 

@@ -34,20 +34,39 @@ Todos os dados são consumidos da **API pública do Instituto Fogo Cruzado**, um
 
 ## 🧠 Visões Disponíveis no Relatório
 
-O Power BI está estruturado em 5 seções principais:
+Visões Disponíveis no Relatório
 
-1. **Visão Geral** — Total de ocorrências, mortes, tendências por período e região.
-2. **Perfil das Vítimas** — Faixa etária, gênero, tipo (civil, agente), e outras informações demográficas.
-3. **Contexto das Ocorrências** — Análise dos motivos e circunstâncias registrados (ação policial, briga, roubo etc.).
-4. **Agentes e Operações** — Mortes de policiais, operações e indicadores relacionados ao Estado.
-5. **Sobre os Dados** — Fonte, limitações, e informações de financiamento da entidade provedora dos dados.
+Este relatório apresenta uma Visão Geral consolidada dos dados de violência monitorados pela API do Fogo Cruzado, reunindo os principais indicadores e padrões observados ao longo do tempo.
+A página inclui:
 
+• Indicadores Principais
+Total de Ocorrências
+Total de Vítimas
+Total de Mortes
+Percentual de Letalidade
+Comparação com o ano anterior para cada métrica
+
+• Operações Policiais ao Longo do Tempo
+
+Visualização mensal do total de ações policiais registradas, com seleção dinâmica por tipo de indicador (operações, letalidade, ocorrências ou vítimas).
+
+• Ocorrências por Motivo
+
+Distribuição dos principais motivos registrados (homicídio/tentativa, ação policial, tentativa de roubo, não identificado, entre outros).
+
+• Ocorrências e Vítimas por Dia da Semana
+
+Comparação entre o volume de ocorrências e o número de vítimas por dia, permitindo identificar padrões de concentração semanal.
+
+• Mapa de Ocorrências
+
+Localização geográfica dos registros, categorizados por período do dia (madrugada, manhã, tarde ou noite).
 ---
 
 ## 🚀 Objetivos Futuros
 
 - Automatizar a atualização diária dos dados via Power BI Service.
-- Criar uma versão pública online dos dashboards (via Power BI Embedded ou Datawrapper).
+- Criar uma versão pública online dos dashboards (via Power BI Embedded).
 - Incluir comparativos entre anos, regiões e motivos das ocorrências.
 
 ---

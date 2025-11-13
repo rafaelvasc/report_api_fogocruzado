@@ -110,12 +110,12 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "Total Operação Policial"
+                  "Property": "% Letalidade"
                 }
               },
-              "queryRef": "Medidas.Total Operação Policial",
-              "nativeQueryRef": "Total Operação Policial",
-              "displayName": "Total Operação Policial"
+              "queryRef": "Medidas.% Letalidade",
+              "nativeQueryRef": "% Letalidade",
+              "displayName": "% Letalidade"
             }
           ],
           "fieldParameters": [

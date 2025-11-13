@@ -170,7 +170,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'''Medidas''[Total Operação Policial]'"
+                                "Value": "'''Medidas''[% Letalidade]'"
                               }
                             }
                           ]
@@ -198,7 +198,7 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''Medidas''[Total Operação Policial]'"
+                                      "Value": "'''Medidas''[% Letalidade]'"
                                     }
                                   }
                                 ]
@@ -222,7 +222,7 @@
                         },
                         "valueMap": [
                           {
-                            "0": "Total Operação Policial"
+                            "0": "% Letalidade"
                           }
                         ]
                       }

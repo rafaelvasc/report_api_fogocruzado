@@ -65,11 +65,6 @@
       "type": "RegisteredResources",
       "items": [
         {
-          "name": "Fogo_Cruzado012500988160719984.svg",
-          "path": "Fogo_Cruzado012500988160719984.svg",
-          "type": "Image"
-        },
-        {
           "name": "Tema_FogoCruzado023003111988370906.json",
           "path": "Tema_FogoCruzado023003111988370906.json",
           "type": "CustomTheme"

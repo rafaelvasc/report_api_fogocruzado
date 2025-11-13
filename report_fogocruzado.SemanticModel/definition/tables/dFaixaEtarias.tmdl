@@ -19,9 +19,9 @@ table dFaixaEtarias
 		source =
 				let
 				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WckwpzSnJV4rViVbyO7w4XyEzJTWvJDMtMzkxBSLqmJKfk1qcDBRNBfM9U/KLITLORZmJeYeXJ4I5bqkgU2IB", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [FaixaEtaria = _t]),
-				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"FaixaEtaria", type text}})
+				    TipandoColunas = Table.TransformColumnTypes(Fonte,{{"FaixaEtaria", type text}})
 				in
-				    #"Tipo Alterado"
+				    TipandoColunas
 
 	annotation PBI_NavigationStepName = Navegação
 

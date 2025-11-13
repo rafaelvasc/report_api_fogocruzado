@@ -27,9 +27,9 @@ table dSituacao
 		source =
 				let
 				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WcklNTFHSUfLNLyrJV4rViVYKzy/NS0kFibmlFmWmAAVjAQ==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Situacao = _t, Situacao_ptbr = _t]),
-				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Situacao", type text}, {"Situacao_ptbr", type text}})
+				    TipandoColunas = Table.TransformColumnTypes(Fonte,{{"Situacao", type text}, {"Situacao_ptbr", type text}})
 				in
-				    #"Tipo Alterado"
+				    TipandoColunas
 
 	annotation PBI_NavigationStepName = Navegação
 

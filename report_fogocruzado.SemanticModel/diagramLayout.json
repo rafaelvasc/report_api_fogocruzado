@@ -23,19 +23,6 @@
         },
         {
           "location": {
-            "x": 14.383050014693708,
-            "y": 344
-          },
-          "nodeIndex": "dEstados",
-          "nodeLineageTag": "1608da20-9b92-4671-8d9a-a88f6e6eb9b3",
-          "size": {
-            "height": 128,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
             "x": 776.38305001469371,
             "y": 10.155302040154737
           },
@@ -163,6 +150,26 @@
             "width": 234
           },
           "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "pLetalidadeOcorrencias",
+          "nodeLineageTag": "2a18c9e5-54f7-4b28-8d1b-be84cfc8db4e",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "pPeriodo",
+          "nodeLineageTag": "8057ad68-a202-43e5-9550-5b2af1d24662",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "Todas as tabelas",
@@ -204,19 +211,6 @@
             "width": 234
           },
           "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 794,
-            "y": 372
-          },
-          "nodeIndex": "dEstados",
-          "nodeLineageTag": "1608da20-9b92-4671-8d9a-a88f6e6eb9b3",
-          "size": {
-            "height": 128,
-            "width": 234
-          },
-          "zIndex": 0
         }
       ],
       "name": "Layout 1",
@@ -225,8 +219,49 @@
       "showExtraHeaderInfo": false,
       "hideKeyFieldsWhenCollapsed": false,
       "tablesLocked": false
+    },
+    {
+      "ordinal": 2,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 611,
+            "y": 260
+          },
+          "nodeIndex": "fPerfilVitimas",
+          "nodeLineageTag": "dc3098f6-cded-4578-b561-83f3ccdac85c",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 294,
+            "y": 234
+          },
+          "nodeIndex": "fOcorrencias",
+          "nodeLineageTag": "a3a1b150-8df9-403e-a1a7-a61b19737976",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Layout 2",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
     }
   ],
-  "selectedDiagram": "Layout 1",
+  "selectedDiagram": "Layout 2",
   "defaultDiagram": "Todas as tabelas"
 }

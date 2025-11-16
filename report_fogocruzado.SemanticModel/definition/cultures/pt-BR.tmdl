@@ -3039,55 +3039,149 @@ cultureInfo pt-BR
 			          }
 			        }
 			      ]
-			    }
-			  },
-			  "Relationships": {
-			    "f_perfil_vitima_has_d_faixa_etaria": {
-			      "Binding": {
-			        "ConceptualEntity": "fPerfilVitimas"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "f_perfil_vitima": {
-			          "Target": {
-			            "Entity": "f_perfil_vitima"
-			          }
-			        },
-			        "d_faixa_etaria": {
-			          "Target": {
-			            "Entity": "d_faixa_etaria"
-			          }
+			    },
+			    "p_periodo.título_dinamico_letalidade_ocorrencia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "pPeriodo",
+			          "ConceptualProperty": "Título Dinamico Letalidade Ocorrencia"
 			        }
 			      },
-			      "Phrasings": [
+			      "State": "Generated",
+			      "Terms": [
 			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "f_perfil_vitima"
-			            },
-			            "Object": {
-			              "Role": "d_faixa_etaria"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "f_perfil_vitimas_have_d_faixa_etarias"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "d_faixa_etaria"
-			            },
-			            "Object": {
-			              "Role": "f_perfil_vitima"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "d_faixa_etarias_have_f_perfil_vitimas"
+			          "título dinamico letalidade ocorrencia": {
+			            "State": "Generated"
+			          }
 			        }
 			      ]
 			    },
+			    "p_letalidade_ocorrencia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "pLetalidadeOcorrencias"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "p letalidade ocorrencia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "pLetalidadeOcorrencias": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "p_letalidade_ocorrencia.p_letalidade_ocorrencia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "pLetalidadeOcorrencias",
+			          "ConceptualProperty": "pLetalidadeOcorrencias"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "p letalidade ocorrencia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "p letalidade ocorrencia name": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "pLetalidadeOcorrencias": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ],
+			      "NameType": "Name"
+			    },
+			    "p_letalidade_ocorrencia.pLetalidadeOcorrencias_campos": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "pLetalidadeOcorrencias",
+			          "ConceptualProperty": "pLetalidadeOcorrencias Campos"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "pLetalidadeOcorrencias campos": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "pLetalidadeOcorrencia campos": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.78
+			          }
+			        }
+			      ]
+			    },
+			    "p_letalidade_ocorrencia.pLetalidadeOcorrencias_pedido": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "pLetalidadeOcorrencias",
+			          "ConceptualProperty": "pLetalidadeOcorrencias Pedido"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "pLetalidadeOcorrencias pedido": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "pLetalidadeOcorrencia pedido": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.78
+			          }
+			        }
+			      ]
+			    },
+			    "drelatorioportal.relatorio": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dRelatorioPortal",
+			          "ConceptualProperty": "Relatorio"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Relatório": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  },
+			  "Relationships": {
 			    "f_perfil_vitima_has_d_situacao": {
 			      "Binding": {
 			        "ConceptualEntity": "fPerfilVitimas"
@@ -3315,6 +3409,85 @@ cultureInfo pt-BR
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "d_motivos_have_f_ocorrencias"
+			        }
+			      ]
+			    },
+			    "p_letalidade_ocorrencia_has_p_letalidade_ocorrencia": {
+			      "Binding": {
+			        "ConceptualEntity": "pLetalidadeOcorrencias"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "p_letalidade_ocorrencia": {
+			          "Target": {
+			            "Entity": "p_letalidade_ocorrencia"
+			          }
+			        },
+			        "p_letalidade_ocorrencia.p_letalidade_ocorrencia": {
+			          "Target": {
+			            "Entity": "p_letalidade_ocorrencia.p_letalidade_ocorrencia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "p_letalidade_ocorrencia"
+			            },
+			            "Object": {
+			              "Role": "p_letalidade_ocorrencia.p_letalidade_ocorrencia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "p_letalidade_ocorrencias_have_p_letalidade_ocorrencias"
+			        },
+			        {
+			          "Name": {
+			            "Subject": {
+			              "Role": "p_letalidade_ocorrencia"
+			            },
+			            "Name": {
+			              "Role": "p_letalidade_ocorrencia.p_letalidade_ocorrencia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "p_letalidade_ocorrencias_are_names_IDs_of_p_letalidade_ocorrencias"
+			        }
+			      ]
+			    },
+			    "p_letalidade_ocorrencia_has_p_periodo_título_dinamico_letalidade_ocorrencia": {
+			      "Binding": {
+			        "ConceptualEntity": "pLetalidadeOcorrencias"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "p_letalidade_ocorrencia": {
+			          "Target": {
+			            "Entity": "p_letalidade_ocorrencia"
+			          }
+			        },
+			        "p_periodo.título_dinamico_letalidade_ocorrencia": {
+			          "Target": {
+			            "Entity": "p_periodo.título_dinamico_letalidade_ocorrencia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "p_letalidade_ocorrencia"
+			            },
+			            "Object": {
+			              "Role": "p_periodo.título_dinamico_letalidade_ocorrencia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "p_letalidade_ocorrencias_have_título_dinamico_letalidade_ocorrencia"
 			        }
 			      ]
 			    },
@@ -5968,6 +6141,52 @@ cultureInfo pt-BR
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "f_ocorrencias_have_documentos"
+			        }
+			      ]
+			    },
+			    "f_perfil_vitima_has_d_faixa_etaria": {
+			      "Binding": {
+			        "ConceptualEntity": "fPerfilVitimas"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_perfil_vitima": {
+			          "Target": {
+			            "Entity": "f_perfil_vitima"
+			          }
+			        },
+			        "d_faixa_etaria": {
+			          "Target": {
+			            "Entity": "d_faixa_etaria"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_perfil_vitima"
+			            },
+			            "Object": {
+			              "Role": "d_faixa_etaria"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_perfil_vitimas_have_d_faixa_etarias"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "d_faixa_etaria"
+			            },
+			            "Object": {
+			              "Role": "f_perfil_vitima"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "d_faixa_etarias_have_f_perfil_vitimas"
 			        }
 			      ]
 			    },

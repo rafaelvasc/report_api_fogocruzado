@@ -244,10 +244,9 @@ table Medidas
 			    ),
 			    [Total Mortes]
 			)
+		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: 02. Perfil Vitima
 		lineageTag: ad136aff-3675-490b-884f-1a48d4f41c58
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	/// 
 	/// CALCULATE(

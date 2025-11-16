@@ -297,6 +297,16 @@ cultureInfo pt-BR
 			          "endereco": {
 			            "State": "Generated"
 			          }
+			        },
+			        {
+			          "Endereço": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -876,6 +886,16 @@ cultureInfo pt-BR
 			        {
 			          "genero": {
 			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Gênero": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -3159,23 +3179,70 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
-			    "drelatorioportal.relatorio": {
+			    "medida.letalidade_a_a": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "dRelatorioPortal",
-			          "ConceptualProperty": "Relatorio"
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "% Letalidade A.A"
 			        }
 			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "Relatório": {
+			          "% letalidade a.a": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "percentage letalidade a.a": {
+			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
+			              "Agent": "Thesaurus"
 			            },
-			            "Weight": 0.9
+			            "Weight": 0.624
+			          }
+			        },
+			        {
+			          "pct letalidade a.a": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.605
+			          }
+			        }
+			      ]
+			    },
+			    "medida.diferença_letalidade_vs_a_a": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "% Diferença Letalidade vs A.A"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "% diferença letalidade vs a.a": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.diferença_letalidade_vs_a_a_seta": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "% Diferença Letalidade vs A.A Seta"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "% diferença letalidade vs a.a seta": {
+			            "State": "Generated"
 			          }
 			        }
 			      ]
@@ -3409,6 +3476,105 @@ cultureInfo pt-BR
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "d_motivos_have_f_ocorrencias"
+			        }
+			      ]
+			    },
+			    "f_perfil_vitima_has_medida_diferença_letalidade_vs_a_a_seta": {
+			      "Binding": {
+			        "ConceptualEntity": "fPerfilVitimas"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_perfil_vitima": {
+			          "Target": {
+			            "Entity": "f_perfil_vitima"
+			          }
+			        },
+			        "medida.diferença_letalidade_vs_a_a_seta": {
+			          "Target": {
+			            "Entity": "medida.diferença_letalidade_vs_a_a_seta"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_perfil_vitima"
+			            },
+			            "Object": {
+			              "Role": "medida.diferença_letalidade_vs_a_a_seta"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_perfil_vitimas_have__diferença_letalidade_vs_a_a_seta"
+			        }
+			      ]
+			    },
+			    "f_perfil_vitima_has_medida_diferença_letalidade_vs_a_a": {
+			      "Binding": {
+			        "ConceptualEntity": "fPerfilVitimas"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_perfil_vitima": {
+			          "Target": {
+			            "Entity": "f_perfil_vitima"
+			          }
+			        },
+			        "medida.diferença_letalidade_vs_a_a": {
+			          "Target": {
+			            "Entity": "medida.diferença_letalidade_vs_a_a"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_perfil_vitima"
+			            },
+			            "Object": {
+			              "Role": "medida.diferença_letalidade_vs_a_a"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_perfil_vitimas_have__diferença_letalidade_vs_a_a"
+			        }
+			      ]
+			    },
+			    "f_perfil_vitima_has_medida_letalidade_a_a": {
+			      "Binding": {
+			        "ConceptualEntity": "fPerfilVitimas"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_perfil_vitima": {
+			          "Target": {
+			            "Entity": "f_perfil_vitima"
+			          }
+			        },
+			        "medida.letalidade_a_a": {
+			          "Target": {
+			            "Entity": "medida.letalidade_a_a"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_perfil_vitima"
+			            },
+			            "Object": {
+			              "Role": "medida.letalidade_a_a"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_perfil_vitimas_have__letalidade_a_a"
 			        }
 			      ]
 			    },

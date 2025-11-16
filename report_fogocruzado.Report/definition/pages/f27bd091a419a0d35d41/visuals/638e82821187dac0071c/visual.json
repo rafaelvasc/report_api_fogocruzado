@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
   "name": "638e82821187dac0071c",
   "position": {
-    "x": 12.361720807726075,
-    "y": 130.35996488147498,
+    "x": 3.0236220472440944,
+    "y": 126.99212598425197,
     "z": 1000,
-    "height": 146.09306409130815,
-    "width": 1233.9244951712028
+    "height": 149.16535433070865,
+    "width": 1268.9133858267717
   },
   "visual": {
     "visualType": "cardVisual",
@@ -261,6 +261,20 @@
           "selector": {
             "id": "default"
           }
+        },
+        {
+          "properties": {
+            "textWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Medidas.% Letalidade"
+          }
         }
       ],
       "layout": [
@@ -374,7 +388,21 @@
             "leftMargin": {
               "expr": {
                 "Literal": {
-                  "Value": "35L"
+                  "Value": "31L"
+                }
+              }
+            },
+            "bottomMargin": {
+              "expr": {
+                "Literal": {
+                  "Value": "4L"
+                }
+              }
+            },
+            "rightMargin": {
+              "expr": {
+                "Literal": {
+                  "Value": "4L"
                 }
               }
             }
@@ -764,6 +792,13 @@
                   "Value": "'% Ano Ant.'"
                 }
               }
+            },
+            "titleFontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
             }
           },
           "selector": {
@@ -855,7 +890,14 @@
             "titleText": {
               "expr": {
                 "Literal": {
-                  "Value": "'% Ano Ant. '"
+                  "Value": "'% Ano Ant.'"
+                }
+              }
+            },
+            "titleFontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
                 }
               }
             }
@@ -1284,6 +1326,35 @@
             ],
             "metadata": "Medidas.% Letalidade"
           }
+        },
+        {
+          "properties": {
+            "valueFontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Medidas.Total Ocorrências",
+            "id": "field-91ce0ba2-d166-a2e0-9895-916b663b2a8d"
+          }
+        },
+        {
+          "properties": {
+            "valueFontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Medidas.% Letalidade"
+          }
         }
       ],
       "shapeCustomRectangle": [
@@ -1504,6 +1575,27 @@
           },
           "selector": {
             "metadata": "Medidas.Total Mortes"
+          }
+        },
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Medidas.% Letalidade"
           }
         }
       ]

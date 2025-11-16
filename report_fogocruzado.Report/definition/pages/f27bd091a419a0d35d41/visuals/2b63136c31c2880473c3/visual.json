@@ -22,6 +22,76 @@
                       "Entity": "fOcorrencias"
                     }
                   },
+                  "Property": "Motivo"
+                }
+              },
+              "queryRef": "fOcorrencias.Motivo",
+              "nativeQueryRef": "Motivo"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fPerfilVitimas"
+                    }
+                  },
+                  "Property": "TipoPessoa"
+                }
+              },
+              "queryRef": "fPerfilVitimas.TipoPessoa",
+              "nativeQueryRef": "TipoPessoa"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fPerfilVitimas"
+                    }
+                  },
+                  "Property": "Idade"
+                }
+              },
+              "queryRef": "fPerfilVitimas.Idade",
+              "nativeQueryRef": "Idade"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fPerfilVitimas"
+                    }
+                  },
+                  "Property": "Genero"
+                }
+              },
+              "queryRef": "fPerfilVitimas.Genero",
+              "nativeQueryRef": "Genero"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dCidades"
+                    }
+                  },
+                  "Property": "NomeCidade"
+                }
+              },
+              "queryRef": "dCidades.NomeCidade",
+              "nativeQueryRef": "NomeCidade"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fOcorrencias"
+                    }
+                  },
                   "Property": "Bairro"
                 }
               },
@@ -61,56 +131,28 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fOcorrencias"
+                      "Entity": "dHora"
                     }
                   },
-                  "Property": "Motivo"
+                  "Property": "Período"
                 }
               },
-              "queryRef": "fOcorrencias.Motivo",
-              "nativeQueryRef": "Motivo"
+              "queryRef": "dHora.Período",
+              "nativeQueryRef": "Período"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fPerfilVitimas"
+                      "Entity": "dHora"
                     }
                   },
-                  "Property": "Idade"
+                  "Property": "Hora AMPM"
                 }
               },
-              "queryRef": "fPerfilVitimas.Idade",
-              "nativeQueryRef": "Idade"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fPerfilVitimas"
-                    }
-                  },
-                  "Property": "TipoPessoa"
-                }
-              },
-              "queryRef": "fPerfilVitimas.TipoPessoa",
-              "nativeQueryRef": "TipoPessoa"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fPerfilVitimas"
-                    }
-                  },
-                  "Property": "Genero"
-                }
-              },
-              "queryRef": "fPerfilVitimas.Genero",
-              "nativeQueryRef": "Genero"
+              "queryRef": "dHora.Hora AMPM",
+              "nativeQueryRef": "Hora AMPM"
             }
           ]
         }
@@ -714,6 +756,20 @@
           },
           "selector": {
             "metadata": "Medidas.Acessos"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "470.58384547848993D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fOcorrencias.Endereco"
           }
         }
       ],

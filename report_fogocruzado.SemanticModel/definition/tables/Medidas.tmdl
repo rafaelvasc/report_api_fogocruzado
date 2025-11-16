@@ -496,6 +496,35 @@ table Medidas
 		displayFolder: 01. Visão Geral
 		lineageTag: 4c0760c0-b46e-4e2e-a321-58a447c1a181
 
+	measure '% Letalidade A.A' =
+			CALCULATE(
+			DIVIDE ( [Total Mortes], [Total Vítimas] ), SAMEPERIODLASTYEAR(dCalendario[Data]))
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: bb544a81-bfea-4ef4-b80c-f3eae0935598
+
+	measure '% Diferença Letalidade vs A.A' =
+			
+			VAR Atual = [% Letalidade]
+			VAR AnoAnterior = [% Letalidade A.A]
+			RETURN
+			    DIVIDE ( Atual - AnoAnterior, AnoAnterior, 0 )
+		lineageTag: 1f974f53-9b92-41c1-81e1-a0d038a60184
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% Diferença Letalidade vs A.A Seta' =
+			
+			VAR vDiferenca =
+			    [% Diferença Letalidade vs A.A]
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			        vDiferenca > 0, "▲ " & FORMAT ( vDiferenca, "0.00%" ),
+			        vDiferenca < 0, "▼ " & FORMAT ( vDiferenca, "0.00%" ),
+			        "0.00%"
+			    )
+		lineageTag: 50ff5c28-5ecd-4251-953a-b8c9f0f36ffb
+
 	partition Medidas = m
 		mode: import
 		source =

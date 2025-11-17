@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
-  "name": "f7410a8f52b014ecd0d1",
+  "name": "9b8ee4ed7ae4705ce7b8",
   "position": {
     "x": 1125.7952755905512,
     "y": 74.235500878734626,
-    "z": 7000,
+    "z": 13005,
     "height": 65.511811023622045,
     "width": 138.07874015748033,
-    "tabOrder": 6000
+    "tabOrder": 14003
   },
   "visual": {
     "visualType": "slicer",
@@ -20,36 +20,19 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dFaixaEtarias"
+                      "Entity": "fPerfilVitimas"
                     }
                   },
-                  "Property": "FaixaEtaria"
+                  "Property": "Genero"
                 }
               },
-              "queryRef": "dFaixaEtarias.FaixaEtaria",
-              "nativeQueryRef": "Faixa Etária",
+              "queryRef": "fPerfilVitimas.Genero",
+              "nativeQueryRef": "Gênero",
               "active": true,
-              "displayName": "Faixa Etária"
+              "displayName": "Gênero"
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "dim_calendario"
-                  }
-                },
-                "Property": "nome_mes"
-              }
-            },
-            "direction": "Ascending"
-          }
-        ]
       }
     },
     "objects": {

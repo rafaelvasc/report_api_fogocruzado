@@ -20,36 +20,19 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dFaixaEtarias"
+                      "Entity": "fPerfilVitimas"
                     }
                   },
-                  "Property": "FaixaEtaria"
+                  "Property": "Genero"
                 }
               },
-              "queryRef": "dFaixaEtarias.FaixaEtaria",
-              "nativeQueryRef": "Faixa Etária",
+              "queryRef": "fPerfilVitimas.Genero",
+              "nativeQueryRef": "Gênero",
               "active": true,
-              "displayName": "Faixa Etária"
+              "displayName": "Gênero"
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "dim_calendario"
-                  }
-                },
-                "Property": "nome_mes"
-              }
-            },
-            "direction": "Ascending"
-          }
-        ]
       }
     },
     "objects": {
@@ -694,20 +677,6 @@
   },
   "filterConfig": {
     "filters": [
-      {
-        "name": "16f9eb2c8878ed213c8b",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dFaixaEtarias"
-              }
-            },
-            "Property": "FaixaEtaria"
-          }
-        },
-        "type": "Categorical"
-      },
       {
         "name": "1dda6de2e7cd10c682ef",
         "field": {
